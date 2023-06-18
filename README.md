@@ -29,3 +29,50 @@
     1. composer create-project laravel/laravel app
     2. com o git BASH digite: chmod +777 app/bootstrap/cache (fica dando erro de não conseguir acessar)
     3. rode o servidor: php artisan serve (dentro da pasta do app)
+
+## uso de rotas no Laravel
+### vou usar a pasta teste
+
+o arquivo com as rotas é o `web.php`
+
+uma rota é composta por :
+- método (route::get, post, etc...)
+- a url nesse caso "/teste"
+- uma função ou um [controller](https://laravel.com/docs/10.x/controllers) especificando um método seu (vou fazer com os 2)
+- e opcionalmente um [middleware](https://laravel.com/docs/10.x/middleware) (basicamento um método de checagem de autorização)
+
+#### o arquivo deve ser o mais simples o possível, contendo apenas as rotas e os middlewares que as acompanham
+
+## controllers
+
+- são criados pelo console: `php artisan make:controller (nome do controller)`, nesse caso Teste2Controller
+- podem ser encontrados em /app/Http/Controllers
+- com o controller criado posso usar ele na minha rota, e usar o método socorro que eu criei
+
+## templates 
+### blade é o motor de renderização do Laravel
+
+ficam em /resources/views
+
+instale a extensão do VSCode "Laravel Blade Snippets"
+
+- exemplo: homepage
+- arquivos **precisam** terminar em .blade.php
+- pode usar html normal à vontade, o php vai ficar embutido
+- no Controller simplesmente retorne a *view* com o nome do seu template (sem a extensão)
+- para usar código php simplesmente coloque dentro de: {{  }}
+
+#### passar dados do controller para a view
+
+- ao retornar a função *view* passe de segundo argumento um array(associativo) com os valores desejados
+- no template dentro das {{}} coloque a sua `$variavel`
+- agora vamos usar uma *diretiva*(directive) para usar um for dentro do blade
+- a diretiva é iniciada com um @, nesse caso: `@foreach(vários as um)`
+
+#### reduzir a repetição
+
+- usamos a diretiva @include('nome do arq')
+- ou para código global:
+- criamos uma nova pasta dentro da views: components
+- dentro do arquvio lauout podemos incluir tanto o header quanto o footer e no meio {{$slot}}
+- usamos a "tag" : `x-(nome-do-componente)` e colocamos o html dentro dela
