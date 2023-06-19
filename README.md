@@ -76,3 +76,6 @@ instale a extensão do VSCode "Laravel Blade Snippets"
 - criamos uma nova pasta dentro da views: components
 - dentro do arquvio lauout podemos incluir tanto o header quanto o footer e no meio {{$slot}}
 - usamos a "tag" : `x-(nome-do-componente)` e colocamos o html dentro dela
+
+## BD
+
