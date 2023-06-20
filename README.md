@@ -79,3 +79,23 @@ instale a extensão do VSCode "Laravel Blade Snippets"
 
 ## BD
 
+### o Laravel gerencia o BD automaticamente com *migrações*(migrations)
+
+- conecta no bd pelo .env (não deve estar no rep. pois é diferente em cada máquina)
+- no .env ache as variáveis **DB_...**
+- migrations ficam em /database/migrations 
+- lá ficam as migrations que já vieram inclusas na iniciação, dá pra ter uma noção de como a parada funciona
+- com o comando `php artisan migrate` as migrações são feitas, depois de rodar cheque o mysql workbench
+- com o comando `php artisan migrate:fresh` as migrações são **re**feitas, perdendo todos os dados
+
+#### adicionar coisas novas sem perder tudo
+
+- `php artisan make:migration adicionarcorfavorita` para criar uma migração nova
+
+nessa nova migração no método up() chamamos o método estático da classe Schema, table, especificamos qual tabela será o nosso alvo nesse teste, users, e criamos uma função com os novos campos.
+
+já na down(), especificamos o que fazor caso a migração seja desfeita.
+
+- agora `php artisan migrate` novamente para que a nova migração seja feita
+
+as migrações oferecem a vantagem de podermos ter um controle maior sobre o banco, já que cada iteração pode ficar separada e sempre vão ser executadas do mesmo jeito para todos.
