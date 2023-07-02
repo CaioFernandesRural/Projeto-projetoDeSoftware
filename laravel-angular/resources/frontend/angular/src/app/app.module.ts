@@ -12,6 +12,21 @@ import { LivrosComponent } from './livros/livros.component';
 import { PerfilUserComponent } from './perfil-user/perfil-user.component';
 import { RenovarEmprestimoComponent } from './renovar-emprestimo/renovar-emprestimo.component';
 import { SolicitarEmprestimoComponent } from './solicitar-emprestimo/solicitar-emprestimo.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redireciona a rota inicial para '/home'
+  { path: 'home', component: HomeComponent },
+  { path: 'login-user', component: LoginUserComponent},
+  { path: 'cadastro-user', component: CadastroUserComponent },
+  { path: 'livros', component: LivrosComponent },
+  { path: 'livro-anuncio', component: LivroAnuncioComponent },
+  { path: 'cadastro-livro-anuncio', component: CadastroLivroAnuncioComponent },
+  { path: 'historico-emprestimos', component: HistoricoEmprestimosComponent },
+  { path: 'perfil-user', component: PerfilUserComponent },
+  { path: 'renovar-emprestimo', component: RenovarEmprestimoComponent },
+  { path: 'solicitar-emprestimo', component: SolicitarEmprestimoComponent }
+];
 
 @NgModule({
   declarations: [
@@ -28,8 +43,10 @@ import { SolicitarEmprestimoComponent } from './solicitar-emprestimo/solicitar-e
     SolicitarEmprestimoComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent]
 })

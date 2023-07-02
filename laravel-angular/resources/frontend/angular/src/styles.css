@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-primary-long {
+    width: 100%;
+    padding: 10px;
+    background-color: #0B9D92;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.btn-secundary-long {
+    width: 100%;
+    padding: 10px;
+    background-color: #042932;
+    color: white;
+    border-color: #0B9D92;
+    border-width: 2;
+    border-radius: 7px;
+    cursor: pointer;
+}
