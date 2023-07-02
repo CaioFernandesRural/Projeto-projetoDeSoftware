@@ -1,21 +1,19 @@
 <nav class="navbar">
     <div class="logo">
-        <img src="./assets/imagens/Logo Shared Lib azul escuro.png" alt="logo-sharedLib">
+        <img src="./assets/imagens/Logo Shared Lib azul escuro.png" alt="logo-sharedLib" class="navbar-brand">
     </div>
-    <div class="navlist">
-        <ul>
-            <div class="nav-pages">
-                <li><a routerLink="/home">Home</a></li>
-                <li>Sobre</li>
-                <li><a routerLink="/livros">Livros</a></li>
-            </div>
-            <div class="nav-login-cadastro">
-                <li><img src="" alt="user"></li>
-                <li><a routerLink="/login-user">Login</a></li>
-                <li>|</li>
-                <li><a routerLink="/cadastro-user">Cadastre-se</a></li>
-            </div>
-        </ul>
+    <ul class="navbar-nav me-auto">
+        <div class="nav-pages">
+            <li><a routerLink="/home">Home</a></li>
+            <li><a href="">Sobre</a></li>
+            <li><a routerLink="/livros">Livros</a></li>
+        </div>
+    </ul>
+    <div class="nav-login-cadastro">
+        <img src="" alt="user">
+        <li><a routerLink="/login-user">Login</a></li>
+        <li>|</li>
+        <li><a routerLink="/cadastro-user">Cadastre-se</a></li>
     </div>
 </nav>
 

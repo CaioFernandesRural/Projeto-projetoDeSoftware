@@ -4,6 +4,10 @@ h1 {
     font-size: 32px;
 }
 
+p {
+    margin-bottom: 40px;
+}
+
 input[type="text"], input[type="password"] {
     width: 100%;
     padding: 10px;
@@ -27,6 +31,7 @@ input[type="text"], input[type="password"] {
     padding: 110px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
 .col-md-6 a {
@@ -34,14 +39,19 @@ input[type="text"], input[type="password"] {
     color: #0B9D92;
 }
 
+.col-md-6 p {
+    text-align: start;
+}
+
 .sharedLibIcon {
     width: 60px;
+    margin-bottom: 10px;
 }
 
 .col-md-3 {
     color: white;
     background-color: #042932;
-    padding: 40px;
+    padding: 50px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
