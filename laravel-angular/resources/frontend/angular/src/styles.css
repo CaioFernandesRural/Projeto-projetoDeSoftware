@@ -14,6 +14,16 @@
     cursor: pointer;
 }
 
+#btn-primary-long {
+    width: 100%;
+    padding: 10px;
+    background-color: #0B9D92;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
 #btn-primary {
     background-color: #0B9D92;
     border: none;
@@ -80,4 +90,9 @@
     border-top: 40px solid transparent;
     border-right: 80px solid white;
     border-bottom: 40px solid transparent;
+}
+
+#img-logo-short {
+    width: 60px;
+    margin-bottom: 10px;
 }
