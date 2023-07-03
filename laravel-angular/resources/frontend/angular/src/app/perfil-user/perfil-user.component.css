@@ -17,8 +17,25 @@
     border-radius: 10px;
     padding: 120px;
     margin-top: -250px;
+    margin-bottom: 100px;
     z-index: 10000;
     background-color: white;
+}
+
+#biografia {
+    text-align: left;
+}
+
+#nota {
+    margin-right: 6px;
+}
+
+#avaliacao {
+    justify-content: center;
+}
+
+#user-name {
+    text-align: center;
 }
 
 #background {
@@ -46,4 +63,58 @@
     text-align: center;
 }
   
-  
+#livro img {
+    width: 100px;
+}
+
+#livro {
+    padding: 0;
+}
+
+#row-livros {
+    width: 100%;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+#historico-de-emprestimos {
+    margin-bottom: 80px;
+}
+
+.titulo {
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+.autor {
+    font-size: 13px;
+}
+
+#bookmark {
+    color: #EE6363;
+    align-self: center;
+    margin-left: 4px;
+    margin-top: 4px;
+}
+
+#meus-emprestimos {
+    background-color: #042932;
+    border-radius: 10px;
+    margin-bottom: 80px;
+}
+
+#meus-emprestimos h2 {
+    text-align: center;
+    color: white;
+    padding-top: 50px;
+    font-size: 35px;
+}
+
+#meus-emprestimos #row-livros {
+    color: white;
+}
+
+#btn-secundary {
+    margin-bottom: 35px
+}
