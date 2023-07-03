@@ -18,7 +18,7 @@
         </div>
 
         <div class="foto-perfil col">
-            <img src="./assets/imagens/foto de perfil.png" alt="Foto de perfil">
+            <img src="./assets/imagens/foto-de-perfil.png" alt="Foto de perfil">
         </div>
 
         <div class="col" id="actions">
@@ -41,27 +41,117 @@
         </div>
     </div>
 
-    <div class="perfil-dados">
+    <div class="container" id="perfil-dados">
         <div class="row">
-            <h2 class="col">User Name</h2>
-            <i class="fa-solid fa-location-dot col"></i>
-            <p class="col">Localização</p>
+            <div class="d-flex" id="user-name">
+                <h2 class="col">User Name</h2>
+                <i class="fa-solid fa-location-dot col"></i>
+                <p class="col">Localização</p>
+            </div>
         </div>
-        <div class="row" id="nota">v
-            <p class="col">9,0</p>
-            <i class="fa-solid fa-star col"></i>
-            <i class="fa-solid fa-star col"></i>
-            <i class="fa-solid fa-star col"></i>
-            <i class="fa-solid fa-star col"></i>
-            <i class="fa-regular fa-star col"></i>
+        <div class="row">
+            <div class="d-flex" id="avaliacao">
+                <p id="nota">9,0</p>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <h4>Biografia</h4>
-    </div>
-    <div class="row" id="bio">
-        <p>Sou Lorena, tenho 20 anos e gosto de ler romance, ficção e aventura. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Curabitur tempor at ante in fermentum. Vestibulum finibus dignissim tellus,
-            eget ornare leo facilisis at.</p>
+        <div id="biografia">
+            <div class="row">
+                <h4>Biografia</h4>
+            </div>
+            <div class="row" id="bio">
+                <p>Sou Lorena, tenho 20 anos e gosto de ler romance, ficção e aventura. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Curabitur tempor at ante in fermentum. Vestibulum finibus dignissim
+                    tellus,
+                    eget ornare leo facilisis at.</p>
+            </div>
+        </div>
     </div>
 </div>
+
+<div id="livros-user">
+    <div class="row align-items-start" id="row-title">
+        <div class="col-1 align-self-center" id="col-title">
+            <h1>Histórico de Empréstimo</h1>
+        </div>
+        <div class="col" id="col-title-cut"></div>
+    </div>
+    <div class="container" id="historico-de-emprestimos">
+        <div class="row row-cols-5" id="row-livros">
+            <div class="col" id="livro">
+                <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
+                <div class="d-flex">
+                    <p class="titulo"><b>Título livro</b></p>
+                    <i class="fa-solid fa-bookmark" id="bookmark"></i>
+                </div>
+                <p class="autor">Autor livro</p>
+            </div>
+            <div class="col" id="livro">
+                <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
+                <div class="d-flex">
+                    <p class="titulo"><b>Título livro</b></p>
+                    <i class="fa-solid fa-bookmark" id="bookmark"></i>
+                </div>
+                <p class="autor">Autor livro</p>
+            </div>
+            <div class="col" id="livro">
+                <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
+                <p class="titulo"><b>Título livro</b></p>
+                <p class="autor">Autor livro</p>
+            </div>
+            <div class="col" id="livro">
+                <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
+                <p class="titulo"><b>Título livro</b></p>
+                <p class="autor">Autor livro</p>
+            </div>
+            <div class="col" id="livro">
+                <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
+                <p class="titulo"><b>Título livro</b></p>
+                <p class="autor">Autor livro</p>
+            </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="row-btn-primary">
+            <button id="btn-primary">Ver mais</button>
+        </div>
+    </div>
+
+    <div class="container" id="meus-emprestimos">
+        <h2>Meus emprestimos</h2>
+        <div class="container">
+            <div class="row row-cols-5" id="row-livros">
+                <div class="col" id="livro">
+                    <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
+                    <div class="d-flex">
+                        <p class="titulo"><b>Título livro</b></p>
+                        <i class="fa-solid fa-bookmark" id="bookmark"></i>
+                    </div>
+                    <p class="autor">Autor livro</p>
+                </div>
+                <div class="col" id="livro">
+                    <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
+                    <div class="d-flex">
+                        <p class="titulo"><b>Título livro</b></p>
+                        <i class="fa-solid fa-bookmark" id="bookmark"></i>
+                    </div>
+                    <p class="autor">Autor livro</p>
+                </div>
+                <div class="col" id="livro">
+                    <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
+                    <p class="titulo"><b>Título livro</b></p>
+                    <p class="autor">Autor livro</p>
+                </div>
+                <div class="col" id="livro">
+                    <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
+                    <p class="titulo"><b>Título livro</b></p>
+                    <p class="autor">Autor livro</p>
+                </div>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="row-btn-primary">
+                <button id="btn-secundary">Ver mais</button>
+            </div>
+        </div>
+    </div>

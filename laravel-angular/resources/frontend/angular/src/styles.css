@@ -52,6 +52,20 @@
     cursor: pointer;
 }
 
+#btn-secundary {
+    background-color: #042932;
+    border-color: #0B9D92;
+    border-width: 2;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 4px;
+    width: 120px;
+    display: inline-block;
+}
+
 #container-path p {
     color: gray;
     margin-top: 20px;
