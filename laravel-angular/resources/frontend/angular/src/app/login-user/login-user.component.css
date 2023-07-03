@@ -43,11 +43,6 @@ input[type="text"], input[type="password"] {
     text-align: start;
 }
 
-.sharedLibIcon {
-    width: 60px;
-    margin-bottom: 10px;
-}
-
 .col-md-3 {
     color: white;
     background-color: #042932;

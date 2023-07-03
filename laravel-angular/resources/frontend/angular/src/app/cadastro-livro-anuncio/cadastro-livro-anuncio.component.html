@@ -1,6 +1,62 @@
-<div class="container">
-    <div class="row text-center">
-        <img class=".img-fluid" src="./assets/imagens/logo-short.png" alt="logo-short">
+<div id="container-box" class="container">
+    <div class="text-center">
+        <img id="img-logo-short" src="./assets/imagens/logo-short.png" alt="logo-short">
         <h1>Cadastre um livro</h1>
     </div>
+    <form class="row g-3">
+        <div class="col-md-6">
+            <label for="input-img" class="form-label">Upload da capa</label>
+            <input class="form-control" type="file" id="input-img">
+
+            <label for="input-title" class="form-label">Título</label>
+            <input id="input-title" type="text" class="form-control">
+            
+            <label for="input-author" class="form-label">Autor</label>
+            <input id="input-author" type="text" class="form-control">
+            
+            <label for="input-language" class="form-label">Idioma</label>
+            <input id="input-language" type="text" class="form-control">
+
+            <label for="input-synopsis" class="form-label">Sinopse</label>
+            <textarea id="input-synopsis" class="form-control"  rows="5"></textarea>
+        </div>
+        <div class="col-md-6">
+            <label for="input-publisher" class="form-label">Editora</label>
+            <input id="input-publisher" type="text" class="form-control">
+
+            <label for="input-edition" class="form-label">Edição</label>
+            <input id="input-edition" type="text" class="form-control">
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="input-publication-year" class="form-label">Ano de publicação</label>
+                    <select id="input-publication-year" class="form-select">
+                        <option selected>Selecione...</option>
+                        <option>2023</option>
+                        <option>2022</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="input-pages-number" class="form-label">Idade</label>
+                    <input id="input-pages-number" type="text" class="form-control">
+                </div>
+            </div>
+
+            <label for="input-category" class="form-label">Ano de publicação</label>
+            <select id="input-category" class="form-select">
+                <option selected>Selecione...</option>
+                <option>Ficção Científica</option>
+                <option>Religião</option>
+            </select>
+
+            <label for="input-edition" class="form-label">ISBN-10</label>
+            <input id="input-edition" type="text" class="form-control">
+
+            <label for="input-language" class="form-label">ISBN-13</label>
+            <input id="input-language" type="text" class="form-control">
+        </div>
+        <div class="row justify-content-center">
+            <button type="submit" id="btn-primary-long" style="width: 400px;">Cadastrar</button>
+        </div>
+    </form>
 </div>
