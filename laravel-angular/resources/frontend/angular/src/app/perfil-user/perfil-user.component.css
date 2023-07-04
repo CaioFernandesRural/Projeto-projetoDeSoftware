@@ -27,6 +27,8 @@
 }
 
 #nota {
+    font-size: 24px;
+    font-weight: bold;
     margin-right: 6px;
 }
 
@@ -36,6 +38,10 @@
 
 #user-name {
     text-align: center;
+}
+
+#location-logo, #location-text, #nota {
+    display: inline;
 }
 
 #background {
