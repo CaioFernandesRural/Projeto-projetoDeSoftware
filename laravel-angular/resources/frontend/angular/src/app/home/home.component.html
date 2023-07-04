@@ -1,2 +1,72 @@
+<div class="container">
+    <div class="row">
+        <div class="d-flex align-items-center" id="slogan">
+            <div>
+                <p id="frase">Conectando leitores, <span>compartilhando</span> conhecimento.</p>
+                <div id="crie-conta">
+                    <p>Ainda não está cadastrado? Crie sua conta e comece a explorar novos livros hoje mesmo!</p>
+                    <button id="btn-primary">Crie uma conta</button>
+                </div>
+            </div>
+            <div>
+                <img src="./assets/imagens/menino-lendo.png" alt="menino lendo">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="search-bar">
+            <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
+            <input class="form-control" type="text" placeholder="Buscar livro...">
+        </div>
+    </div>
+</div>
 
-<router-outlet></router-outlet>
+<div id="anuncios">
+    <div class="row align-items-start" id="row-title">
+        <div class="col-1 align-self-center" id="col-title">
+            <h1>Anúncios Recentes</h1>
+        </div>
+        <div class="col" id="col-title-cut"></div>
+    </div>
+    <div id="carouselExample" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col livro">
+                        <img style="width: 100px;" src="./assets/imagens/capa-livro.png" alt="capa-livro">
+                        <div class="d-flex">
+                            <p class="titulo"><b>Título livro</b></p>
+                            <i class="fa-solid fa-bookmark" id="bookmark"></i>
+                        </div>
+                        <p class="autor">Autor livro</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="col livro">
+                        <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
+                        <div class="d-flex">
+                            <p class="titulo"><b>Título livro</b></p>
+                            <i class="fa-solid fa-bookmark" id="bookmark"></i>
+                        </div>
+                        <p class="autor">Autor livro</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Próximo</span>
+        </a>
+    </div>
+</div>
+
+<div class="container" id="sobre">
+    <h2>O que é Shared Lib?</h2>
+    <p>O SharedLib é um software de biblioteca comunitária que tem como objetivo  principal  permitir  que  os  usuários  emprestem e compartilhem livros, promovendo assim a aquisição e a disseminação de conhecimento. O sistema de empréstimos pode ser um recurso valioso para permitir que as  pessoas acessem livros que talvez não possam comprar ou encontrar em outros lugares.  O SharedLib será uma valiosa fonte de recursos  para  os  amantes  de  leitura  que  buscam  aprimorar  seus  conhecimentos  e ampliar seus horizontes.</p>
+</div>

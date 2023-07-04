@@ -1,0 +1,56 @@
+#frase {
+    font-size: 45px;
+    color: #042932;
+    font-weight: 600;
+}
+
+#frase span {
+    color: #0B9D92;
+}
+
+#crie-conta {
+    color: #042932;
+}
+
+#slogan img {
+    transform: scaleX(-1);
+    filter: brightness(0.5);
+}
+
+
+#slogan {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+#search-bar {
+    position: relative;
+    margin-bottom: 80px;
+}
+
+#search-icon {
+    position: absolute;
+    top: 50%;
+    left: 23px;
+    transform: translateY(-50%);
+    color: grey;
+}
+
+#search-bar input[type="text"] {
+    padding-left: 35px;
+}
+
+#sobre {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    border-radius: 10px;
+    background-color: #042932;
+    color: white;
+    padding: 45px 75px;
+}
+
+#sobre h2 {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
