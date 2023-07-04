@@ -1,7 +1,5 @@
 <nav class="navbar">
-    <div class="logo">
-        <img src="./assets/imagens/logo.png" alt="logo-sharedLib" class="navbar-brand">
-    </div>
+    <img id="img-logo" src="./assets/imagens/logo.png" alt="logo-sharedLib" class="navbar-brand">
     <ul class="navbar-nav me-auto">
         <div class="nav-pages">
             <li><a routerLink="/home">Home</a></li>
@@ -23,10 +21,39 @@
 <footer>
     <div class="row">
         <div class="col-md-6">
-            <img src="./assets/imagens/logo.png" alt="logo">
+            <img id="img-logo" src="./assets/imagens/logo-white.png" alt="logo-white"><br>
+
+            <i id="icon" class="fa-brands fa-instagram"></i>
+            <a id="link" href="https://www.instagram.com/"> sharedLib </a><br>
+
+            <i id="icon" class="fa-brands fa-twitter"></i>
+            <a id="link" href="https://www.twitter.com/"> sharedLib </a><br>
+
+            <i id="icon" class="fa-brands fa-github"></i>
+            <a id="link" href="https://www.github.com/"> sharedLib </a><br>
+
+            <i id="icon" class="fa-brands fa-linkedin"></i>
+            <a id="link" href="https://www.linkedin.com/"> sharedLib </a><br><br>
+            
+            <span> Copyright © 2023 SharedLib ®. All rights reserved. </span>
         </div>
         <div class="col-md-6">
-
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="input-author" class="form-label">Autor</label>
+                    <input id="input-author" type="text" class="form-control">
+                    
+                    <label for="input-language" class="form-label">Idioma</label>
+                    <input id="input-language" type="text" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="input-synopsis" class="form-label">Sinopse</label>
+                    <textarea id="input-synopsis" class="form-control"  rows="5"></textarea>
+                </div>
+            </div>
+            <div class="text-center">
+            <button type="submit" id="btn-primary" style="width: 200px;">Cadastrar</button>
+            </div>
         </div>
     </div>
 </footer>

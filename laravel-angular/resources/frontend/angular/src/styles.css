@@ -39,6 +39,7 @@
 
 #btn-primary:hover {
     background-color: #042932;
+    border: 1px solid white;
 }
 
 .btn-secundary-long {
