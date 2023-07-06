@@ -13,6 +13,8 @@ import { PerfilUserComponent } from './perfil-user/perfil-user.component';
 import { RenovarEmprestimoComponent } from './renovar-emprestimo/renovar-emprestimo.component';
 import { SolicitarEmprestimoComponent } from './solicitar-emprestimo/solicitar-emprestimo.component';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { UsuariosService } from './services/usuarios.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redireciona a rota inicial para '/home'
@@ -44,10 +46,11 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [UsuariosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
