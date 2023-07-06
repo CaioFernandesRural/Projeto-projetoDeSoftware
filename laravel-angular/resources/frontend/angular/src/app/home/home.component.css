@@ -40,6 +40,34 @@
     padding-left: 35px;
 }
 
+#livro img {
+    width: 100px;
+}
+
+#livro {
+    padding: 0;
+}
+
+#row-livros {
+    width: 100%;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+#historico-de-emprestimos {
+    margin-bottom: 80px;
+}
+
+.titulo {
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+.autor {
+    font-size: 13px;
+}
+
 #sobre {
     margin-top: 80px;
     margin-bottom: 80px;

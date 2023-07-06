@@ -10,7 +10,11 @@
     align-items: center ;
 }
 
-.logo img {
+.navbar img, footer img {
+    margin-left: -13px;
+}
+
+#img-logo {
     width: 130px;
     margin-right: 80px;
 }
@@ -42,3 +46,36 @@
 li :hover {
     color: #0B9D92;
 }
+
+footer {
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    color: white;
+    padding: 10px 80px 30px 80px;
+    background-color: #042932;
+}
+
+#icon, #link {
+    display: inline;
+}
+
+#link {
+    color: white;
+    font-weight: 500;
+}
+
+#icon {
+    font-size: 20px;
+    margin-right: 5px;
+    width: 24px;
+}
+
+footer label {
+    margin-top: 24px;
+}
+
+footer button {
+    margin-top: 15px;
+}
+
