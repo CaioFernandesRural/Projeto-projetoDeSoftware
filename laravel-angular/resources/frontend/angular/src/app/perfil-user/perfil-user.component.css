@@ -26,14 +26,23 @@
     text-align: left;
 }
 
+#biografia h4 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
 #nota {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     margin-right: 6px;
 }
 
 #avaliacao {
     justify-content: center;
+}
+
+#avaliacao i {
+    color: #0B9D92;
 }
 
 #user-name {
@@ -123,4 +132,8 @@
 
 #btn-secundary {
     margin-bottom: 35px
+}
+
+#location-logo, #location-text {
+    color: grey;
 }
