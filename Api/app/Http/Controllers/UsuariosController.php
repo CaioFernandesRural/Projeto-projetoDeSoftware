@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Usuarios;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UsuariosController extends Controller
 {
     public function todos(){
-        $usuarios = Usuarios::all();
+        $usuarios = User::all();
         return response()->json($usuarios);
     }
     public function cadastro(Request $request){
-        $usuario = new Usuarios;
+        $usuario = new User;
         $usuario->nome = $request->nome;
         $usuario->telefone = $request->telefone;
         $usuario->email = $request->email;
@@ -30,7 +30,7 @@ class UsuariosController extends Controller
         ], 201);
     }
     public function pegaEmail($email){
-        $usuario = Usuarios::where('email', $email)->first();
+        $usuario = User::where('email', $email)->first();
 
         if(!empty($usuario)){
             return response()->json($usuario);
