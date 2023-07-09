@@ -1,2 +1,98 @@
-<p>livros works!</p>
-<router-outlet></router-outlet>
+<div id="search-container" class="container-fluid">
+    <div id="search-input" class="row height d-flex justify-content-center align-items-center">
+        <div class="col">
+            <div id="search" class="search">
+                <i class="fa fa-search"></i>
+                <input type="text" class="form-control" placeholder="Procure o livro que deseja!">
+                <button class="btn btn-primary"><i class="fa-solid fa-filter"></i></button>
+            </div>
+        </div>
+    </div><br><br>
+    <div id="search-categories" class="row height d-flex justify-content-center align-items-center">
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">Aventura</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">Autoajuda</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">Biografia</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">Clássico</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">Drama</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">Ensaio</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">Fantasia</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">Ficção Científica</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">História</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">História em Quadrinhos</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">Horror</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">Infantil</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">Mistério</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">Mistério</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">Não Ficção</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">Poesia</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">Religião</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">Romance</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">Suspense</button>
+        <button id="btn-primary" class="btn btn-primary mx-2 my-2">Teatro</button>
+    </div>
+</div>
+<div id="book-cards" class="container">
+    <div class="row" id="row-card">
+        <div class="col-1" id="col-logo">
+            <img height="160" src="./assets/imagens/capa-livro.png" alt="capa-livro">
+        </div>
+        <div class="col-auto me-auto align-self-center">
+            <div class="row align-items-center">
+                <div class="col d-flex align-items-center">
+                    <h3 id="book-title" class="col mb-0">Título do livro</h3>
+                    <i id="location-logo" class="fa-solid fa-location-dot"></i>
+                    <p id="location-text" class="mb-0">Localização</p>
+                </div>
+            </div>                       
+            <p>Autor do livro</p>
+            <p><b>Status:</b> Devolvido</p>
+            <button id="btn-primary" class="btn btn-primary mx-2 my-2">Aventura</button>
+            <button id="btn-primary" class="btn btn-primary mx-2 my-2">Autoajuda</button>
+        </div>
+        <div class="col-auto align-self-end" id="col-btn-primary">
+            <button id="btn-primary">Ver mais</button>
+        </div>
+    </div>
+    <div class="row" id="row-card">
+        <div class="col-1" id="col-logo">
+            <img height="160" src="./assets/imagens/capa-livro.png" alt="capa-livro">
+        </div>
+        <div class="col-auto me-auto align-self-center">
+            <div class="row align-items-center">
+                <div class="col d-flex align-items-center">
+                    <h3 id="book-title" class="col mb-0">Título do livro</h3>
+                    <i id="location-logo" class="fa-solid fa-location-dot"></i>
+                    <p id="location-text" class="mb-0">Localização</p>
+                </div>
+            </div>  
+            <p>Autor do livro</p>
+            <p><b>Status:</b> Devolvido</p>
+            <button id="btn-primary" class="btn btn-primary mx-2 my-2">Aventura</button>
+            <button id="btn-primary" class="btn btn-primary mx-2 my-2">Autoajuda</button>
+        </div>
+        <div class="col-auto align-self-end" id="col-btn-primary">
+            <button id="btn-primary">Ver mais</button>
+        </div>
+    </div>
+    <div class="row" id="row-card">
+        <div class="col-1" id="col-logo">
+            <img height="160" src="./assets/imagens/capa-livro.png" alt="capa-livro">
+        </div>
+        <div class="col-auto me-auto align-self-center">
+         <div class="row align-items-center">
+                <div class="col d-flex align-items-center">
+                    <h3 id="book-title" class="col mb-0">Título do livro</h3>
+                    <i id="location-logo" class="fa-solid fa-location-dot"></i>
+                    <p id="location-text" class="mb-0">Localização</p>
+                </div>
+            </div>  
+            <p>Autor do livro</p>
+            <p><b>Status:</b> Devolvido</p>
+            <button id="btn-primary" class="btn btn-primary mx-2 my-2">Aventura</button>
+            <button id="btn-primary" class="btn btn-primary mx-2 my-2">Autoajuda</button>
+        </div>
+        <div class="col-auto align-self-end" id="col-btn-primary">
+            <button id="btn-primary">Ver mais</button>
+        </div>
+    </div>
+</div>
