@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Usuarios;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class UsuariosSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class UsuariosSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
         for ($i = 0; $i < 100; $i++){
-            Usuarios::create([
+            User::create([
                 'nome' => $faker->name,
                 'telefone' => $faker->phoneNumber(),
                 'email' => $faker->email(),

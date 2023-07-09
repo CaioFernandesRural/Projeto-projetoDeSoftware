@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/usuarios', [UsuariosController::class, 'todos']);
+/*Route::get('/usuarios', [UsuariosController::class, 'todos']);
 Route::get('/usuarios/{email}', [UsuariosController::class, 'pegaEmail']);
-Route::post('/usuarios', [UsuariosController::class, 'cadastro']);
+Route::post('/usuarios', [UsuariosController::class, 'cadastro']);*/
+
+Route::post('register', 'App\Http\Controllers\UserController@register');
+Route::post('login', 'App\Http\Controllers\UserController@login');

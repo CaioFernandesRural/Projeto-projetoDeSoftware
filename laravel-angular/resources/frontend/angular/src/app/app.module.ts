@@ -15,6 +15,8 @@ import { SolicitarEmprestimoComponent } from './solicitar-emprestimo/solicitar-e
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { UsuariosService } from './services/usuarios.service';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redireciona a rota inicial para '/home'
@@ -47,7 +49,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   exports: [RouterModule],
   providers: [UsuariosService],
