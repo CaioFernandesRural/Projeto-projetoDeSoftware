@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'cadastro-user', component: CadastroUserComponent },
   { path: 'livros', component: LivrosComponent },
   { path: 'livro-anuncio', component: LivroAnuncioComponent },
-  { path: 'cadastro-livro-anuncio', component: CadastroLivroComponent },
+  { path: 'cadastro-livro', component: CadastroLivroComponent },
   { path: 'historico-emprestimos', component: HistoricoEmprestimosComponent },
   { path: 'perfil-user', component: PerfilUserComponent },
   { path: 'solicitar-emprestimo', component: SolicitarEmprestimoComponent },
