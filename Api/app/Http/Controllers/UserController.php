@@ -30,7 +30,6 @@ class UserController extends Controller
                 'cidade'    => $request->cidade,
                 'estado'    => $request->estado,
                 'bio'       => $request->bio,
-                'data_nasc' => $request->data_nasc,
                 'admin'     => $request->admin
             ]);
             $response['status'] = 1;

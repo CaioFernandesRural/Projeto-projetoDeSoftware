@@ -40,7 +40,9 @@
             <label for="inputState" class="form-label">Estado</label>
             <select id="inputState" class="form-select" formControlName="estado">
                 <option selected>Choose...</option>
-                <option>...</option>
+                <option [value]="'RJ'">Rio de Janeiro (RJ)</option>
+                <option [value]="'SP'">São Paulo (SP)</option>
+                <option [value]="'MG'">Minas Gerais (MG)</option>
             </select>
         </div>
         <div class="col-md-6">
@@ -56,7 +58,7 @@
         </div>
         <div class="col-md-3">
             <label for="inputAge" class="form-label">Idade</label>
-            <input type="text" class="form-control" id="inputAge" formControlName="idade" [ngClass]="{
+            <input class="form-control" id="inputAge" formControlName="idade" [ngClass]="{
                 'is-invalid': submitted && f['idade'].errors && (f['idade'].dirty || f['idade'].touched),
                 'is-valid': f['idade'].valid && (f['idade'].dirty || f['idade'].touched)}">
             <div *ngIf="submitted && f['idade'].errors && (f['idade'].dirty || f['idade'].touched)"
@@ -68,8 +70,8 @@
             <label for="inputGender" class="form-label">Sexo</label>
             <select id="inputGender" class="form-select" formControlName="sexo">
                 <option selected>Choose...</option>
-                <option>Feminino</option>
-                <option>Masculino</option>
+                <option [value]="'f'">Feminino</option>
+                <option [value]="'m'">Masculino</option>
             </select>
         </div>
         <div class="col-md-6">

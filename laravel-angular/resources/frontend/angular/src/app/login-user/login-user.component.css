@@ -8,11 +8,9 @@ p {
     margin-bottom: 40px;
 }
 
-input[type="text"], input[type="password"] {
+.input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
+    margin-bottom: 30px;
     border-radius: 7px;
 }
 

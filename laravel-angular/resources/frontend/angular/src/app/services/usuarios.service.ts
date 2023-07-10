@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuariosService {
 
-  url: string = 'http://localhost:8000';
-
   constructor(private http: HttpClient) { }
 
-  listarUsuarios() {
-    return this.http.get<any>(this.url+'/api/usuarios/meagan60@schmidt.com');
+  registerUser(userData: any) {
+    return this.http.post(environment.apiUrl+'/api/register', userData);
+  }
+
+  login(userData: any) {
+    return this.http.post(environment.apiUrl+'/api/login/', userData);
   }
 }

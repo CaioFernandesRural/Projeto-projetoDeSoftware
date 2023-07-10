@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UsuariosService } from '../services/usuarios.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cadastro-user',
@@ -8,43 +10,28 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CadastroUserComponent implements OnInit {
 
-  registerForm: FormGroup;
+  registerForm!: FormGroup;
   submitted = false;
+  userData: any;
 
-  constructor(private formBuilder: FormBuilder,) {
-    this.registerForm = this.initializeRegisterForm();
-  }
+  constructor(private formBuilder: FormBuilder, private usuariosService: UsuariosService, private toastr: ToastrService) { }
 
   initializeRegisterForm() {
-    return this.formBuilder.group({
-      nome: [null, Validators.required],
+    this.registerForm = this.formBuilder.group({
+      nome: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required, Validators.minLength(6)],
-      telefone: ['', Validators.required],
-      idade: [0, Validators.required],
-      sexo: ['', Validators.required],
-      cidade: ['', Validators.required],
-      estado: ['', Validators.required],
-      bio: ['', Validators.required],
-      data_nasc: [null, Validators.required],
-      admin: [false, Validators.required],
-      passwordConfirm: ['', Validators.required]
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      telefone: ['', [Validators.required]],
+      idade: [null, [Validators.required]],
+      sexo: ['Choose...', [Validators.required]],
+      cidade: ['', [Validators.required]],
+      estado: ['Choose...', [Validators.required]],
+      bio: ['', [Validators.required]],
+      admin: [false, [Validators.required]],
+      passwordConfirm: ['', [Validators.required]]
     }, {
       validator: this.mustMatch('password', 'passwordConfirm')
     });
-  }
-
-  ngOnInit(): void {
-    this.initializeRegisterForm();
-  }
-
-  get f() { return this.registerForm.controls; }
-
-  submit() {
-    this.submitted = true;
-    if (this.registerForm.invalid) {
-      return;
-    }
   }
 
   //Função para confirmar senha
@@ -64,5 +51,46 @@ export class CadastroUserComponent implements OnInit {
       }
     };
   }
+
+  ngOnInit(): void {
+    this.initializeRegisterForm();
+  }
+
+  get f() { return this.registerForm.controls; }
+
+  submit() {
+    this.submitted = true;
+    if (this.registerForm.invalid) {
+      return;
+    }
+
+    this.usuariosService.registerUser(this.registerForm.value).subscribe(res => {
+      this.userData = res;
+      
+      if(this.userData.status === 1) {
+        this.toastr.success(JSON.stringify(this.userData.message), JSON.stringify(this.userData.code), {
+          timeOut: 2000,
+          progressBar: true
+        })
+      } else {
+        this.toastr.error(JSON.stringify(this.userData.message), JSON.stringify(this.userData.code), {
+          timeOut: 2000,
+          progressBar: true
+        })
+      }
+      this.submitted = false;
+      this.registerForm.get('nome')?.reset();
+      this.registerForm.get('email')?.reset();
+      this.registerForm.get('password')?.reset();
+      this.registerForm.get('telefone')?.reset();
+      this.registerForm.get('idade')?.reset();
+      this.registerForm.get('sexo')?.setValue('Choose...');
+      this.registerForm.get('cidade')?.reset();
+      this.registerForm.get('estado')?.setValue('Choose...');
+      this.registerForm.get('bio')?.reset();
+      this.registerForm.get('passwordConfirm')?.reset();
+    })
+  }
+
 
 }

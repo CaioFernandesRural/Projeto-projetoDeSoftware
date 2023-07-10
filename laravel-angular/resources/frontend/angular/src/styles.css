@@ -4,7 +4,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.btn-primary-long {
+#btn-primary-long, .btn-primary-long {
     width: 100%;
     padding: 10px;
     background-color: #0B9D92;
@@ -14,14 +14,9 @@
     cursor: pointer;
 }
 
-#btn-primary-long {
-    width: 100%;
-    padding: 10px;
-    background-color: #0B9D92;
-    color: white;
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
+.btn-primary-long:hover {
+    background-color: #042932;
+    border: 1px solid white;
 }
 
 #btn-primary {

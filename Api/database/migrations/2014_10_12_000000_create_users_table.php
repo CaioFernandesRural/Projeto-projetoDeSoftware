@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('estado', 2);
             $table->string('bio', 500);
             $table->string('password');
-            $table->date('data_nasc');
             $table->boolean('admin');
             $table->timestamps();
         });

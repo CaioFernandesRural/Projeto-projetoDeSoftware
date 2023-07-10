@@ -28,7 +28,6 @@ class User extends Authenticatable implements JWTSubject
         'cidade',
         'estado',
         'bio',
-        'data_nasc',
         'admin'
     ];
 

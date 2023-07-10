@@ -6,7 +6,6 @@ import { HomeComponent } from './home/home.component';
 import { LoginUserComponent } from './login-user/login-user.component';
 import { CadastroUserComponent } from './cadastro-user/cadastro-user.component';
 import { CadastroLivroComponent } from './cadastro-livro/cadastro-livro.component';
-import { HistoricoEmprestimosComponent } from './historico-emprestimos/historico-emprestimos.component';
 import { LivroAnuncioComponent } from './livro-anuncio/livro-anuncio.component';
 import { LivrosComponent } from './livros/livros.component';
 import { PerfilUserComponent } from './perfil-user/perfil-user.component';
@@ -21,7 +20,9 @@ import { AvaliacaoComponent } from './avaliacao/avaliacao.component';
 import { LivrosUserComponent } from './livros-user/livros-user.component';
 import { EmprestimosUserComponent } from './emprestimos-user/emprestimos-user.component';
 import { CadastroAnuncioComponent } from './cadastro-anuncio/cadastro-anuncio.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redireciona a rota inicial para '/home'
@@ -31,7 +32,6 @@ const routes: Routes = [
   { path: 'livros', component: LivrosComponent },
   { path: 'livro-anuncio', component: LivroAnuncioComponent },
   { path: 'cadastro-livro', component: CadastroLivroComponent },
-  { path: 'historico-emprestimos', component: HistoricoEmprestimosComponent },
   { path: 'perfil-user', component: PerfilUserComponent },
   { path: 'solicitar-emprestimo', component: SolicitarEmprestimoComponent },
   { path: 'emprestimo-concedido', component: EmprestimoConcedidoComponent },
@@ -49,7 +49,6 @@ const routes: Routes = [
     LoginUserComponent,
     CadastroUserComponent,
     CadastroLivroComponent,
-    HistoricoEmprestimosComponent,
     LivroAnuncioComponent,
     LivrosComponent,
     PerfilUserComponent,
@@ -65,7 +64,9 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   exports: [RouterModule],
   providers: [UsuariosService],

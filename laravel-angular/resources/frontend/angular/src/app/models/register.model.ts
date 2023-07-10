@@ -8,7 +8,6 @@ export class Register {
     cidade: string = '';
     estado: string = '';
     bio: string = '';
-    data_nasc: Date | null = null;
     admin: boolean = false;
   }
   
