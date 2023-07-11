@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AnuncioController;
+use App\Http\Controllers\LivroController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -19,5 +21,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('register', 'App\Http\Controllers\UserController@register');
-Route::post('login', 'App\Http\Controllers\UserController@login');
+//User
+Route::post('register', [UserController::class, 'register']);
+Route::post('login', [UserController::class, 'login']);
+//Livro
+Route::post('registrarLivro', [LivroController::class, 'register']);
+//Anuncio
+Route::post('registrarAnuncio', [AnuncioController::class, 'register']);

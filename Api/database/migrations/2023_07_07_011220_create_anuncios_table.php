@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('anuncios', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('idDono');
-            $table->unsignedBigInteger('idRequerente');
+            $table->unsignedBigInteger('idRequerente')->nullable();
             $table->unsignedBigInteger('idLivro');
-            $table->boolean('ativo');
-            $table->boolean('emprestado');
+            $table->boolean('ativo')->default(false);
+            $table->boolean('emprestado')->default(false);
             $table->date('dataInicioPrazo');
             $table->date('dataFimPrazo');
-            $table->date('dataFim');
-            $table->integer('avaliacao');
-            $table->string('relato');
+            $table->date('dataFim')->nullable();
+            $table->integer('avaliacao')->nullable();
+            $table->string('relato')->nullable();
             $table->timestamps();
 
             $table->foreign('idDono')->references('id')->on('users');
