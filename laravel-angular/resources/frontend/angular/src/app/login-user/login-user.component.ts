@@ -15,6 +15,7 @@ export class LoginUserComponent implements OnInit {
   submitted = false;
   userData: any;
   token: any;
+  isAuthenticated: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private usuariosService: UsuariosService, private toastr: ToastrService, private router: Router) { }
 
@@ -43,6 +44,7 @@ export class LoginUserComponent implements OnInit {
       if(this.userData.status === 1) {
         this.token = this.userData.data.token;
         localStorage.setItem('token', this.token);
+        this.isAuthenticated = true;
         this.router.navigate(['/']);
         this.toastr.success(JSON.stringify(this.userData.message), JSON.stringify(this.userData.code), {
           timeOut: 2000,

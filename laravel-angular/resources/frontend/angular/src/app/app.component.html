@@ -7,11 +7,15 @@
             <li><a routerLink="/livros">Livros</a></li>
         </div>
     </ul>
-    <div class="nav-login-cadastro">
+    <div [hidden]="!isAuthenticated" class="nav-login-cadastro">
         <i class="fa-regular fa-user"></i>
         <li><a routerLink="/login-user">Login</a></li>
         <li>|</li>
         <li><a routerLink="/cadastro-user">Cadastre-se</a></li>
+    </div>
+    <div *ngIf="isAuthenticated" class="nav-login-cadastro">
+        <i class="fa-regular fa-user"></i>
+        <li><a routerLink="/login-user">{{ this.nome }}</a></li>
     </div>
 </nav>
 

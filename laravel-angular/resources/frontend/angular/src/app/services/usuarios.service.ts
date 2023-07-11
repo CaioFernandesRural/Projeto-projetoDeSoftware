@@ -7,6 +7,8 @@ import { environment } from 'src/environments/environment.development';
 })
 export class UsuariosService {
 
+  isAuthenticated: Boolean = false;
+
   constructor(private http: HttpClient) { }
 
   registerUser(userData: any) {
@@ -15,5 +17,14 @@ export class UsuariosService {
 
   login(userData: any) {
     return this.http.post(environment.apiUrl+'/api/login/', userData);
+  }
+
+  isAuthenticatedFunction() {
+    const token = localStorage.getItem('token');
+    if(token) {
+      return this.isAuthenticated = true;
+    } else {
+      return this.isAuthenticated = false;
+    }
   }
 }

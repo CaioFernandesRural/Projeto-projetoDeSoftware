@@ -25,7 +25,6 @@ class UserSeeder extends Seeder
                 'estado' => $faker->randomLetter() . $faker->randomLetter(),
                 'bio' => $faker->text(),
                 'password' => $faker->password(),
-                'data_nasc' => $faker->date(),
                 'admin' => $faker->boolean(10)
             ]);
         }
