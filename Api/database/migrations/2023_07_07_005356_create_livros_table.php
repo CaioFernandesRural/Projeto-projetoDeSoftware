@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('idioma');
             $table->string('ano');
             $table->string('numPag');
-            $table->integer('sbn10');
-            $table->integer('sbn13');
+            $table->unsignedBigInteger('sbn10');
+            $table->unsignedBigInteger('sbn13');
             $table->timestamps();
         });
     }
