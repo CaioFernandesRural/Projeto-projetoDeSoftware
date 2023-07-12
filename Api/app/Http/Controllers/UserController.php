@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\JWTGuard;
 
+use function PHPUnit\Framework\isEmpty;
+
 class UserController extends Controller
 {
     public function register(Request $request) {
@@ -68,5 +70,16 @@ class UserController extends Controller
         $response['message'] = 'Log in Successfully';
         return response()->json($response);
     
+    }
+    public function usuarioEmail($email){
+        $usuario = User::find($email);
+
+        if(isEmpty($usuario)){
+            $response['status'] = 0;
+            $response['message'] = 'Usuario não encontrado';
+            $response['code'] = 404;
+            return response()->json($response);
+        }
+        return response()->json($usuario);
     }
 }

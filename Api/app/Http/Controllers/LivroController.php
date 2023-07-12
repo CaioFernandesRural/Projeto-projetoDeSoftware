@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Livro;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\isEmpty;
+
 class LivroController extends Controller
 {
     public function register(Request $request){
@@ -29,5 +31,42 @@ class LivroController extends Controller
         $response['code'] = 200;
 
         return response()->json($response);
+    }
+
+    public function cincoRecentes(){
+        $livros = Livro::orderBy('created_at', 'desc')->take(5)->get();
+
+        if($livros->isEmpty()){
+            $response['status'] = 0;
+            $response['message'] = 'Nenhum livro';
+            $response['code'] = 404;
+            return response()->json($response);
+        }
+
+        return response()->json($livros);
+    }
+
+    public function todosLivros(){
+        $livros = Livro::all();
+
+        if($livros->isEmpty()){
+            $response['status'] = 0;
+            $response['message'] = 'Nenhum livro';
+            $response['code'] = 404;
+            return response()->json($response);
+        }
+
+        return response()->json($livros);
+    }
+    public function livroPorId($id){
+        $livro = Livro::find($id);
+
+        if(isEmpty($livro)){
+            $response['status'] = 0;
+            $response['message'] = 'Nenhum livro';
+            $response['code'] = 404;
+            return response()->json($response);
+        }
+        return response()->json($livro);
     }
 }
