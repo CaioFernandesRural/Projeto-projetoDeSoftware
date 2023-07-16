@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   isAuthenticated: boolean;
   token: any;
   userData: any;
+  email: any;
   nome: any;
 
   constructor(private usuariosService: UsuariosService, private router: Router) {
@@ -23,12 +24,14 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.token = localStorage.getItem('token');
     this.userData = jwt_decode(this.token);
+    this.email = this.userData.email;
     this.nome = this.userData.nome;
   }
 
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['/login-user']);
+    this.isAuthenticated = false;
   }
 
 }

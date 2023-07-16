@@ -19,9 +19,4 @@ export class HomeComponent implements OnInit{
     this.userData = jwt_decode(this.token);
   }
 
-  logout() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/login-user']);
-  }
-
 }

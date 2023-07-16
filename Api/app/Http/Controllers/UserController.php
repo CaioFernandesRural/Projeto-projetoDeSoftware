@@ -59,7 +59,14 @@ class UserController extends Controller
         $user = auth()->user();
         $data['token'] = auth()->claims([
             'user_id' => $user->id,
-            'email' => $user->email
+            'email' => $user->email,
+            'nome' => $user->nome,
+            'telefone' => $user->telefone,
+            'idade' => $user->idade,
+            'sexo' => $user->sexo,
+            'cidade' => $user->cidade,
+            'estado' => $user->estado,
+            'bio' => $user->bio
         ])->attempt($credentials);
 
         $response['data'] = $data;

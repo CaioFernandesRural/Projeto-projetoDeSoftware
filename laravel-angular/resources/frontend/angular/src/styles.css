@@ -48,6 +48,17 @@
     cursor: pointer;
 }
 
+.btn-secundary-long:hover, #btn-secundary-long:hover {
+    width: 100%;
+    padding: 10px;
+    background-color: #0B9D92;
+    color: white;
+    border-color: #0B9D92;
+    border-width: 2;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
 #btn-secundary {
     background-color: #042932;
     border-color: #0B9D92;

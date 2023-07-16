@@ -7,16 +7,22 @@
             <li><a routerLink="/livros">Livros</a></li>
         </div>
     </ul>
-    <div [hidden]="!isAuthenticated" class="nav-login-cadastro">
+    <div [hidden]="isAuthenticated" class="nav-login-cadastro">
         <i class="fa-regular fa-user"></i>
         <li><a routerLink="/login-user">Login</a></li>
         <li>|</li>
         <li><a routerLink="/cadastro-user">Cadastre-se</a></li>
     </div>
-    <div *ngIf="isAuthenticated" class="nav-login-cadastro">
+    <div class="dropdown" *ngIf="isAuthenticated">
         <i class="fa-regular fa-user"></i>
-        <li><a routerLink="/login-user">{{ this.nome }}</a></li>
+        <button class="dropbtn">{{ nome }}</button>
+        <div class="dropdown-content">
+            <a routerLink="/perfil-user">Meu Perfil</a>
+            <a (click)="logout()" style="cursor: pointer;">Sair <i class="fa-solid fa-right-from-bracket"></i></a>
+        </div>
+        <i class="fa-solid fa-caret-down"></i>
     </div>
+
 </nav>
 
 <router-outlet>
@@ -38,7 +44,7 @@
 
             <i id="icon" class="fa-brands fa-linkedin"></i>
             <a id="link" href="https://www.linkedin.com/"> sharedLib </a><br><br>
-            
+
             <span> Copyright © 2023 SharedLib ®. All rights reserved. </span>
         </div>
         <div class="col-md-6">
@@ -46,17 +52,17 @@
                 <div class="col-md-6">
                     <label for="input-author" class="form-label">Autor</label>
                     <input id="input-author" type="text" class="form-control">
-                    
+
                     <label for="input-language" class="form-label">Idioma</label>
                     <input id="input-language" type="text" class="form-control">
                 </div>
                 <div class="col-md-6">
                     <label for="input-synopsis" class="form-label">Sinopse</label>
-                    <textarea id="input-synopsis" class="form-control"  rows="5"></textarea>
+                    <textarea id="input-synopsis" class="form-control" rows="5"></textarea>
                 </div>
             </div>
             <div class="text-center">
-            <button type="submit" id="btn-primary" style="width: 200px;">Cadastrar</button>
+                <button type="submit" id="btn-primary" style="width: 200px;">Cadastrar</button>
             </div>
         </div>
     </div>
