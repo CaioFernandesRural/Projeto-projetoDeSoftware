@@ -10,6 +10,9 @@ class Anuncio extends Model
     use HasFactory;
     protected $table = 'anuncios';
     protected $fillable = [
+        'idDono',
+        'idRequerente',
+        'idLivro',
         'ativo',
         'emprestado',
         'dataInicioPrazo',
