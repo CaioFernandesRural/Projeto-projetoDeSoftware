@@ -14,14 +14,13 @@ return new class extends Migration
         Schema::create('livros', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->string('autor')->nullable();
+            $table->string('autor');
             $table->string('sinopse')->nullable();
-            $table->string('capa')->nullable();
             $table->string('editora')->nullable();
             $table->string('edicao')->nullable();
             $table->string('idioma');
             $table->string('ano');
-            $table->string('numPag');
+            $table->integer('numPag');
             $table->unsignedBigInteger('sbn10');
             $table->unsignedBigInteger('sbn13');
             $table->timestamps();
