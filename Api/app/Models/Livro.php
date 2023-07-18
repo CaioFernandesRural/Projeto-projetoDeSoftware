@@ -15,7 +15,6 @@ class Livro extends Model
         'titulo',
         'autor',
         'sinopse',
-        'capa',
         'editora',
         'edicao',
         'idioma',

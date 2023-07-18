@@ -23,9 +23,9 @@ export class CadastroUserComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       telefone: ['', [Validators.required]],
       idade: [null, [Validators.required]],
-      sexo: ['Choose...', [Validators.required]],
+      sexo: ['Selecione...', [Validators.required]],
       cidade: ['', [Validators.required]],
-      estado: ['Choose...', [Validators.required]],
+      estado: ['Selecione...', [Validators.required]],
       bio: ['', [Validators.required]],
       admin: [false, [Validators.required]],
       passwordConfirm: ['', [Validators.required]]
@@ -84,9 +84,9 @@ export class CadastroUserComponent implements OnInit {
       this.registerForm.get('password')?.reset();
       this.registerForm.get('telefone')?.reset();
       this.registerForm.get('idade')?.reset();
-      this.registerForm.get('sexo')?.setValue('Choose...');
+      this.registerForm.get('sexo')?.setValue('Selecione...');
       this.registerForm.get('cidade')?.reset();
-      this.registerForm.get('estado')?.setValue('Choose...');
+      this.registerForm.get('estado')?.setValue('Selecione...');
       this.registerForm.get('bio')?.reset();
       this.registerForm.get('passwordConfirm')?.reset();
     })

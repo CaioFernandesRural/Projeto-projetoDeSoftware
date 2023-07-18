@@ -46,4 +46,18 @@ class AnuncioController extends Controller
         }
         return response()->json($anuncios);
     }
+
+    public function cincoRecentes(){
+        $anuncios = Anuncio::orderBy('created_at', 'desc')->take(5)->get();
+
+        if($anuncios->isEmpty()){
+            $response['status'] = 0;
+            $response['message'] = 'Nenhum anuncio';
+            $response['code'] = 404;
+            return response()->json($response);
+        }
+
+        return response()->json($anuncios);
+    }
+
 }

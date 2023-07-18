@@ -17,7 +17,6 @@ class LivroController extends Controller
             'titulo' => $request->titulo,
             'autor' => $request->autor,
             'sinopse' => $request->sinopse,
-            'capa' => $request->capa,
             'editora' => $request->editora,
             'edicao' => $request->edicao,
             'idioma' => $request->idioma,
@@ -27,25 +26,11 @@ class LivroController extends Controller
             'sbn13' => $request->sbn13,
         ]);
         $response['status'] = 1;
-        $response['message'] = 'Livro Registered Successfully';
+        $response['message'] = 'Book Registered Successfully';
         $response['code'] = 200;
 
         return response()->json($response);
     }
-
-    public function cincoRecentes(){
-        $livros = Livro::orderBy('created_at', 'desc')->take(5)->get();
-
-        if($livros->isEmpty()){
-            $response['status'] = 0;
-            $response['message'] = 'Nenhum livro';
-            $response['code'] = 404;
-            return response()->json($response);
-        }
-
-        return response()->json($livros);
-    }
-
     public function todosLivros(){
         $livros = Livro::all();
 
