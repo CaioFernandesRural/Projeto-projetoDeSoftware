@@ -32,20 +32,6 @@ class LivroController extends Controller
 
         return response()->json($response);
     }
-
-    public function cincoRecentes(){
-        $livros = Livro::orderBy('created_at', 'desc')->take(5)->get();
-
-        if($livros->isEmpty()){
-            $response['status'] = 0;
-            $response['message'] = 'Nenhum livro';
-            $response['code'] = 404;
-            return response()->json($response);
-        }
-
-        return response()->json($livros);
-    }
-
     public function todosLivros(){
         $livros = Livro::all();
 
