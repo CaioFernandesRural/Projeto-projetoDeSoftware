@@ -1,1 +1,69 @@
-<p>solicitar-emprestimo works!</p>
+<div class="container" id="container-path">
+    <p>Livro: title - Requerimento de empréstimo</p>
+</div>
+<div class="row align-items-start" id="row-title">
+    <div class="col-1 align-self-center" id="col-title">
+        <h1>Requerimento de empréstimo</h1>
+    </div>
+    <div class="col" id="col-title-cut"></div>
+</div>
+<div id="container-box" class="container">
+    <form>
+        <div id="book" class="row">
+            <div class="col-md-9">
+                <h2><b>Tempo de empréstimo</b></h2>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="initial-date">Data de início</label><br>
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="final-date">Data de término</label><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="date">
+                    </div>
+                    <div class="col-md-1" style="margin-top: 20px;">
+                        <p><b>até</b></p>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="date">
+                    </div><br><br><br>
+                </div>
+                <p>* o usuário tem até 7 dias para buscar e 7 dias para devolver o livro além deste prazo de empréstimo</p>
+                <div class="row">
+                    <div class="col">
+                        <h5><b>Regras</b></h5>
+                        <ul>
+                            <li>É proibído rasurar, rabiscar, marcar ou desenhar em qualquer parte do livro.</li>
+                            <li>É proíbido tirar cópias do livro.</li>
+                            <li>É proibido emprestar o livro para terceiros.</li>
+                            <li>Qualquer atraso não conscentido na devolução gera um multa de R$ XX.</li>
+                            <li>As responsabilidades de busca de devolução do livro integralmente do requerente.</li>
+                        </ul>
+                        <p>Ao solicitar o empréstimo, você concorda com todas as regras acima e com o <a>Termos e Condições</a> da plataforma.</p>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <button type="submit" id="btn-primary-long">Solicitar</button>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row align-items-center" id="perfil">
+                    <div class="col-md-3">
+                        <img src="./assets/imagens/foto-de-perfil.png" alt="Foto de perfil">
+                    </div>
+                    <div class="col-md-9 align-self-start">
+                        <h6><b>Lorena Vasconcellos</b></h6><br>
+                    </div>
+                </div>            
+                <img src="./assets/imagens/capa-livro.png" alt="Capa do livro"><br><br>
+                <h3><b>Nome do livro</b></h3>
+                <h4>Autor do livro</h4>
+            </div>
+        </div>
+    </form>
+</div>
