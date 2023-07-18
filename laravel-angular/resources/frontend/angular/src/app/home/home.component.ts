@@ -10,7 +10,6 @@ export class HomeComponent implements OnInit {
 
   token: any;
   userData: any;
-  livrosRecentes: any[] = [];
 
   constructor() { }
 
@@ -18,7 +17,6 @@ export class HomeComponent implements OnInit {
     this.token = localStorage.getItem('token');
     this.userData = jwt_decode(this.token);
   }
-
 
 }
 

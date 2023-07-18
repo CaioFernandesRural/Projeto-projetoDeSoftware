@@ -32,6 +32,6 @@ Route::get('/todosLivros', [LivroController::class, 'todosLivros']);
 Route::get('/cincoRecentes', [LivroController::class, 'cincoRecentes']);
 Route::get('/livroPorId/{id}', [LivroController::class, 'livroPorId']);
 //Anuncio
-Route::post('/registrarAnuncio', [AnuncioController::class, 'register']);
+Route::post('/register', [AnuncioController::class, 'register']);
 Route::get('/todosAnuncios', [AnuncioController::class, 'todosAnuncios']);
 Route::get('/anunciosPorIdDono/{idDono}', [AnuncioController::class, 'anunciosPorIdDono']);

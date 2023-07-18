@@ -18,8 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('idLivro');
             $table->boolean('ativo')->default(false);
             $table->boolean('emprestado')->default(false);
-            $table->date('dataInicioPrazo');
-            $table->date('dataFimPrazo');
+            $table->date('dataInicioPrazo')->nullable();
+            $table->date('dataFimPrazo')->nullable();
             $table->date('dataFim')->nullable();
             $table->integer('avaliacao')->nullable();
             $table->string('relato')->nullable();
