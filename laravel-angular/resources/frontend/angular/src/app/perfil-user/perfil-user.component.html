@@ -24,9 +24,9 @@
             <div class="container text-center">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h2 class="col" style="display: inline;">User Name </h2><br>
+                        <h2 class="col" style="display: inline;"> {{ this.nome }} </h2><br>
                         <i id="location-logo" class="fa-solid fa-location-dot"></i>
-                        <p id="location-text"> Localização </p>
+                        <p id="location-text"> {{ this.cidade }}, {{ this.estado }} </p>
                     </div>
                 </div>
             </div>
@@ -49,15 +49,12 @@
                     <h4>Biografia</h4>
                 </div>
                 <div class="row" id="bio">
-                    <p>Sou Lorena, tenho 20 anos e gosto de ler romance, ficção e aventura. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Curabitur tempor at ante in fermentum. Vestibulum finibus dignissim
-                        tellus,
-                        eget ornare leo facilisis at.</p>
+                    <p> {{ bio }} </p>
                 </div>
             </div>
             <div class="row">
-                <p><b>Email: </b> lorena@gmail.com </p>
-                <p><b>Celular: </b> (21) 12345-6789</p>
+                <p><b>Email: </b> {{ email }} </p>
+                <p><b>Celular: </b> {{ telefone }} </p>
             </div>
             <div>
                 

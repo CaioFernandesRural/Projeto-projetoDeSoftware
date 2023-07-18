@@ -17,7 +17,6 @@ class LivroController extends Controller
             'titulo' => $request->titulo,
             'autor' => $request->autor,
             'sinopse' => $request->sinopse,
-            'capa' => $request->capa,
             'editora' => $request->editora,
             'edicao' => $request->edicao,
             'idioma' => $request->idioma,
@@ -27,7 +26,7 @@ class LivroController extends Controller
             'sbn13' => $request->sbn13,
         ]);
         $response['status'] = 1;
-        $response['message'] = 'Livro Registered Successfully';
+        $response['message'] = 'Book Registered Successfully';
         $response['code'] = 200;
 
         return response()->json($response);
