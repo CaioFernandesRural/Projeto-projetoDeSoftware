@@ -43,15 +43,17 @@ class LivroController extends Controller
 
         return response()->json($livros);
     }
-    public function livroPorId($id){
+    public function livroPorId($id) {
         $livro = Livro::find($id);
-
-        if(isEmpty($livro)){
+    
+        if (empty($livro)) {
             $response['status'] = 0;
             $response['message'] = 'Nenhum livro';
             $response['code'] = 404;
             return response()->json($response);
         }
+    
         return response()->json($livro);
     }
+    
 }

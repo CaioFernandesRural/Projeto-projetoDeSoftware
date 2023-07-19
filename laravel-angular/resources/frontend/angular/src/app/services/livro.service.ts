@@ -20,4 +20,9 @@ export class LivroService {
   cincoRecentes() {
     return this.http.get(environment.apiUrl+'/api/cincoRecentes');
   }
+
+  livroPorId(idLivro: any) {
+    return this.http.get(`${environment.apiUrl}/livroPorId/${idLivro}`);
+  }
+  
 }
