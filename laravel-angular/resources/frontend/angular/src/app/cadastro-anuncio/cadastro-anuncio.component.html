@@ -5,11 +5,16 @@
     </div>
     <form class="row g-3" (ngSubmit)="submit()" [formGroup]="registerForm">
         <div class="col-md-9">
-            <label for="input-category" class="form-label">Livro selecionado</label>
-            <select id="input-category" class="form-select" (change)="onChangeLivro($event)" formControlName="livroSelect">
-              <option value="Selecione..." selected>Selecione...</option>
-              <option *ngFor="let livro of livros" [value]="livro">{{ livro.titulo }}</option>
+            <label for="input-category" class="form-label">Livro</label>
+            <select id="input-category" class="form-select" [(ngModel)]="livroSelecionado" formControlName="livroSelected"  [ngClass]="{
+                'is-invalid': submitted && f['livroSelected'].errors && (f['livroSelected'].dirty || f['livroSelected'].touched),
+                'is-valid': f['livroSelected'].valid && (f['livroSelected'].dirty || f['livroSelected'].touched)}">
+                <option selected>Selecione...</option>
+                <option *ngFor="let livro of livros" [ngValue]="livro.id">{{ livro.titulo }}</option>
             </select>
+            <div *ngIf="submitted && f['livroSelected'].errors?.['required']" class="invalid-feedback">
+                Livro é obrigatório
+            </div>
           </div>
           
         <div class="col-md-3">

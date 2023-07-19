@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LivroService } from '../services/livro.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AnuncioService } from '../services/anuncio.service';
+import jwt_decode from 'jwt-decode';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cadastro-anuncio',
@@ -12,10 +14,18 @@ export class CadastroAnuncioComponent implements OnInit {
 
   registerForm!: FormGroup;
   livros: any[] = [];
-  livroSelecionado: any;
   anuncioData: any;
+  userData: any;
+  submitted = false;
+  livroSelecionado: any;
+  token: any;
+  id: any;
 
-  constructor(private livroService: LivroService, private formBuilder: FormBuilder, private anuncioService: AnuncioService) { }
+  constructor(private livroService: LivroService, private formBuilder: FormBuilder, private anuncioService: AnuncioService, private toastr: ToastrService) {
+    this.registerForm = this.formBuilder.group({
+      livroSelected: ['Selecione...', [Validators.required]]
+    });
+  }
 
   ngOnInit() {
     this.listarLivrosCadastrados();
@@ -24,7 +34,7 @@ export class CadastroAnuncioComponent implements OnInit {
   listarLivrosCadastrados() {
     this.livroService.listarLivros().subscribe(
       (livros: any) => {
-        this.livros = livros;
+        this.livros = livros
       },
       (error) => {
         console.error('Erro ao listar os livros cadastrados:', error);
@@ -32,11 +42,45 @@ export class CadastroAnuncioComponent implements OnInit {
     );
   }
 
-onChangeLivro(event: any) {
-  this.livroSelecionado = this.livros.find(livro => livro.titulo === event.target.value);
-}
+  get f() { return this.registerForm.controls; }
 
-submit() {
   
-}
+  submit() {
+    this.submitted = true;
+    if (this.registerForm.invalid) {
+      return;
+    }
+    this.token = localStorage.getItem('token');
+    this.userData = jwt_decode(this.token);
+    this.id = this.userData.user_id;
+
+    const dados = {
+      idDono: this.id,
+      idRequerente: null,
+      idLivro: this.livroSelecionado,
+      ativo: true,
+      emprestado: false,
+      dataInicioPrazo: null,
+      dataFimPrazo: null,
+      dataFim: null,
+      avaliacao: null,
+      relato: null
+    }
+
+    this.anuncioService.registrarAnuncio(dados).subscribe(res => {
+        this.anuncioData = res;
+        if(this.anuncioData.status === 1) {
+          this.toastr.success(JSON.stringify(this.anuncioData.message), JSON.stringify(this.anuncioData.code), {
+            timeOut: 2000,
+            progressBar: true
+          })
+        } else {
+          this.toastr.error(JSON.stringify(this.anuncioData.message), JSON.stringify(this.anuncioData.code), {
+            timeOut: 2000,
+            progressBar: true
+          })
+        }
+        this.submitted = false;
+      })
+  }
 }

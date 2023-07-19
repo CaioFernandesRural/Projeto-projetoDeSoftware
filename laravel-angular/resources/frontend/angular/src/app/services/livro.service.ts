@@ -10,7 +10,7 @@ export class LivroService {
   constructor(private http: HttpClient) { }
 
   registrarLivro(livroData: any) {
-    return this.http.post(environment.apiUrl+'/api/register', livroData);
+    return this.http.post(environment.apiUrl+'/api/registerLivro', livroData);
   }
 
   listarLivros() {

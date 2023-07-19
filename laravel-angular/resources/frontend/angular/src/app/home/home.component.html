@@ -33,7 +33,7 @@
     </div>
     <div class="container text-center" id="historico-de-emprestimos">
         <div class="row row-cols-5" id="row-livros">
-            <div class="col" id="livro">
+            <div class="col" id="livro" *ngFor="let anuncio of anuncios">
                 <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
                 <div class="d-flex justify-content-center">
                     <p class="titulo"><b>titulo</b></p>
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="row-btn-primary">
-            <button id="btn-primary">Ver mais</button>
+            <button id="btn-primary" routerLink="/livros">Ver mais</button>
         </div>
     </div>
 </div>

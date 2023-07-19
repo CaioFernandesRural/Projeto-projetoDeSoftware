@@ -27,11 +27,11 @@ Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 Route::get('/usuarioEmail/{email}', [UserController::class, 'usuarioEmail']);
 //Livro
-Route::post('/register', [LivroController::class, 'register']);
+Route::post('/registerLivro', [LivroController::class, 'register']);
 Route::get('/todosLivros', [LivroController::class, 'todosLivros']);
 Route::get('/livroPorId/{id}', [LivroController::class, 'livroPorId']);
 //Anuncio
-Route::post('/register', [AnuncioController::class, 'register']);
+Route::post('/registerAnuncio', [AnuncioController::class, 'register']);
 Route::get('/cincoRecentes', [AnuncioController::class, 'cincoRecentes']);
 Route::get('/todosAnuncios', [AnuncioController::class, 'todosAnuncios']);
 Route::get('/anunciosPorIdDono/{idDono}', [AnuncioController::class, 'anunciosPorIdDono']);
