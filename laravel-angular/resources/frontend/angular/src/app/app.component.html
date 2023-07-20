@@ -3,7 +3,7 @@
     <ul class="navbar-nav me-auto">
         <div class="nav-pages">
             <li><a routerLink="/home">Home</a></li>
-            <li><a href="">Sobre</a></li>
+            <li><a (click)="scrollToSobre()" style="cursor: pointer;">Sobre</a></li>
             <li><a routerLink="/livros">Livros</a></li>
         </div>
     </ul>
@@ -48,17 +48,21 @@
             <span> Copyright © 2023 SharedLib ®. All rights reserved. </span>
         </div>
         <div class="col-md-6">
+            <div class="row" style="margin-top: 20px;">
+                <h2 class="col">Fale conosco!</h2>
+                <p class="col">Alguma dúvida, crítica ou sugestão para a nossa plataforma? Entre em contato!</p>
+            </div>
             <div class="row">
                 <div class="col-md-6">
-                    <label for="input-author" class="form-label">Autor</label>
-                    <input id="input-author" type="text" class="form-control">
+                    <label for="input-name" class="form-label">Nome</label>
+                    <input id="input-name" type="text" class="form-control">
 
-                    <label for="input-language" class="form-label">Idioma</label>
-                    <input id="input-language" type="text" class="form-control">
+                    <label for="input-email" class="form-label">Email</label>
+                    <input id="input-email" type="email" class="form-control">
                 </div>
                 <div class="col-md-6">
-                    <label for="input-synopsis" class="form-label">Sinopse</label>
-                    <textarea id="input-synopsis" class="form-control" rows="5"></textarea>
+                    <label for="input-mensagem" class="form-label">Mensagem</label>
+                    <textarea id="input-mensagem" class="form-control" rows="5"></textarea>
                 </div>
             </div>
             <div class="text-center">

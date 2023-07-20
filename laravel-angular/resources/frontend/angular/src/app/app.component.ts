@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
 import { UsuariosService } from './services/usuarios.service';
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
+
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ export class AppComponent implements OnInit {
   email: any;
   nome: any;
 
-  constructor(private usuariosService: UsuariosService, private router: Router) {
+  constructor(private usuariosService: UsuariosService, private router: Router, private elementRef: ElementRef, private renderer: Renderer2) {
     this.isAuthenticated = this.usuariosService.isAuthenticatedFunction();
   }
 
@@ -33,5 +34,12 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/login-user']);
     this.isAuthenticated = false;
   }
+
+  scrollToSobre() {
+    const sobreSection = this.elementRef.nativeElement.querySelector('#sobre');
+    if (sobreSection) {
+      sobreSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }  
 
 }

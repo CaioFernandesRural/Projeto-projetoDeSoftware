@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-md-6">
                     <p class="numbers">6</p>
-                    <p>Livros emprestados</p>
+                    <p>Empréstimos requiridos</p>
                 </div>
             </div>
         </div>
@@ -85,52 +85,23 @@
         <div class="col" id="col-title-cut"></div>
     </div>
     <div class="container text-center" id="historico-de-emprestimos">
-        <div class="row row-cols-5" id="row-livros">
-            <div class="col" id="livro">
-                <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
-                <div class="d-flex justify-content-center">
-                    <p class="titulo"><b>Título livro</b></p>
-                    <i class="fa-solid fa-bookmark" id="bookmark"></i>
-                </div>
-                <p class="autor">Autor livro</p>
+        <div class="row" id="row-livros">
+          <div class="col" *ngFor="let livro of livros">
+            <div class="livro-item">
+              <img src="./assets/imagens/capa-livro.png" alt="capa-livro" width="120px">
+              <div class="d-flex justify-content-center">
+                <p class="titulo"><b>{{livro.titulo}}</b></p>
+                <i class="fa-solid fa-bookmark" id="bookmark"></i>
+              </div>
+              <p class="autor">{{livro.autor}}</p>
             </div>
-            <div class="col" id="livro">
-                <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
-                <div class="d-flex justify-content-center">
-                    <p class="titulo"><b>Título livro</b></p>
-                    <i class="fa-solid fa-bookmark" id="bookmark"></i>
-                </div>
-                <p class="autor">Autor livro</p>
-            </div>
-            <div class="col" id="livro">
-                <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
-                <div class="d-flex justify-content-center">
-                    <p class="titulo"><b>Título livro</b></p>
-                    <i class="fa-solid fa-bookmark" id="bookmark"></i>
-                </div>
-                <p class="autor">Autor livro</p>
-            </div>
-            <div class="col" id="livro">
-                <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
-                <div class="d-flex justify-content-center">
-                    <p class="titulo"><b>Título livro</b></p>
-                    <i class="fa-solid fa-bookmark" id="bookmark"></i>
-                </div>
-                <p class="autor">Autor livro</p>
-            </div>
-            <div class="col" id="livro">
-                <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
-                <div class="d-flex justify-content-center">
-                    <p class="titulo"><b>Título livro</b></p>
-                    <i class="fa-solid fa-bookmark" id="bookmark"></i>
-                </div>
-                <p class="autor">Autor livro</p>
-            </div>
+          </div>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="row-btn-primary">
-            <button id="btn-primary">Ver mais</button>
+          <button id="btn-primary" routerLink="/livros-user">Ver mais</button>
         </div>
-    </div>
+      </div>
+      
 
     <div class="container text-center" id="meus-emprestimos">
         <h2>Meus emprestimos</h2>

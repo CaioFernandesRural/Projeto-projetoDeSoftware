@@ -6,9 +6,9 @@
         <div class="col-md-11">
             <div class="row align-items-center">
                 <div class="col">
-                    <h2 class="col" style="display: inline;"> Lorena Vasconcellos </h2>
+                    <h2 class="col" style="display: inline;"> {{user?.nome}} </h2>
                     <i id="location-logo" class="fa-solid fa-location-dot"></i>
-                    <p id="location-text"> Rio de Janeiro, RJ </p>
+                    <p id="location-text"> {{user?.cidade}}, {{user?.estado}} </p>
                 </div>
             </div>
             <div class="row align-items-center" id="avaliacao">
@@ -28,10 +28,10 @@
             <img src="./assets/imagens/capa-livro.png" alt="Foto de perfil">
         </div>
         <div class="col-md-9">
-            <h2><b>Nome do livro</b></h2>
-            <h3>Autor do livro</h3>
+            <h2><b>{{livro?.titulo}}</b></h2>
+            <h3>{{livro?.autor}}</h3>
             <h4>Sinopse:</h4>
-            <p>Na Holanda ocupada pelos nazistas na Segunda Guerra Mundial, o comerciante Kraler abriga duas famílias de judeus em seu sótão. A jovem Anne Frank mantém um diário da vida cotidiana dos Franks e dos Van Daans, narrando a ameaça nazista bem como a dinâmica familiar. Um romance com Peter Van Daan causa ciúmes entre Anne e sua irmã, Margot. Anos depois de as duas famílias terem sido capturadas, Otto Frank volta ao sótão e acha o diário de sua filha.</p>
+            <p>{{livro?.sinopse}}</p>
             <div id="search-categories" class="row height d-flex justify-content-start align-items-center">
                 <button id="btn-primary" class="btn btn-primary mx-2 my-2">Aventura</button>
                 <button id="btn-primary" class="btn btn-primary mx-2 my-2">Autoajuda</button>
@@ -42,32 +42,32 @@
         <div class="col-md-2">
             <p>Nº de páginas</p>
             <i class="fa-regular fa-file"></i>
-            <p><b>350 páginas</b></p>
+            <p><b>{{livro?.numPag}}</b></p>
         </div>
         <div class="col-md-2">
             <p>Idioma</p>
             <i class="fa-solid fa-language"></i>
-            <p><b>Português</b></p>
+            <p><b>{{livro?.idioma}}</b></p>
         </div>
         <div class="col-md-2">
             <p>Editora</p>
             <i class="fa-regular fa-building"></i>
-            <p><b>Rocco</b></p>
+            <p><b>{{livro?.editora}}</b></p>
         </div>
         <div class="col-md-2">
             <p>Ano de publicação</p>
             <i class="fa-regular fa-calendar"></i>
-            <p><b>1998</b></p>
+            <p><b>{{livro?.ano}}</b></p>
         </div>
         <div class="col-md-2">
             <p>ISBN-10</p>
             <i class="fa-solid fa-barcode"></i>
-            <p><b>8595081530</b></p>
+            <p><b>{{livro?.sbn10}}</b></p>
         </div>
         <div class="col-md-2">
             <p>ISBN-13</p>
             <i class="fa-solid fa-barcode"></i>
-            <p><b>978-8595081530</b></p>
+            <p><b>{{livro?.sbn13}}</b></p>
         </div>
     </div>
     <form>

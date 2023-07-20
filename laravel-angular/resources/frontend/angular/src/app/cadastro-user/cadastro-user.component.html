@@ -96,9 +96,13 @@
                 <div *ngIf="f['telefone'].errors['required']">Telefone é obrigatório</div>
             </div>
         </div>
-        <div class="col-md-12" style="margin-bottom: 20px;">
+        <div class="col-md-6" style="margin-bottom: 20px;">
             <label for="inputBio" class="form-label">Biografia</label>
             <textarea class="form-control" id="inputBio" rows="4" formControlName="bio"></textarea>
+        </div>
+        <div class="col-md-6">
+            <label for="input-img" class="form-label">Foto de Perfil</label>
+            <input class="form-control" type="file" id="input-img" formControlName="cover">
         </div>
         <div class="col-12">
             <div class="centralizar">

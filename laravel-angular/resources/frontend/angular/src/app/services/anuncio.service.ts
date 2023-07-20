@@ -21,7 +21,12 @@ export class AnuncioService {
     return this.http.get(environment.apiUrl+'/api/cincoRecentes');
   }
 
-  listarAnunciosDono() {
-    return this.http.get(environment+'/anunciosPorIdDono/{idDono}');
+  listarAnunciosDono(idDono: any) {
+    return this.http.get(`${environment.apiUrl}/api/anunciosPorIdDono/${idDono}`);
   }
+
+  anuncioPorId(id: any) {
+    return this.http.get(`${environment.apiUrl}/api/anuncioPorId/${id}`);
+  }
+ 
 }

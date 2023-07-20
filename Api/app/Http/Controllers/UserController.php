@@ -78,10 +78,10 @@ class UserController extends Controller
         return response()->json($response);
     
     }
-    public function usuarioEmail($email){
-        $usuario = User::find($email);
+    public function usuarioPorId($id){
+        $usuario = User::where('id', $id)->get();
 
-        if(isEmpty($usuario)){
+        if($usuario->isEmpty()){
             $response['status'] = 0;
             $response['message'] = 'Usuario não encontrado';
             $response['code'] = 404;

@@ -22,7 +22,7 @@ export class LivroService {
   }
 
   livroPorId(idLivro: any) {
-    return this.http.get(`${environment.apiUrl}/livroPorId/${idLivro}`);
+    return this.http.get(`${environment.apiUrl}/api/livroPorId/${idLivro}`);
   }
   
 }

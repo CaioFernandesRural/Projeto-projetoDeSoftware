@@ -27,4 +27,8 @@ export class UsuariosService {
       return this.isAuthenticated = false;
     }
   }
+
+  usuarioPorId(idUser: any) {
+    return this.http.get(`${environment.apiUrl}/api/usuarioPorId/${idUser}`);
+  }
 }

@@ -35,8 +35,21 @@ class AnuncioController extends Controller
 
         return response()->json($Anuncios);
     }
+
     public function anunciosPorIdDono($idDono){
         $anuncios = Anuncio::where('idDono', $idDono)->get();
+
+        if($anuncios->isEmpty()){
+            $response['status'] = 0;
+            $response['message'] = 'Anuncio não encontrado';
+            $response['code'] = 404;
+            return response()->json($response);
+        }
+        return response()->json($anuncios);
+    }
+
+    public function anunciosPorId($id){
+        $anuncios = Anuncio::where('id', $id)->get();
 
         if($anuncios->isEmpty()){
             $response['status'] = 0;

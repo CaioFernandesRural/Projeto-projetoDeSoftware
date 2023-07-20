@@ -8,52 +8,22 @@
     <div class="col" id="col-title-cut"></div>
 </div>
 <div class="container">
-    <div class="row" id="row-card">
+    <div class="row" id="row-card" *ngFor="let item of livros">
         <div class="col-1" id="col-logo">
             <img height="160" src="./assets/imagens/capa-livro.png" alt="capa-livro">
         </div>
         <div class="col-auto me-auto align-self-center">
-            <h3>Título do livro</h3>
-            <p>Autor do livro</p>
-            <p><b>Status:</b> Requerido</p>
-            <p><b>Idioma:</b> Português</p>
-            <p><b>Nº de páginas:</b> 200</p>
+            <h3>{{item.livro.titulo}}</h3>
+            <p>{{item.livro.autor}}</p>
+            <p><b>Status:</b> {{item.livro.emprestado}}</p>
+            <p><b>Idioma:</b> {{item.livro.idioma}}</p>
+            <p><b>Nº de páginas:</b> {{item.livro.numPag}}</p>
         </div>
         <div class="col-auto align-self-end" id="col-btn-primary">
             <button id="btn-secundary">Ver requerimento</button>
         </div>
         <div class="col-auto align-self-end" id="col-btn-primary">
-            <button id="btn-primary">Ver mais</button>
-        </div>
-    </div>
-    <div class="row" id="row-card">
-        <div class="col-1" id="col-logo">
-            <img height="160" src="./assets/imagens/capa-livro.png" alt="capa-livro">
-        </div>
-        <div class="col-auto me-auto align-self-center">
-            <h3>Título do livro</h3>
-            <p>Autor do livro</p>
-            <p><b>Status:</b> Emprestado</p>
-            <p><b>Idioma:</b> Português</p>
-            <p><b>Nº de páginas:</b> 200</p>
-        </div>
-        <div class="col-auto align-self-end" id="col-btn-primary">
-            <button id="btn-primary">Ver mais</button>
-        </div>
-    </div>
-    <div class="row" id="row-card">
-        <div class="col-1" id="col-logo">
-            <img height="160" src="./assets/imagens/capa-livro.png" alt="capa-livro">
-        </div>
-        <div class="col-auto me-auto align-self-center">
-            <h3>Título do livro</h3>
-            <p>Autor do livro</p>
-            <p><b>Status:</b> Disponível</p>
-            <p><b>Idioma:</b> Português</p>
-            <p><b>Nº de páginas:</b> 200</p>
-        </div>
-        <div class="col-auto align-self-end" id="col-btn-primary">
-            <button id="btn-primary">Ver mais</button>
+            <button id="btn-primary" (click)="verAnuncio(item.anuncio.id)">Ver mais</button>
         </div>
     </div>
 </div>

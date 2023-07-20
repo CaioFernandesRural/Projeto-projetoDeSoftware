@@ -39,7 +39,8 @@ const routes: Routes = [
   { path: 'avaliacao', component: AvaliacaoComponent },
   { path: 'livros-user', component: LivrosUserComponent },
   { path: 'emprestimos-user', component: EmprestimosUserComponent },
-  { path: 'cadastro-anuncio', component: CadastroAnuncioComponent }
+  { path: 'cadastro-anuncio', component: CadastroAnuncioComponent },
+  { path: 'livro-anuncio/:idAnuncio', component: LivroAnuncioComponent },
 ];
 
 @NgModule({

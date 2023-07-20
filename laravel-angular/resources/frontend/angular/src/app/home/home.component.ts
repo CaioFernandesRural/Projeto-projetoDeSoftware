@@ -10,40 +10,42 @@ import { LivroService } from '../services/livro.service';
 export class HomeComponent implements OnInit {
 
   anuncios: any[] = [];
+  livros: any[] = [];
   livro: any;
 
   constructor(private anuncioService: AnuncioService, private livroService: LivroService) { }
 
-  async ngOnInit(): Promise<void> {
-    await this.listarAnunciosRecentes();
+  ngOnInit(): void {
+    this.listarAnunciosRecentes();
   }
 
-  async listarAnunciosRecentes() {
+  listarAnunciosRecentes() {
     this.anuncioService.listarAnunciosRecentes().subscribe(
-      async (anuncios: any) => {
+      (anuncios: any) => {
         this.anuncios = anuncios;
-        for(const anuncio of this.anuncios) {
+        this.livros = []; // Criar uma matriz para armazenar os livros de cada anúncio
+        for (const anuncio of this.anuncios) {
           const idLivroAnuncio = anuncio.idLivro;
-          await this.carregarLivroPorId(idLivroAnuncio);
+          this.carregarLivroPorId(idLivroAnuncio);
         }
       },
       (error) => {
         console.error('Erro ao listar os anúncios cadastrados:', error);
       }
-    )
+    );
   }
 
-  async carregarLivroPorId(idLivro: number) {
-    console.log(idLivro)
+  carregarLivroPorId(idLivro: number) {
     this.livroService.livroPorId(idLivro).subscribe(
       (livro: any) => {
-        console.log(livro)
+        this.livros.push(livro); // Adicionar o livro à matriz de livros
       },
       (error) => {
         console.error('Erro ao buscar livro:', error);
       }
-    )
+    );
   }
+
 
 }
 

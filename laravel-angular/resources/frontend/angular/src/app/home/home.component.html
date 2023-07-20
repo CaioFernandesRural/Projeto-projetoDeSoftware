@@ -33,12 +33,12 @@
     </div>
     <div class="container text-center" id="historico-de-emprestimos">
         <div class="row row-cols-5" id="row-livros">
-            <div class="col" id="livro" *ngFor="let anuncio of anuncios">
+            <div class="col" id="livro" *ngFor="let livro of livros">
                 <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
                 <div class="d-flex justify-content-center">
-                    <p class="titulo"><b>titulo</b></p>
+                    <p class="titulo"><b>{{livro.titulo}}</b></p>
                 </div>
-                <p class="autor">autor</p>
+                <p class="autor">{{livro.autor}}</p>
             </div>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="row-btn-primary">
