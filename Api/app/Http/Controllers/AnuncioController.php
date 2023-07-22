@@ -73,4 +73,20 @@ class AnuncioController extends Controller
         return response()->json($anuncios);
     }
 
+    public function updateAnuncio($id, Request $request)
+    {
+        $anuncios = Anuncio::find($id);
+    
+        if (!$anuncios) {
+            return response()->json(['message' => 'Anúncio não encontrado'], 404);
+        }
+    
+        $anuncios->update($request->only("idRequerente", "dataInicioPrazo", "dataFimPrazo"));
+    
+        $anuncios->save();
+    
+        return response()->json(['code' => 200, 'status' => 1, 'message' => 'Anúncio atualizado com sucesso', 'data' => $anuncios]);
+    }
+    
+    
 }

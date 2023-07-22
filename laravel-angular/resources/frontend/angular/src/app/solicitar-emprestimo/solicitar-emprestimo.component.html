@@ -1,5 +1,5 @@
 <div class="container" id="container-path">
-    <p>Livro: title - Requerimento de empréstimo</p>
+    <p>{{livro?.titulo}} - Requerimento de empréstimo</p>
 </div>
 <div class="row align-items-start" id="row-title">
     <div class="col-1 align-self-center" id="col-title">
@@ -8,7 +8,7 @@
     <div class="col" id="col-title-cut"></div>
 </div>
 <div id="container-box" class="container">
-    <form>
+    <form [formGroup]="updateForm" (ngSubmit)="submit()">
         <div id="book" class="row">
             <div class="col-md-9">
                 <h2><b>Tempo de empréstimo</b></h2>
@@ -24,13 +24,23 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <input type="date">
+                        <input type="date" id="dataInicio" formControlName="dataInicio" [(ngModel)]="dataInicio" [ngClass]="{
+                            'is-invalid': submitted && f['dataInicio'].errors && (f['dataInicio'].dirty || f['dataInicio'].touched),
+                            'is-valid': f['dataInicio'].valid && (f['dataInicio'].dirty || f['dataInicio'].touched)}">
+                    </div>
+                    <div *ngIf="submitted && f['dataInicio'].errors?.['required']" class="invalid-feedback">
+                        Data é obrigatória
                     </div>
                     <div class="col-md-1" style="margin-top: 20px;">
                         <p><b>até</b></p>
                     </div>
                     <div class="col-md-3">
-                        <input type="date">
+                        <input type="date" id="dataFim" formControlName="dataFim" [(ngModel)]="dataFim" [ngClass]="{
+                            'is-invalid': submitted && f['dataFim'].errors && (f['dataFim'].dirty || f['dataFim'].touched),
+                            'is-valid': f['dataFim'].valid && (f['dataFim'].dirty || f['dataFim'].touched)}">
+                    </div>
+                    <div *ngIf="submitted && f['dataFim'].errors?.['required']" class="invalid-feedback">
+                        Data é obrigatória
                     </div><br><br><br>
                 </div>
                 <p>* o usuário tem até 7 dias para buscar e 7 dias para devolver o livro além deste prazo de empréstimo</p>
@@ -57,12 +67,12 @@
                         <img src="./assets/imagens/foto-de-perfil.png" alt="Foto de perfil">
                     </div>
                     <div class="col-md-9 align-self-start">
-                        <h6><b>Lorena Vasconcellos</b></h6><br>
+                        <h6><b>{{user?.nome}}</b></h6><br>
                     </div>
                 </div>            
                 <img src="./assets/imagens/capa-livro.png" alt="Capa do livro"><br><br>
-                <h3><b>Nome do livro</b></h3>
-                <h4>Autor do livro</h4>
+                <h3><b>{{livro?.titulo}}</b></h3>
+                <h4>{{livro?.autor}}</h4>
             </div>
         </div>
     </form>

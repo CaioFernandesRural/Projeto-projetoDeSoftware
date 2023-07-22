@@ -41,6 +41,7 @@ const routes: Routes = [
   { path: 'emprestimos-user', component: EmprestimosUserComponent },
   { path: 'cadastro-anuncio', component: CadastroAnuncioComponent },
   { path: 'livro-anuncio/:idAnuncio', component: LivroAnuncioComponent },
+  { path: 'solicitar-emprestimo/:idAnuncio', component: SolicitarEmprestimoComponent },
 ];
 
 @NgModule({

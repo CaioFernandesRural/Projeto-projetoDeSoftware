@@ -28,5 +28,9 @@ export class AnuncioService {
   anuncioPorId(id: any) {
     return this.http.get(`${environment.apiUrl}/api/anuncioPorId/${id}`);
   }
+
+  updateAnuncio(idAnuncio: any, emprestimoData: any) {
+    return this.http.put(`${environment.apiUrl}/api/updateAnuncio/${idAnuncio}`, emprestimoData);
+  }
  
 }

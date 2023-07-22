@@ -70,9 +70,9 @@
             <p><b>{{livro?.sbn13}}</b></p>
         </div>
     </div>
-    <form>
-        <div class="row justify-content-end">
-            <button type="submit" id="btn-primary-long">Pedir emprestado</button>
-        </div>
-    </form>
+
+    <div class="row justify-content-end">
+        <button id="btn-primary-long" [hidden]="!isAuthenticated" (click)="solicitarEmprestimo(this.anuncio.id)">Pedir emprestado</button>
+    </div>
+
 </div>

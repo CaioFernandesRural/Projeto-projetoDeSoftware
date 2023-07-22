@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LivroService } from '../services/livro.service';
 import jwt_decode from 'jwt-decode';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnuncioService } from '../services/anuncio.service';
 import { UsuariosService } from '../services/usuarios.service';
 
@@ -24,33 +24,25 @@ export class LivroAnuncioComponent implements OnInit {
   anuncio: any;
   livro: any;
   user: any;
+  isAuthenticated: boolean;
 
-  constructor(private anuncioService: AnuncioService, private route: ActivatedRoute, private livroService: LivroService, private usuarioService: UsuariosService) { }
+  constructor(private anuncioService: AnuncioService, private route: ActivatedRoute, private livroService: LivroService, private usuarioService: UsuariosService, private router: Router) {
+    this.isAuthenticated = this.usuarioService.isAuthenticatedFunction();
+  }
 
   ngOnInit(): void {
-    this.token = localStorage.getItem('token');
-    this.userData = jwt_decode(this.token);
-    this.email = this.userData.email;
-    this.nome = this.userData.nome;
-    this.cidade = this.userData.cidade;
-    this.estado = this.userData.estado;
-    this.bio = this.userData.bio;
-    this.telefone = this.userData.telefone;
-    this.id = this.userData.user_id;
-
     this.route.paramMap.subscribe(params => {
       const idAnuncio = params.get('idAnuncio');
       this.carregarAnuncioPorId(idAnuncio);
     });
   }
-  
+
   carregarAnuncioPorId(idAnuncio: any) {
     this.anuncioService.anuncioPorId(idAnuncio).subscribe(
       (anuncio: any) => {
-        this.anuncio = anuncio;
-        const anuncioSelecionado = anuncio[0];
-        const idLivroAnuncio = anuncioSelecionado.idLivro;
-        const idUserAnunciante = anuncioSelecionado.idDono;
+        this.anuncio = anuncio[0];
+        const idLivroAnuncio = this.anuncio.idLivro;
+        const idUserAnunciante = this.anuncio.idDono;
         this.carregarLivroPorId(idLivroAnuncio);
         this.carregarUsuarioPorId(idUserAnunciante);
       }
@@ -77,6 +69,10 @@ export class LivroAnuncioComponent implements OnInit {
         console.error('Erro ao buscar usuário:', error);
       }
     )
+  }
+
+  solicitarEmprestimo(idAnuncio: number) {
+    this.router.navigate(['/solicitar-emprestimo', idAnuncio]);
   }
 
 }

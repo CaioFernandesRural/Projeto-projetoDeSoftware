@@ -14,7 +14,7 @@
     cursor: pointer;
 }
 
-.btn-primary-long:hover {
+.btn-primary-long:hover, #btn-primary-long:hover {
     background-color: #042932;
     border: 1px solid white;
 }

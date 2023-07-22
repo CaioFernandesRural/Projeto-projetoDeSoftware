@@ -36,3 +36,4 @@ Route::get('/cincoRecentes', [AnuncioController::class, 'cincoRecentes']);
 Route::get('/todosAnuncios', [AnuncioController::class, 'todosAnuncios']);
 Route::get('/anunciosPorIdDono/{idDono}', [AnuncioController::class, 'anunciosPorIdDono']);
 Route::get('/anuncioPorId/{id}', [AnuncioController::class, 'anunciosPorId']);
+Route::put('/updateAnuncio/{id}', [AnuncioController::class, 'updateAnuncio']);
