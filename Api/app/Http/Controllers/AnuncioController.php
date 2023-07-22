@@ -73,7 +73,7 @@ class AnuncioController extends Controller
         return response()->json($anuncios);
     }
 
-    public function updateAnuncio($id, Request $request)
+    public function solicitarEmprestimo($id, Request $request)
     {
         $anuncios = Anuncio::find($id);
     
@@ -81,11 +81,26 @@ class AnuncioController extends Controller
             return response()->json(['message' => 'Anúncio não encontrado'], 404);
         }
     
-        $anuncios->update($request->only("idRequerente", "dataInicioPrazo", "dataFimPrazo"));
+        $anuncios->update($request->only("idRequerente", "tempoEmprestimo"));
     
         $anuncios->save();
     
-        return response()->json(['code' => 200, 'status' => 1, 'message' => 'Anúncio atualizado com sucesso', 'data' => $anuncios]);
+        return response()->json(['code' => 200, 'status' => 1, 'message' => 'Empréstimo solicitado com sucesso', 'data' => $anuncios]);
+    }
+    
+    public function concederEmprestimo($id, Request $request)
+    {
+        $anuncios = Anuncio::find($id);
+    
+        if (!$anuncios) {
+            return response()->json(['message' => 'Anúncio não encontrado'], 404);
+        }
+    
+        $anuncios->update($request->only("emprestado", "dataInicioPrazo", "dataFimPrazo"));
+    
+        $anuncios->save();
+    
+        return response()->json(['code' => 200, 'status' => 1, 'message' => 'Empréstimo concedido com sucesso', 'data' => $anuncios]);
     }
     
     

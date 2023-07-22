@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('idRequerente')->nullable();
             $table->unsignedBigInteger('idLivro');
             $table->boolean('ativo')->default(false);
+            $table->integer('tempoEmprestimo')->nullable();
             $table->boolean('emprestado')->default(false);
             $table->date('dataInicioPrazo')->nullable();
             $table->date('dataFimPrazo')->nullable();

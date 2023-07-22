@@ -1,5 +1,5 @@
 <div class="container" id="container-path">
-    <p>Perfil - Meus empréstimos - Livro: title</p>
+    <p>Perfil - Meus empréstimos - {{livro?.titulo}}</p>
 </div>
 <div class="row align-items-start" id="row-title">
     <div class="col-1 align-self-center" id="col-title">
@@ -12,11 +12,11 @@
         <div class="col-md-3 align-self-center">
             <img src="./assets/imagens/capa-livro.png" alt="Foto de perfil">
         </div>
-        <div class="col-md-4">
-            <h2><b>Nome do livro</b></h2>
-            <h3>Autor do livro</h3>
+        <div class="col-md-4 align-self-center">
+            <h2><b>{{livro?.titulo}}</b></h2>
+            <h3>{{livro?.autor}}</h3>
             <h5>Sinopse:</h5>
-            <p>Na Holanda ocupada pelos nazistas na Segunda Guerra Mundial, o comerciante Kraler abriga duas famílias de judeus em seu sótão. A jovem Anne Frank mantém um diário da vida cotidiana dos Franks e dos Van Daans, narrando a ameaça nazista bem como a dinâmica familiar. Um romance com Peter Van Daan causa ciúmes entre Anne e sua irmã, Margot. Anos depois de as duas famílias terem sido capturadas, Otto Frank volta ao sótão e acha o diário de sua filha.</p>
+            <p>{{livro?.sinopse}}</p>
             <div id="search-categories" class="row height d-flex justify-content-start align-items-center">
                 <button id="btn-primary" class="btn btn-primary mx-2 my-2">Aventura</button>
                 <button id="btn-primary" class="btn btn-primary mx-2 my-2">Autoajuda</button>
@@ -35,9 +35,9 @@
                 <div class="col-md-10">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h5 class="col"> <b>Lorena Vasconcellos </b> </h5>
+                            <h5 class="col"> <b>{{user?.nome}}</b> </h5>
                             <i id="location-logo" class="fa-solid fa-location-dot"></i>
-                            <p id="location-text"> Rio de Janeiro, RJ </p>
+                            <p id="location-text"> {{user?.cidade}}, {{user?.estado}}</p>
                         </div>
                     </div>
                     <div class="row align-items-center" id="avaliacao">
@@ -51,28 +51,64 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <p><b>Início:</b> xx/xx/xxxx</p>
-                        <p><b>Término:</b> xx/xx/xxxx</p>
-                        <i class="fa-solid fa-timer fa-lg" style="display: inline;"></i><p>40 dias</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <h5><b>Regras</b></h5>
-                        <ul>
-                            <li>É proibído rasurar, rabiscar, marcar ou desenhar em qualquer parte do livro.</li>
-                            <li>É proíbido tirar cópias do livro.</li>
-                            <li>É proibido emprestar o livro para terceiros.</li>
-                            <li>Qualquer atraso não conscentido na devolução gera um multa de R$ XX.</li>
-                            <li>As responsabilidades de busca de devolução do livro integralmente do requerente.</li>
-                        </ul>
-                    </div>
-                </div>
-                <form>
-                    <div class="row justify-content-center">
-                        <button type="submit" id="btn-primary-long">Conceder empréstimo</button>
+                <form [formGroup]="updateForm" (ngSubmit)="submit()">
+                    <div class="col-md-9">
+                        <h2 style="font-size: 20px;"><b>Tempo de empréstimo</b></h2>
+                        <div class="row">
+                            <div class="col-md-1">
+                            </div>
+                        </div>
+                        <div class="row" style="display: flex; gap: 40px;">
+                            <div class="col-md-3">
+                                <div class="col-md-3">
+                                    <label for="initial-date">Data de início</label><br>
+                                </div>
+                                <input type="date" id="dataInicio" formControlName="dataInicio" [(ngModel)]="dataInicio"
+                                [ngClass]="{
+                                    'is-invalid': submitted && f['dataInicio'].errors && (f['dataInicio'].dirty || f['dataInicio'].touched),
+                                    'is-valid': f['dataInicio'].valid && (f['dataInicio'].dirty || f['dataInicio'].touched)}">
+                                </div>
+                                <div *ngIf="submitted && f['dataInicio'].errors?.['required']" class="invalid-feedback">
+                                    Data é obrigatória
+                                </div>
+                                <div class="col-md-1" style="margin-top: 20px;">
+                                    <p><b>até</b></p>
+                                </div>
+                                <div class="col-md-3">
+                                <div class="col-md-3">
+                                    <label for="final-date">Data de término</label><br>
+                                </div>
+                                <input type="date" id="dataFim" formControlName="dataFim" [(ngModel)]="dataFim"
+                                    [ngClass]="{
+                            'is-invalid': submitted && f['dataFim'].errors && (f['dataFim'].dirty || f['dataFim'].touched),
+                            'is-valid': f['dataFim'].valid && (f['dataFim'].dirty || f['dataFim'].touched)}">
+                            </div>
+                            <div *ngIf="submitted && f['dataFim'].errors?.['required']" class="invalid-feedback">
+                                Data é obrigatória
+                            </div><br><br><br>
+                        </div>
+                        <div class="row" style="width: 500px;">
+                            <p>* o usuário tem até 7 dias para buscar e 7 dias para devolver o livro além deste prazo de
+                                empréstimo</p>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h5><b>Regras</b></h5>
+                                <ul>
+                                    <li>É proibído rasurar, rabiscar, marcar ou desenhar em qualquer parte do livro.
+                                    </li>
+                                    <li>É proíbido tirar cópias do livro.</li>
+                                    <li>É proibido emprestar o livro para terceiros.</li>
+                                    <li>Qualquer atraso não conscentido na devolução gera um multa de R$ XX.</li>
+                                    <li>As responsabilidades de busca de devolução do livro integralmente do requerente.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center">
+                            <button type="submit" id="btn-primary-long">Conceder empréstimo</button>
+                        </div>
                     </div>
                 </form>
             </div>

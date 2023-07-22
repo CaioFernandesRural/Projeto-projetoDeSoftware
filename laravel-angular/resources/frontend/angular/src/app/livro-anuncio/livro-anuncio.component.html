@@ -6,7 +6,7 @@
         <div class="col-md-11">
             <div class="row align-items-center">
                 <div class="col">
-                    <h2 class="col" style="display: inline;"> {{user?.nome}} </h2>
+                    <h2 class="col" style="display: inline;"><a (click)="seeUserProfile(user?.id)" style="cursor: pointer;"> {{user?.nome}} </a></h2>
                     <i id="location-logo" class="fa-solid fa-location-dot"></i>
                     <p id="location-text"> {{user?.cidade}}, {{user?.estado}} </p>
                 </div>
@@ -72,7 +72,7 @@
     </div>
 
     <div class="row justify-content-end">
-        <button id="btn-primary-long" [hidden]="!isAuthenticated" (click)="solicitarEmprestimo(this.anuncio.id)">Pedir emprestado</button>
+        <button id="btn-primary-long" [hidden]="!isValid" (click)="solicitarEmprestimo(this.anuncio.id)">Pedir emprestado</button>
     </div>
 
 </div>

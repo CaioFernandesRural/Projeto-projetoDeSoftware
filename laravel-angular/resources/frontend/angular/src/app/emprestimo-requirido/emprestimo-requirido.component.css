@@ -93,3 +93,21 @@
     width: 100%;
     height: auto;
 }
+
+input[type="date"]{
+    background-color: #ffffff;
+    padding: 5px;
+    width: 130px;
+    top: 50%;
+    left: 50%;
+    color: #042932;
+    font-size: 12px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+::-webkit-calendar-picker-indicator{
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}

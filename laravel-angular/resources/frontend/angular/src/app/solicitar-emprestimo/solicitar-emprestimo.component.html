@@ -10,38 +10,17 @@
 <div id="container-box" class="container">
     <form [formGroup]="updateForm" (ngSubmit)="submit()">
         <div id="book" class="row">
-            <div class="col-md-9">
-                <h2><b>Tempo de empréstimo</b></h2>
+            <div class="col-md-9 align-self-center">
                 <div class="row">
-                    <div class="col-md-3">
-                        <label for="initial-date">Data de início</label><br>
+                    <div class="col-md-6">
+                        <label for="tempoEmprestimo" style="font-size: 20px; margin-bottom: 10px;"><b>Tempo de empréstimo</b></label>
+                        <input type="number" id="tempoEmprestimo" style="margin-bottom: 10px;" formControlName="tempoEmprestimo" [(ngModel)]="tempoEmprestimo" [ngClass]="{
+                            'is-invalid': submitted && f['tempoEmprestimo'].errors && (f['tempoEmprestimo'].dirty || f['tempoEmprestimo'].touched),
+                            'is-valid': f['tempoEmprestimo'].valid && (f['tempoEmprestimo'].dirty || f['tempoEmprestimo'].touched)}">
                     </div>
-                    <div class="col-md-1">
+                    <div *ngIf="submitted && f['tempoEmprestimo'].errors?.['required']" class="invalid-feedback">
+                        Tempo é obrigatório
                     </div>
-                    <div class="col-md-3">
-                        <label for="final-date">Data de término</label><br>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <input type="date" id="dataInicio" formControlName="dataInicio" [(ngModel)]="dataInicio" [ngClass]="{
-                            'is-invalid': submitted && f['dataInicio'].errors && (f['dataInicio'].dirty || f['dataInicio'].touched),
-                            'is-valid': f['dataInicio'].valid && (f['dataInicio'].dirty || f['dataInicio'].touched)}">
-                    </div>
-                    <div *ngIf="submitted && f['dataInicio'].errors?.['required']" class="invalid-feedback">
-                        Data é obrigatória
-                    </div>
-                    <div class="col-md-1" style="margin-top: 20px;">
-                        <p><b>até</b></p>
-                    </div>
-                    <div class="col-md-3">
-                        <input type="date" id="dataFim" formControlName="dataFim" [(ngModel)]="dataFim" [ngClass]="{
-                            'is-invalid': submitted && f['dataFim'].errors && (f['dataFim'].dirty || f['dataFim'].touched),
-                            'is-valid': f['dataFim'].valid && (f['dataFim'].dirty || f['dataFim'].touched)}">
-                    </div>
-                    <div *ngIf="submitted && f['dataFim'].errors?.['required']" class="invalid-feedback">
-                        Data é obrigatória
-                    </div><br><br><br>
                 </div>
                 <p>* o usuário tem até 7 dias para buscar e 7 dias para devolver o livro além deste prazo de empréstimo</p>
                 <div class="row">

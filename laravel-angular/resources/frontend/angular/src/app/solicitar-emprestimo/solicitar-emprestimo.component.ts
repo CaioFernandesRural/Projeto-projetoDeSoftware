@@ -22,15 +22,13 @@ export class SolicitarEmprestimoComponent implements OnInit {
   token: any;
   userData: any;
   id: any;
-  dataInicio: any;
-  dataFim: any;
+  tempoEmprestimo: any;
   emprestimoData: any;
   idAnuncio: any;
 
-  constructor(private route: ActivatedRoute, private anuncioService: AnuncioService, private livroService: LivroService, private usuarioService: UsuariosService, private formBuilder: FormBuilder, private toastr: ToastrService) {
+  constructor(private router: Router, private route: ActivatedRoute, private anuncioService: AnuncioService, private livroService: LivroService, private usuarioService: UsuariosService, private formBuilder: FormBuilder, private toastr: ToastrService) {
     this.updateForm = this.formBuilder.group({
-      dataInicio: ['', [Validators.required]],
-      dataFim: ['', Validators.required]
+      tempoEmprestimo: ['', [Validators.required]]
     });
   }
 
@@ -92,11 +90,10 @@ export class SolicitarEmprestimoComponent implements OnInit {
 
     const dados = {
       idRequerente: this.id,
-      dataInicioPrazo: this.dataInicio,
-      dataFimPrazo: this.dataFim
+      tempoEmprestimo: this.tempoEmprestimo
     }
     
-    this.anuncioService.updateAnuncio(idAnuncio, dados).subscribe(
+    this.anuncioService.solicitarEmprestimo(idAnuncio, dados).subscribe(
       (res: any) => {
         this.emprestimoData = res;
         if (this.emprestimoData.status === 1) {
@@ -116,7 +113,8 @@ export class SolicitarEmprestimoComponent implements OnInit {
         console.error('Erro na requisição:', error);
         this.submitted = false;
       }
-      );
+    );
+
   }
 
 }

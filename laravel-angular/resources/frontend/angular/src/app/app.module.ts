@@ -23,6 +23,8 @@ import { CadastroAnuncioComponent } from './cadastro-anuncio/cadastro-anuncio.co
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthGuard } from './auth.guard';
+import { PerfilOtherUserComponent } from './perfil-other-user/perfil-other-user.component';
+import { LivrosOtherUserComponent } from './livros-other-user/livros-other-user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redireciona a rota inicial para '/home'
@@ -42,6 +44,10 @@ const routes: Routes = [
   { path: 'cadastro-anuncio', component: CadastroAnuncioComponent },
   { path: 'livro-anuncio/:idAnuncio', component: LivroAnuncioComponent },
   { path: 'solicitar-emprestimo/:idAnuncio', component: SolicitarEmprestimoComponent },
+  { path: 'emprestimo-requerido/:idAnuncio', component: EmprestimoRequiridoComponent }, 
+  { path: 'emprestimo-concedido/:idAnuncio', component: EmprestimoConcedidoComponent }, 
+  { path: 'perfil-other-user/:idUser', component: PerfilOtherUserComponent }, 
+  { path: 'livros-other-user/:idUser', component: LivrosOtherUserComponent }, 
 ];
 
 @NgModule({
@@ -60,7 +66,9 @@ const routes: Routes = [
     AvaliacaoComponent,
     LivrosUserComponent,
     EmprestimosUserComponent,
-    CadastroAnuncioComponent
+    CadastroAnuncioComponent,
+    PerfilOtherUserComponent,
+    LivrosOtherUserComponent
   ],
   imports: [
     BrowserModule,

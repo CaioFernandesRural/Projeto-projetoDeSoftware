@@ -25,6 +25,8 @@ export class LivroAnuncioComponent implements OnInit {
   livro: any;
   user: any;
   isAuthenticated: boolean;
+  idDono: any;
+  isValid: boolean = false;
 
   constructor(private anuncioService: AnuncioService, private route: ActivatedRoute, private livroService: LivroService, private usuarioService: UsuariosService, private router: Router) {
     this.isAuthenticated = this.usuarioService.isAuthenticatedFunction();
@@ -43,8 +45,10 @@ export class LivroAnuncioComponent implements OnInit {
         this.anuncio = anuncio[0];
         const idLivroAnuncio = this.anuncio.idLivro;
         const idUserAnunciante = this.anuncio.idDono;
+        this.idDono = this.anuncio.idDono;
         this.carregarLivroPorId(idLivroAnuncio);
         this.carregarUsuarioPorId(idUserAnunciante);
+        this.validator(this.idDono);
       }
     )
   }
@@ -73,6 +77,24 @@ export class LivroAnuncioComponent implements OnInit {
 
   solicitarEmprestimo(idAnuncio: number) {
     this.router.navigate(['/solicitar-emprestimo', idAnuncio]);
+  }
+
+  validator(idDono: any) {
+    this.usuarioService.isAuthenticatedFunction()
+    this.token = localStorage.getItem('token');
+    this.userData = jwt_decode(this.token);
+    this.id = this.userData.user_id;
+    if(this.isAuthenticated) {
+      if(this.idDono != this.id) {
+        this.isValid = true;
+      } else {
+        this.isValid = false;
+      }
+    }
+  }
+
+  seeUserProfile(idUser: any) {
+    this.router.navigate(['/perfil-other-user', idUser]);
   }
 
 }

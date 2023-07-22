@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuariosService } from '../services/usuarios.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-user',
@@ -14,7 +15,7 @@ export class CadastroUserComponent implements OnInit {
   submitted = false;
   userData: any;
 
-  constructor(private formBuilder: FormBuilder, private usuariosService: UsuariosService, private toastr: ToastrService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private usuariosService: UsuariosService, private toastr: ToastrService) { }
 
   initializeRegisterForm() {
     this.registerForm = this.formBuilder.group({
@@ -72,6 +73,7 @@ export class CadastroUserComponent implements OnInit {
           timeOut: 2000,
           progressBar: true
         })
+        this.router.navigate(['/login-user']);
       } else {
         this.toastr.error(JSON.stringify(this.userData.message), JSON.stringify(this.userData.code), {
           timeOut: 2000,

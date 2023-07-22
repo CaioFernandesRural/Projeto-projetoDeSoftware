@@ -3,7 +3,7 @@
 </div>
 <div class="row align-items-start" id="row-title">
     <div class="col-1 align-self-center" id="col-title">
-        <h1>Meus livros</h1>
+        <h1>Livros de {{user?.nome}}</h1>
     </div>
     <div class="col" id="col-title-cut"></div>
 </div>
@@ -19,9 +19,6 @@
             <span *ngIf="!item.anuncio.emprestado"> Disponível</span></p>
           <p><b>Idioma:</b> {{item.livro.idioma}}</p>
           <p><b>Nº de páginas:</b> {{item.livro.numPag}}</p>
-        </div>
-        <div class="col-auto align-self-end" id="col-btn-primary">
-          <button id="btn-secundary" class="btn-secundary" [hidden]="!item.isRequerido" (click)="verRequerimento(item.anuncio.id)">Ver requerimento</button>
         </div>
         <div class="col-auto align-self-end" id="col-btn-primary">
           <button id="btn-primary" (click)="verAnuncio(item.anuncio.id)">Ver mais</button>

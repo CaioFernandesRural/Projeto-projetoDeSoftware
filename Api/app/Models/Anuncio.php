@@ -14,6 +14,7 @@ class Anuncio extends Model
         'idRequerente',
         'idLivro',
         'ativo',
+        "tempoEmprestimo",
         'emprestado',
         'dataInicioPrazo',
         'dataFimPrazo',

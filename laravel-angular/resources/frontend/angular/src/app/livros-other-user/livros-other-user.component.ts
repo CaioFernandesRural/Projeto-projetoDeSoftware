@@ -1,35 +1,32 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnuncioService } from '../services/anuncio.service';
 import { LivroService } from '../services/livro.service';
-import jwt_decode from 'jwt-decode';
-import { Router } from '@angular/router';
+import { UsuariosService } from '../services/usuarios.service';
 
 @Component({
-  selector: 'app-livros-user',
-  templateUrl: './livros-user.component.html',
-  styleUrls: ['./livros-user.component.css']
+  selector: 'app-livros-other-user',
+  templateUrl: './livros-other-user.component.html',
+  styleUrls: ['./livros-other-user.component.css']
 })
-export class LivrosUserComponent implements OnInit {
+export class LivrosOtherUserComponent implements OnInit {
 
   anuncios: any[] = [];
   livros: any[] = [];
-  token: any;
-  userData: any;
-  id: any;
-  idRequerente: any;
-  isRequerido: boolean = false;
+  user: any;
 
-  constructor(private anuncioService: AnuncioService, private livroService: LivroService, private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuariosService, private anuncioService: AnuncioService, private livroService: LivroService) { }
 
   ngOnInit(): void {
-    this.token = localStorage.getItem('token');
-    this.userData = jwt_decode(this.token);
-    this.id = this.userData.user_id;
-    this.listarAnunciosUser(this.id);
+    this.route.paramMap.subscribe(params => {
+      const idUser = params.get('idUser');
+      this.listarAnunciosUser(idUser);
+      this.carregarUsuarioPorId(idUser);
+    });
   }
 
-  listarAnunciosUser(idDono: number) {
-    this.anuncioService.listarAnunciosDono(idDono).subscribe(
+  listarAnunciosUser(idUser: any) {
+    this.anuncioService.listarAnunciosDono(idUser).subscribe(
       (anuncios: any) => {
         this.anuncios = anuncios;
         this.livros = []; 
@@ -64,8 +61,17 @@ export class LivrosUserComponent implements OnInit {
     this.router.navigate(['/livro-anuncio', idAnuncio]);
   }
 
-  verRequerimento(idAnuncio: number) {
-    this.router.navigate(['/emprestimo-requerido', idAnuncio]);
+  carregarUsuarioPorId(idUser: any) {
+    this.usuarioService.usuarioPorId(idUser).subscribe(
+      (user: any) => {
+        for(var i = 0; i < user.length; i++) {
+          this.user = user[i];
+        }
+      },
+      (error) => {
+        console.error('Erro ao buscar usuário:', error);
+      }
+    )
   }
 
 }

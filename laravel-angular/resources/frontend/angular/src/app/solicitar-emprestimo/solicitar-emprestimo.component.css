@@ -90,21 +90,3 @@
 #btn-primary-long:hover{
     background-color:#042932;
 }
-
-input[type="date"]{
-    background-color: #ffffff;
-    padding: 5px;
-    width: 80%;
-    top: 50%;
-    left: 50%;
-    color: #042932;
-    font-size: 18px;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-::-webkit-calendar-picker-indicator{
-    background-color: #ffffff;
-    padding: 5px;
-    cursor: pointer;
-    border-radius: 3px;
-}
