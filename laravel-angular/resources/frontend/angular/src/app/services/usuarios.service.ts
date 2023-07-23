@@ -31,4 +31,10 @@ export class UsuariosService {
   usuarioPorId(idUser: any) {
     return this.http.get(`${environment.apiUrl}/api/usuarioPorId/${idUser}`);
   }
+
+  getFotoPerfil(filename: string) {
+    return this.http.get(`${environment.apiUrl}/storage/${filename}`, {
+      responseType: 'blob',
+    });
+  }
 }

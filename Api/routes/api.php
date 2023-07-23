@@ -38,4 +38,4 @@ Route::get('/anunciosPorIdDono/{idDono}', [AnuncioController::class, 'anunciosPo
 Route::get('/anuncioPorId/{id}', [AnuncioController::class, 'anunciosPorId']);
 Route::put('/solicitarEmprestimo/{id}', [AnuncioController::class, 'solicitarEmprestimo']);
 Route::put('/concederEmprestimo/{id}', [AnuncioController::class, 'concederEmprestimo']);
-Route::get('uploads/{filename}', 'UserController@getUploadedFile')->name('get.uploaded.file');
+Route::get('storage/{filename}', [UserController::class, 'getFotoPerfil'])->name('user.getFotoPerfil');

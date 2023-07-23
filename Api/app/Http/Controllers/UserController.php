@@ -107,20 +107,18 @@ class UserController extends Controller
         return response()->json($usuario);
     }
 
-    public function getUploadedFile($filename)
+    public function getFotoPerfil($filename)
     {
-        $filePath = storage_path('app/public/uploads/' . $filename);
+        $path = 'uploads/' . $filename;
 
-        if (!Storage::exists($filePath)) {
-            abort(404);
+        if (Storage::exists($path)) {
+            $file = Storage::get($path);
+            $type = Storage::mimeType($path);
+
+            return response($file, 200)
+                ->header('Content-Type', $type);
+        } else {
+            return response('Imagem não encontrada', 404);
         }
-
-        $fileContents = file_get_contents($filePath);
-        $fileType = Storage::mimeType($filePath);
-
-        return Response::make($fileContents, 200, [
-            'Content-Type' => $fileType,
-            'Content-Disposition' => 'inline; filename="' . $filename . '"',
-        ]);
     }
 }
