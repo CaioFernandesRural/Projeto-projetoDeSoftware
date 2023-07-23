@@ -26,6 +26,9 @@ import { AuthGuard } from './auth.guard';
 import { PerfilOtherUserComponent } from './perfil-other-user/perfil-other-user.component';
 import { LivrosOtherUserComponent } from './livros-other-user/livros-other-user.component';
 import { FormsModule } from '@angular/forms';
+import { LivroComponent } from './livro/livro.component';
+import { AnunciosUserComponent } from './anuncios-user/anuncios-user.component';
+import { AnunciosOtherUserComponent } from './anuncios-other-user/anuncios-other-user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redireciona a rota inicial para '/home'
@@ -49,6 +52,9 @@ const routes: Routes = [
   { path: 'emprestimo-concedido/:idAnuncio', component: EmprestimoConcedidoComponent }, 
   { path: 'perfil-other-user/:idUser', component: PerfilOtherUserComponent }, 
   { path: 'livros-other-user/:idUser', component: LivrosOtherUserComponent }, 
+  { path: 'livro/:idLivro/:idUser', component: LivroComponent }, 
+  { path: 'anuncios-user', component: AnunciosUserComponent }, 
+  { path: 'anuncios-other-user/:idUser', component: AnunciosOtherUserComponent }, 
 ];
 
 @NgModule({
@@ -69,7 +75,10 @@ const routes: Routes = [
     EmprestimosUserComponent,
     CadastroAnuncioComponent,
     PerfilOtherUserComponent,
-    LivrosOtherUserComponent
+    LivrosOtherUserComponent,
+    LivroComponent,
+    AnunciosUserComponent,
+    AnunciosOtherUserComponent,
   ],
   imports: [
     BrowserModule,

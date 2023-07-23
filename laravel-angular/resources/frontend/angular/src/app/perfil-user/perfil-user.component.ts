@@ -24,6 +24,9 @@ export class PerfilUserComponent implements OnInit {
   fotoPerfil: any;
   anuncios: any[] = [];
   livros: any[] = [];
+  livrosOutraArray: any[] = [];
+  livrosDono: any[] = [];
+  livrosEmprestados: any[] =[];
   fotoPerfilUrl: string | undefined;
 
   constructor(private anuncioService: AnuncioService, private livroService: LivroService, private usuarioService: UsuariosService) { }
@@ -39,7 +42,11 @@ export class PerfilUserComponent implements OnInit {
     this.telefone = this.userData.telefone;
     this.id = this.userData.user_id;
     this.fotoPerfil = this.userData.fotoPerfil;
+
     this.listarAnunciosUser(this.id);
+    this.carregarLivroPorIdDono(this.id);
+    this.carregarMeusEmprestimos(this.id);
+
     this.usuarioService.getFotoPerfil(this.fotoPerfil).subscribe(
       (imageBlob: Blob) => {
         const reader = new FileReader();
@@ -77,6 +84,44 @@ export class PerfilUserComponent implements OnInit {
       },
       (error) => {
         console.error('Erro ao buscar livro:', error);
+      }
+    );
+  }
+
+  carregarLivroPorIdOutraArray(idLivro: number) {
+    this.livroService.livroPorId(idLivro).subscribe(
+      (livro: any) => {
+        this.livrosOutraArray.push(livro); // Adicionar o livro à matriz de livros
+      },
+      (error) => {
+        console.error('Erro ao buscar livro:', error);
+      }
+    );
+  }
+
+  carregarLivroPorIdDono(idDono: number) {
+    this.livroService.livroPorIdDono(idDono).subscribe(
+      (livrosDono: any) => {
+        this.livrosDono = livrosDono;
+      },
+      (error) => {
+        console.error('Erro: ', error);
+      }
+    )
+  }
+
+  carregarMeusEmprestimos(idUser: number) {
+    this.anuncioService.listarMeusEmprestimos(idUser).subscribe(
+      (livrosEmprestados: any) => {
+        this.livrosEmprestados = livrosEmprestados;
+        this.livrosOutraArray = []; // Criar uma matriz diferente para armazenar os livros de cada anúncio emprestado
+        for (const livroEmprestado of this.livrosEmprestados) {
+          const idLivroEmprestado = livroEmprestado.idLivro;
+          this.carregarLivroPorIdOutraArray(idLivroEmprestado);
+        }
+      },
+      (error) => {
+        console.error('Erro: ', error);
       }
     );
   }

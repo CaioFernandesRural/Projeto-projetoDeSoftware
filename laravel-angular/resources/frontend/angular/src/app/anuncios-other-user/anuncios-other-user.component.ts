@@ -5,17 +5,15 @@ import { LivroService } from '../services/livro.service';
 import { UsuariosService } from '../services/usuarios.service';
 
 @Component({
-  selector: 'app-perfil-other-user',
-  templateUrl: './perfil-other-user.component.html',
-  styleUrls: ['./perfil-other-user.component.css']
+  selector: 'app-anuncios-other-user',
+  templateUrl: './anuncios-other-user.component.html',
+  styleUrls: ['./anuncios-other-user.component.css']
 })
-export class PerfilOtherUserComponent implements OnInit {
+export class AnunciosOtherUserComponent implements OnInit {
 
   anuncios: any[] = [];
   livros: any[] = [];
-  idUser: any;
   user: any;
-  livrosDono: any[] = [];
 
   constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuariosService, private anuncioService: AnuncioService, private livroService: LivroService) { }
 
@@ -24,7 +22,6 @@ export class PerfilOtherUserComponent implements OnInit {
       const idUser = params.get('idUser');
       this.listarAnunciosUser(idUser);
       this.carregarUsuarioPorId(idUser);
-      this.carregarLivroPorIdDono(idUser);
     });
   }
 
@@ -32,27 +29,36 @@ export class PerfilOtherUserComponent implements OnInit {
     this.anuncioService.listarAnunciosDono(idUser).subscribe(
       (anuncios: any) => {
         this.anuncios = anuncios;
-        this.livros = []; // Criar uma matriz para armazenar os livros de cada anúncio
+        this.livros = []; 
         for (const anuncio of this.anuncios) {
           const idLivroAnuncio = anuncio.idLivro;
-          this.carregarLivroPorId(idLivroAnuncio);
+          this.carregarLivroPorId(idLivroAnuncio, anuncio);
         }
       },
       (error) => {
         console.error('Erro ao listar os anúncios cadastrados:', error);
       }
-    )
+    );
   }
 
-  carregarLivroPorId(idLivro: number) {
+  carregarLivroPorId(idLivro: number, anuncio: any) {
     this.livroService.livroPorId(idLivro).subscribe(
       (livro: any) => {
-        this.livros.push(livro); // Adicionar o livro à matriz de livros
+        const livroItem = { anuncio, livro, isRequerido: false }; // Initialize isRequerido as false
+        this.livros.push(livroItem);
+  
+        if (anuncio.idRequerente != null) {
+          livroItem.isRequerido = true; // Set isRequerido to true if idRequerente is not null
+        }
       },
       (error) => {
         console.error('Erro ao buscar livro:', error);
       }
     );
+  }
+  
+  verAnuncio(idAnuncio: number) {
+    this.router.navigate(['/livro-anuncio', idAnuncio]);
   }
 
   carregarUsuarioPorId(idUser: any) {
@@ -66,25 +72,6 @@ export class PerfilOtherUserComponent implements OnInit {
         console.error('Erro ao buscar usuário:', error);
       }
     )
-  }
-
-  carregarLivroPorIdDono(idDono: any) {
-    this.livroService.livroPorIdDono(idDono).subscribe(
-      (livrosDono: any) => {
-        this.livrosDono = livrosDono;
-      },
-      (error) => {
-        console.error('Erro: ', error);
-      }
-    )
-  }
-
-  verLivrosUser(idUser: any) {
-    this.router.navigate(['/livros-other-user', idUser]);
-  }
-
-  verAnunciosUser(idUser: any) {
-    this.router.navigate(['/anuncios-other-user', idUser]);
   }
 
 }

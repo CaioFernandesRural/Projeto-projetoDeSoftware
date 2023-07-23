@@ -24,5 +24,9 @@ export class LivroService {
   livroPorId(idLivro: any) {
     return this.http.get(`${environment.apiUrl}/api/livroPorId/${idLivro}`);
   }
+
+  livroPorIdDono(idDono: any) {
+    return this.http.get(`${environment.apiUrl}/api/livroPorIdDono/${idDono}`);
+  }
   
 }

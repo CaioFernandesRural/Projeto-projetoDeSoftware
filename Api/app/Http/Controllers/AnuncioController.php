@@ -48,6 +48,25 @@ class AnuncioController extends Controller
         return response()->json($anuncios);
     }
 
+    public function meusEmprestimos($id){
+        $anuncios = Anuncio::join('users', function($join) {
+            $join->on('users.id', '=', 'anuncios.idDono')
+                 ->orWhere('users.id', '=', 'anuncios.idRequerente');
+        })
+        ->where('emprestado', 1)
+        ->get();
+    
+        if($anuncios->isEmpty()){
+            $response['status'] = 0;
+            $response['message'] = 'Anuncio não encontrado';
+            $response['code'] = 404;
+            return response()->json($response);
+        }
+    
+        return response()->json($anuncios);
+    }
+    
+
     public function anunciosPorId($id){
         $anuncios = Anuncio::where('id', $id)->get();
 

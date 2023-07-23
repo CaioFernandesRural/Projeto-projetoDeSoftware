@@ -5,11 +5,11 @@ import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-livros-user',
-  templateUrl: './livros-user.component.html',
-  styleUrls: ['./livros-user.component.css']
+  selector: 'app-anuncios-user',
+  templateUrl: './anuncios-user.component.html',
+  styleUrls: ['./anuncios-user.component.css']
 })
-export class LivrosUserComponent implements OnInit {
+export class AnunciosUserComponent implements OnInit {
 
   anuncios: any[] = [];
   livros: any[] = [];
@@ -26,7 +26,7 @@ export class LivrosUserComponent implements OnInit {
     this.token = localStorage.getItem('token');
     this.userData = jwt_decode(this.token);
     this.id = this.userData.user_id;
-    this.carregarLivroPorIdDono(this.id);
+    this.listarAnunciosUser(this.id);
   }
 
   listarAnunciosUser(idDono: number) {
@@ -59,21 +59,6 @@ export class LivrosUserComponent implements OnInit {
         console.error('Erro ao buscar livro:', error);
       }
     );
-  }
-
-  carregarLivroPorIdDono(idDono: number) {
-    this.livroService.livroPorIdDono(idDono).subscribe(
-      (livrosDono: any) => {
-        this.livrosDono = livrosDono;
-      },
-      (error) => {
-        console.error('Erro: ', error);
-      }
-    )
-  }
-
-  verLivro(idLivro: number, idUser: number) {
-    this.router.navigate(['/livro', idLivro, idUser]);
   }
   
   verAnuncio(idAnuncio: number) {

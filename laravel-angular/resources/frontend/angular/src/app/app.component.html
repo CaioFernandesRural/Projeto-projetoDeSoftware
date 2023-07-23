@@ -17,8 +17,9 @@
         <i class="fa-regular fa-user"></i>
         <button class="dropbtn">{{ nome }}</button>
         <div class="dropdown-content">
-            <a routerLink="/perfil-user">Meu Perfil</a>
-            <a (click)="logout()" style="cursor: pointer;">Sair <i class="fa-solid fa-right-from-bracket"></i></a>
+            <a routerLink="/perfil-user"><i class="fa-solid fa-house-user"></i> Meu Perfil</a>
+            <a routerLink="/cadastro-anuncio"><i class="fa-solid fa-plus"></i> Anunciar Livro</a>
+            <a (click)="logout()" style="cursor: pointer;"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
         </div>
         <i class="fa-solid fa-caret-down"></i>
     </div>

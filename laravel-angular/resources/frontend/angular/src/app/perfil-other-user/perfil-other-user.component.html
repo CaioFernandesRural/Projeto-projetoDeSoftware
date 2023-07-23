@@ -70,24 +70,48 @@
 <div id="livros-user">
     <div class="row align-items-start" id="row-title">
         <div class="col-1 align-self-center" id="col-title">
-            <h1>Livros para empréstimo</h1>
+            <h1>Livros de {{user?.nome}}</h1>
         </div>
         <div class="col" id="col-title-cut"></div>
     </div>
+
+    <div class="container text-center" id="historico-de-emprestimos">
+        <div class="row" id="row-livros">
+            <div class="col" *ngFor="let livroDono of livrosDono">
+                <div class="livro-item">
+                    <img src="./assets/imagens/capa-livro.png" alt="capa-livro" width="120px">
+                    <div class="d-flex justify-content-center">
+                        <p class="titulo"><b>{{livroDono.titulo}}</b></p>
+                    </div>
+                    <p class="autor">{{livroDono.autor}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="row-btn-primary">
+            <button id="btn-primary" (click)="verLivrosUser(user.id)">Ver mais</button>
+        </div>
+    </div>
+
+    <div class="row align-items-start" id="row-title">
+        <div class="col-1 align-self-center" id="col-title">
+            <h1 style="width: 1200px;">Anúncios de {{user?.nome}}</h1>
+        </div>
+        <div class="col" id="col-title-cut"></div>
+    </div>
+
     <div class="container text-center" id="historico-de-emprestimos">
         <div class="row" id="row-livros">
             <div class="col" *ngFor="let livro of livros">
                 <div class="livro-item">
                     <img src="./assets/imagens/capa-livro.png" alt="capa-livro" width="120px">
                     <div class="d-flex justify-content-center">
-                        <p class="titulo"><b>{{livro?.titulo}}</b></p>
-                        <i class="fa-solid fa-bookmark" id="bookmark"></i>
+                        <p class="titulo"><b>{{livro.titulo}}</b></p>
                     </div>
-                    <p class="autor">{{livro?.autor}}</p>
+                    <p class="autor">{{livro.autor}}</p>
                 </div>
             </div>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="row-btn-primary">
-            <button id="btn-primary" (click)="verLivrosUser(user.id)">Ver mais</button>
+            <button id="btn-primary" (click)="verAnunciosUser(user.id)">Ver mais</button>
         </div>
     </div>

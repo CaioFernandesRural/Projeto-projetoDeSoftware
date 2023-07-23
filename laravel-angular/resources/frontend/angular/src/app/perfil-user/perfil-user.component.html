@@ -19,7 +19,8 @@
 
         <div class="col-md-6">
             <div class="text-center">
-                <img height="300px" style="margin-top: -190px; border-radius: 50%;" src="./assets/imagens/foto-de-perfil.png" alt="Foto de perfil">
+                <img height="300px" style="margin-top: -190px; border-radius: 50%;"
+                    src="./assets/imagens/foto-de-perfil.png" alt="Foto de perfil">
             </div><br>
             <div class="container text-center">
                 <div class="row align-items-center">
@@ -57,7 +58,7 @@
                 <p><b>Celular: </b> {{ telefone }} </p>
             </div>
             <div>
-                
+
             </div>
         </div>
 
@@ -80,76 +81,64 @@
 <div id="livros-user">
     <div class="row align-items-start" id="row-title">
         <div class="col-1 align-self-center" id="col-title">
-            <h1>Livros para empréstimo</h1>
+            <h1>Meus Livros</h1>
         </div>
         <div class="col" id="col-title-cut"></div>
     </div>
+
     <div class="container text-center" id="historico-de-emprestimos">
         <div class="row" id="row-livros">
-          <div class="col" *ngFor="let livro of livros">
-            <div class="livro-item">
-              <img src="./assets/imagens/capa-livro.png" alt="capa-livro" width="120px">
-              <div class="d-flex justify-content-center">
-                <p class="titulo"><b>{{livro.titulo}}</b></p>
-                <i class="fa-solid fa-bookmark" id="bookmark"></i>
-              </div>
-              <p class="autor">{{livro.autor}}</p>
+            <div class="col" *ngFor="let livroDono of livrosDono">
+                <div class="livro-item">
+                    <img src="./assets/imagens/capa-livro.png" alt="capa-livro" width="120px">
+                    <div class="d-flex justify-content-center">
+                        <p class="titulo"><b>{{livroDono.titulo}}</b></p>
+                    </div>
+                    <p class="autor">{{livroDono.autor}}</p>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-1">
-            <label for="input-new-books" class="form-label">Anuncie um Livro</label>
-            <button id="btn-new-books" routerLink="/cadastro-anuncio"> + </button>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="row-btn-primary">
-          <button id="btn-primary" routerLink="/livros-user">Ver mais</button>
+            <button id="btn-primary" routerLink="/livros-user">Ver mais</button>
         </div>
-      </div>
-      
+    </div>
+
+    <div class="row align-items-start" id="row-title">
+        <div class="col-1 align-self-center" id="col-title">
+            <h1>Meus Anúncios</h1>
+        </div>
+        <div class="col" id="col-title-cut"></div>
+    </div>
+
+    <div class="container text-center" id="historico-de-emprestimos">
+        <div class="row" id="row-livros">
+            <div class="col" *ngFor="let livro of livros">
+                <div class="livro-item">
+                    <img src="./assets/imagens/capa-livro.png" alt="capa-livro" width="120px">
+                    <div class="d-flex justify-content-center">
+                        <p class="titulo"><b>{{livro.titulo}}</b></p>
+                    </div>
+                    <p class="autor">{{livro.autor}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="row-btn-primary">
+            <button id="btn-primary" routerLink="/anuncios-user">Ver mais</button>
+        </div>
+    </div>
+
 
     <div class="container text-center" id="meus-emprestimos">
-        <h2>Meus emprestimos</h2>
+        <h2>Meus Empréstimos</h2>
         <div class="container">
             <div class="row row-cols-5" id="row-livros">
-                <div class="col" id="livro">
+                <div class="col" id="livro" *ngFor="let livro of livrosOutraArray">
                     <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
                     <div class="d-flex justify-content-center">
-                        <p class="titulo"><b>Título livro</b></p>
+                        <p class="titulo"><b>{{livro?.titulo}}</b></p>
                         <i class="fa-solid fa-bookmark" id="bookmark"></i>
                     </div>
-                    <p class="autor">Autor livro</p>
-                </div>
-                <div class="col" id="livro">
-                    <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
-                    <div class="d-flex justify-content-center">
-                        <p class="titulo"><b>Título livro</b></p>
-                        <i class="fa-solid fa-bookmark" id="bookmark"></i>
-                    </div>
-                    <p class="autor">Autor livro</p>
-                </div>
-                <div class="col" id="livro">
-                    <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
-                    <div class="d-flex justify-content-center">
-                        <p class="titulo"><b>Título livro</b></p>
-                        <i class="fa-solid fa-bookmark" id="bookmark"></i>
-                    </div>
-                    <p class="autor">Autor livro</p>
-                </div>
-                <div class="col" id="livro">
-                    <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
-                    <div class="d-flex justify-content-center">
-                        <p class="titulo"><b>Título livro</b></p>
-                        <i class="fa-solid fa-bookmark" id="bookmark"></i>
-                    </div>
-                    <p class="autor">Autor livro</p>
-                </div>
-                <div class="col" id="livro">
-                    <img src="./assets/imagens/capa-livro.png" alt="capa-livro">
-                    <div class="d-flex justify-content-center">
-                        <p class="titulo"><b>Título livro</b></p>
-                        <i class="fa-solid fa-bookmark" id="bookmark"></i>
-                    </div>
-                    <p class="autor">Autor livro</p>
+                    <p class="autor">{{livro?.autor}}</p>
                 </div>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="row-btn-primary">

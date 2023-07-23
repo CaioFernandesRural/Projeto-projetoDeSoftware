@@ -14,51 +14,31 @@ export class LivrosOtherUserComponent implements OnInit {
   anuncios: any[] = [];
   livros: any[] = [];
   user: any;
+  livrosDono: any[] = [];
 
   constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuariosService, private anuncioService: AnuncioService, private livroService: LivroService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const idUser = params.get('idUser');
-      this.listarAnunciosUser(idUser);
+      this.carregarLivroPorIdDono(idUser);
       this.carregarUsuarioPorId(idUser);
     });
   }
 
-  listarAnunciosUser(idUser: any) {
-    this.anuncioService.listarAnunciosDono(idUser).subscribe(
-      (anuncios: any) => {
-        this.anuncios = anuncios;
-        this.livros = []; 
-        for (const anuncio of this.anuncios) {
-          const idLivroAnuncio = anuncio.idLivro;
-          this.carregarLivroPorId(idLivroAnuncio, anuncio);
-        }
+  carregarLivroPorIdDono(idDono: any) {
+    this.livroService.livroPorIdDono(idDono).subscribe(
+      (livrosDono: any) => {
+        this.livrosDono = livrosDono;
       },
       (error) => {
-        console.error('Erro ao listar os anúncios cadastrados:', error);
+        console.error('Erro: ', error);
       }
-    );
+    )
   }
 
-  carregarLivroPorId(idLivro: number, anuncio: any) {
-    this.livroService.livroPorId(idLivro).subscribe(
-      (livro: any) => {
-        const livroItem = { anuncio, livro, isRequerido: false }; // Initialize isRequerido as false
-        this.livros.push(livroItem);
-  
-        if (anuncio.idRequerente != null) {
-          livroItem.isRequerido = true; // Set isRequerido to true if idRequerente is not null
-        }
-      },
-      (error) => {
-        console.error('Erro ao buscar livro:', error);
-      }
-    );
-  }
-  
-  verAnuncio(idAnuncio: number) {
-    this.router.navigate(['/livro-anuncio', idAnuncio]);
+  verLivro(idLivro: number, idUser: number) {
+    this.router.navigate(['/livro', idLivro, idUser]);
   }
 
   carregarUsuarioPorId(idUser: any) {
