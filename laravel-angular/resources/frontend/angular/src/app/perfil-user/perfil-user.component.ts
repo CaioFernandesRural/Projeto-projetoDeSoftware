@@ -4,6 +4,7 @@ import { AnuncioService } from '../services/anuncio.service';
 import { LivroService } from '../services/livro.service';
 import { HttpClient } from '@angular/common/http';
 import { UsuariosService } from '../services/usuarios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil-user',
@@ -29,7 +30,7 @@ export class PerfilUserComponent implements OnInit {
   livrosEmprestados: any[] =[];
   fotoPerfilUrl: string | undefined;
 
-  constructor(private anuncioService: AnuncioService, private livroService: LivroService, private usuarioService: UsuariosService) { }
+  constructor(private router: Router, private anuncioService: AnuncioService, private livroService: LivroService, private usuarioService: UsuariosService) { }
 
   ngOnInit(): void {
     this.token = localStorage.getItem('token');
@@ -124,6 +125,10 @@ export class PerfilUserComponent implements OnInit {
         console.error('Erro: ', error);
       }
     );
+  }
+
+  verMeusEmprestimos(idUser: number) {
+    this.router.navigate(['/emprestimos-user', idUser]);
   }
 
 
