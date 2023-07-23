@@ -25,6 +25,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AuthGuard } from './auth.guard';
 import { PerfilOtherUserComponent } from './perfil-other-user/perfil-other-user.component';
 import { LivrosOtherUserComponent } from './livros-other-user/livros-other-user.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redireciona a rota inicial para '/home'
@@ -76,7 +77,8 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(), 
+    FormsModule
   ],
   exports: [RouterModule],
   providers: [UsuariosService],

@@ -22,6 +22,15 @@ class UserController extends Controller
             $response['message'] = 'This email already exists';
             $response['code'] = 409;
         } else {
+            // Verifique se o arquivo de foto de perfil foi enviado
+            if ($request->hasFile('fotoPerfil')) {
+                $file = $request->file('fotoPerfil');
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $filePath = $file->storeAs('uploads', $fileName, 'public');
+            } else {
+            $filePath = null; // Defina o valor padrão se nenhum arquivo foi enviado
+            }
+
             $user = User::create([
                 'nome'      => $request->nome,
                 'email'     => $request->email,
@@ -32,6 +41,7 @@ class UserController extends Controller
                 'cidade'    => $request->cidade,
                 'estado'    => $request->estado,
                 'bio'       => $request->bio,
+                'fotoPerfil' => $filePath,
                 'admin'     => $request->admin
             ]);
             $response['status'] = 1;
@@ -68,7 +78,8 @@ class UserController extends Controller
             'sexo' => $user->sexo,
             'cidade' => $user->cidade,
             'estado' => $user->estado,
-            'bio' => $user->bio
+            'bio' => $user->bio,
+            'fotoPerfil' => $user->fotoPerfil,
         ])->attempt($credentials);
 
         $response['data'] = $data;

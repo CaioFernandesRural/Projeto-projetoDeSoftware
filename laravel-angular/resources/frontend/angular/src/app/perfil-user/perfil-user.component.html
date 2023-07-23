@@ -19,7 +19,7 @@
 
         <div class="col-md-6">
             <div class="text-center">
-                <img height="300px" style="margin-top: -190px; border-radius: 50%;" src="./assets/imagens/foto-de-perfil.png" alt="Foto de perfil">
+                <img height="300px" style="margin-top: -190px; border-radius: 50%;" [src]="this.fotoPerfil" alt="Foto de perfil">
             </div><br>
             <div class="container text-center">
                 <div class="row align-items-center">
@@ -96,6 +96,10 @@
               <p class="autor">{{livro.autor}}</p>
             </div>
           </div>
+        </div>
+        <div class="col-md-1">
+            <label for="input-new-books" class="form-label">Anuncie um Livro</label>
+            <button id="btn-new-books" routerLink="/cadastro-anuncio"> + </button>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="row-btn-primary">
           <button id="btn-primary" routerLink="/livros-user">Ver mais</button>

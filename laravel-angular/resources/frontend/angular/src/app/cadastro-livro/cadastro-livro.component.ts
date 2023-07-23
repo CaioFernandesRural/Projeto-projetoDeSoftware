@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LivroService } from '../services/livro.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-livro',
@@ -14,7 +15,7 @@ export class CadastroLivroComponent implements OnInit {
   livroData: any;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private livroService: LivroService, private toastr: ToastrService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private livroService: LivroService, private toastr: ToastrService) { }
   
   initializeRegisterForm() {
     this.registerForm = this.formBuilder.group({
@@ -53,6 +54,7 @@ export class CadastroLivroComponent implements OnInit {
           timeOut: 2000,
           progressBar: true
         })
+        this.router.navigate(['/cadastro-anuncio']);
       } else {
         this.toastr.error(JSON.stringify(this.livroData.message), JSON.stringify(this.livroData.code), {
           timeOut: 2000,

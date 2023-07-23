@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsuariosService } from '../services/usuarios.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ export class CadastroUserComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
   userData: any;
+  selectedProfilePicture: File | null = null;
 
   constructor(private router: Router, private formBuilder: FormBuilder, private usuariosService: UsuariosService, private toastr: ToastrService) { }
 
@@ -27,8 +28,9 @@ export class CadastroUserComponent implements OnInit {
       sexo: ['Selecione...', [Validators.required]],
       cidade: ['', [Validators.required]],
       estado: ['Selecione...', [Validators.required]],
-      bio: ['', [Validators.required]],
-      admin: [false, [Validators.required]],
+      bio: [''],
+      fotoPerfil: [null],
+      admin: [0, [Validators.required]],
       passwordConfirm: ['', [Validators.required]]
     }, {
       validator: this.mustMatch('password', 'passwordConfirm')
@@ -53,6 +55,15 @@ export class CadastroUserComponent implements OnInit {
     };
   }
 
+  onFileChange(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement?.files?.length) {
+      this.selectedProfilePicture = inputElement.files[0];
+    } else {
+      this.selectedProfilePicture = null;
+    }
+  }
+
   ngOnInit(): void {
     this.initializeRegisterForm();
   }
@@ -60,15 +71,35 @@ export class CadastroUserComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   submit() {
+    console.log(this.registerForm);
     this.submitted = true;
-    if (this.registerForm.invalid) {
-      return;
+    for (const field in this.registerForm.controls) {
+      if (this.registerForm.controls[field].invalid) {
+        console.log(`Validation error for field ${field}:`, this.registerForm.controls[field].errors);
+      }
     }
 
-    this.usuariosService.registerUser(this.registerForm.value).subscribe(res => {
+    const formData: FormData = new FormData();
+    formData.append('nome', this.registerForm.value.nome);
+    formData.append('email', this.registerForm.value.email);
+    formData.append('password', this.registerForm.value.password);
+    formData.append('telefone', this.registerForm.value.telefone);
+    formData.append('idade', this.registerForm.value.idade);
+    formData.append('sexo', this.registerForm.value.sexo);
+    formData.append('cidade', this.registerForm.value.cidade);
+    formData.append('estado', this.registerForm.value.estado);
+    formData.append('bio', this.registerForm.value.bio);
+    formData.append('admin', this.registerForm.value.admin);
+    formData.append('passwordConfirm', this.registerForm.value.passwordConfirm);
+
+    if (this.selectedProfilePicture) {
+      formData.append('fotoPerfil', this.selectedProfilePicture, this.selectedProfilePicture.name);
+    }
+
+    this.usuariosService.registerUser(formData).subscribe(res => {
       this.userData = res;
-      
-      if(this.userData.status === 1) {
+
+      if (this.userData.status === 1) {
         this.toastr.success(JSON.stringify(this.userData.message), JSON.stringify(this.userData.code), {
           timeOut: 2000,
           progressBar: true

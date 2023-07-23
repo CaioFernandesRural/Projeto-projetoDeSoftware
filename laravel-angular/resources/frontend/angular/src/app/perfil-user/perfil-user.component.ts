@@ -19,6 +19,7 @@ export class PerfilUserComponent implements OnInit {
   bio: any;
   telefone: any;
   id: any;
+  fotoPerfil: any;
   anuncios: any[] = [];
   livros: any[] = [];
 
@@ -34,6 +35,7 @@ export class PerfilUserComponent implements OnInit {
     this.bio = this.userData.bio;
     this.telefone = this.userData.telefone;
     this.id = this.userData.user_id;
+    this.fotoPerfil = this.userData.fotoPerfil;
     this.listarAnunciosUser(this.id);
   }
 

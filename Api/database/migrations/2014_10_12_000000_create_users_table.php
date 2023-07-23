@@ -20,9 +20,10 @@ return new class extends Migration
             $table->string('sexo', 1);
             $table->string('cidade', 100);
             $table->string('estado', 2);
-            $table->string('bio', 500);
+            $table->string('bio', 500)->nullable();
             $table->string('password');
-            $table->boolean('admin');
+            $table->boolean('admin')->default(false);
+            $table->string('fotoPerfil', 500)->nullable();
             $table->timestamps();
         });
     }

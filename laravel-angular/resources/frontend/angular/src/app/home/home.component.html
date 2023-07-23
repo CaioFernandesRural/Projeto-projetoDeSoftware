@@ -14,13 +14,16 @@
         </div>
     </div>
     <div id="search-input" class="row height d-flex justify-content-center align-items-center">
-        <div class="col">
-            <div id="search" class="search">
-                <i class="fa fa-search"></i>
-                <input type="text" class="form-control" placeholder="Procure o livro que deseja!">
-                <button class="btn btn-primary"><i class="fa-solid fa-filter"></i></button>
+        <form>
+            <div class="col">
+                <div id="search" class="search">
+                    <i class="fa fa-search"></i>
+                    <input type="text" class="form-control" placeholder="Procure o livro que deseja!"
+                        (keydown.enter)="buscarLivros()" [(ngModel)]="filtroTitulo" name="filtroTitulo">
+                    <button class="btn btn-primary"><i class="fa-solid fa-filter"></i></button>
+                </div>
             </div>
-        </div>
+        </form>
     </div><br><br>
 </div>
 
@@ -49,5 +52,9 @@
 
 <div class="container" id="sobre">
     <h2>O que é Shared Lib?</h2>
-    <p>O SharedLib é um software de biblioteca comunitária que tem como objetivo  principal  permitir  que  os  usuários  emprestem e compartilhem livros, promovendo assim a aquisição e a disseminação de conhecimento. O sistema de empréstimos pode ser um recurso valioso para permitir que as  pessoas acessem livros que talvez não possam comprar ou encontrar em outros lugares.  O SharedLib será uma valiosa fonte de recursos  para  os  amantes  de  leitura  que  buscam  aprimorar  seus  conhecimentos  e ampliar seus horizontes.</p>
+    <p>O SharedLib é um software de biblioteca comunitária que tem como objetivo principal permitir que os usuários
+        emprestem e compartilhem livros, promovendo assim a aquisição e a disseminação de conhecimento. O sistema de
+        empréstimos pode ser um recurso valioso para permitir que as pessoas acessem livros que talvez não possam
+        comprar ou encontrar em outros lugares. O SharedLib será uma valiosa fonte de recursos para os amantes de
+        leitura que buscam aprimorar seus conhecimentos e ampliar seus horizontes.</p>
 </div>

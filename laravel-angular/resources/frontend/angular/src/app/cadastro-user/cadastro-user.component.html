@@ -102,7 +102,7 @@
         </div>
         <div class="col-md-6">
             <label for="input-img" class="form-label">Foto de Perfil</label>
-            <input class="form-control" type="file" id="input-img" formControlName="cover">
+            <input class="form-control" type="file" id="input-img" formControlName="fotoPerfil" (change)="onFileChange($event)" accept="image/*">
         </div>
         <div class="col-12">
             <div class="centralizar">

@@ -16,7 +16,7 @@ export class PerfilOtherUserComponent implements OnInit {
   idUser: any;
   user: any;
 
-  constructor(private router: Router ,private route: ActivatedRoute, private usuarioService: UsuariosService, private anuncioService: AnuncioService, private livroService: LivroService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private usuarioService: UsuariosService, private anuncioService: AnuncioService, private livroService: LivroService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
