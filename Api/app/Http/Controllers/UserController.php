@@ -22,13 +22,19 @@ class UserController extends Controller
             $response['message'] = 'This email already exists';
             $response['code'] = 409;
         } else {
-            // Verifique se o arquivo de foto de perfil foi enviado
             if ($request->hasFile('fotoPerfil')) {
                 $file = $request->file('fotoPerfil');
-                $fileName = time() . '_' . $file->getClientOriginalName();
-                $filePath = $file->storeAs('uploads', $fileName, 'public');
+                if ($file->isValid()) {
+                    $fileName = time() . '_' . $file->getClientOriginalName();
+                    $filePath = $file->storeAs('uploads', $fileName, 'public');
+                } else {
+                    $response['status'] = 0;
+                    $response['message'] = 'Error uploading the file';
+                    $response['code'] = 500;
+                    return response()->json($response);
+                }
             } else {
-            $filePath = null; // Defina o valor padrão se nenhum arquivo foi enviado
+                $filePath = null; // Default value if no file was uploaded
             }
 
             $user = User::create([
@@ -99,5 +105,22 @@ class UserController extends Controller
             return response()->json($response);
         }
         return response()->json($usuario);
+    }
+
+    public function getUploadedFile($filename)
+    {
+        $filePath = storage_path('app/public/uploads/' . $filename);
+
+        if (!Storage::exists($filePath)) {
+            abort(404);
+        }
+
+        $fileContents = file_get_contents($filePath);
+        $fileType = Storage::mimeType($filePath);
+
+        return Response::make($fileContents, 200, [
+            'Content-Type' => $fileType,
+            'Content-Disposition' => 'inline; filename="' . $filename . '"',
+        ]);
     }
 }

@@ -4,7 +4,7 @@
         <h1>Crie uma conta</h1>
     </div>
 
-    <form class="row g-3" (ngSubmit)="submit()" [formGroup]="registerForm">
+    <form class="row g-3" (ngSubmit)="submit()" [formGroup]="registerForm" enctype="multipart/form-data">
         <div class="col-md-6">
             <label for="inputName" class="form-label">Nome</label>
             <input type="text" class="form-control" id="inputName" formControlName="nome" [ngClass]="{

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import jwt_decode from 'jwt-decode';
 import { AnuncioService } from '../services/anuncio.service';
 import { LivroService } from '../services/livro.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-perfil-user',
@@ -9,7 +10,7 @@ import { LivroService } from '../services/livro.service';
   styleUrls: ['./perfil-user.component.css']
 })
 export class PerfilUserComponent implements OnInit {
-  
+
   token: any;
   userData: any;
   email: any;
@@ -22,8 +23,9 @@ export class PerfilUserComponent implements OnInit {
   fotoPerfil: any;
   anuncios: any[] = [];
   livros: any[] = [];
+  imageBase64: any;
 
-  constructor(private anuncioService: AnuncioService, private livroService: LivroService) { }
+  constructor(private anuncioService: AnuncioService, private livroService: LivroService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.token = localStorage.getItem('token');
@@ -37,6 +39,17 @@ export class PerfilUserComponent implements OnInit {
     this.id = this.userData.user_id;
     this.fotoPerfil = this.userData.fotoPerfil;
     this.listarAnunciosUser(this.id);
+    const filename = this.userData.fotoPerfil; // Substitua pelo nome correto da imagem que você deseja obter
+
+    this.http.get('http://127.0.0.1:8000/api/storage/app/public/' + filename, { responseType: 'blob' })
+      .subscribe(response => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const imageBase64 = reader.result as string;
+          // Aqui você pode usar a variável "imageBase64" para exibir a imagem no template do seu componente
+        };
+        reader.readAsDataURL(response);
+     });
   }
 
   listarAnunciosUser(idDono: number) {
@@ -65,5 +78,6 @@ export class PerfilUserComponent implements OnInit {
       }
     );
   }
+
 
 }
