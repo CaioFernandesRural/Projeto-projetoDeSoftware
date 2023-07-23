@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Livro;
+use App\Models\Anuncio;
 use Illuminate\Http\Request;
 
 use function PHPUnit\Framework\isEmpty;
@@ -54,6 +55,22 @@ class LivroController extends Controller
         }
     
         return response()->json($livro);
+    }
+
+    public function livrosPorIdDono($idDono) {
+        $livros = Livro::join('anuncios', 'livros.id', '=', 'anuncios.idLivro')
+            ->select('livros.*')
+            ->where('anuncios.idDono', $idDono)
+            ->get();
+
+        if ($livros->isEmpty()) {
+            $response['status'] = 0;
+            $response['message'] = 'Nenhum livro encontrado para este dono';
+            $response['code'] = 404;
+            return response()->json($response);
+        }
+
+        return response()->json($livros);
     }
     
 }
