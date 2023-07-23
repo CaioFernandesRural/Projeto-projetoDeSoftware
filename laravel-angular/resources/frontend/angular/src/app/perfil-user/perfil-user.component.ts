@@ -41,7 +41,7 @@ export class PerfilUserComponent implements OnInit {
     this.listarAnunciosUser(this.id);
     const filename = this.userData.fotoPerfil; // Substitua pelo nome correto da imagem que você deseja obter
 
-    this.http.get('http://127.0.0.1:8000/api/storage/app/public/' + filename, { responseType: 'blob' })
+    this.http.get('http://127.0.0.1:8000/storage/' + filename, { responseType: 'blob' })
       .subscribe(response => {
         const reader = new FileReader();
         reader.onload = () => {
