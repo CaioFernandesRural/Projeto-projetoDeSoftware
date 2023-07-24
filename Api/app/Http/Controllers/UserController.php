@@ -47,6 +47,9 @@ class UserController extends Controller
                 'cidade'    => $request->cidade,
                 'estado'    => $request->estado,
                 'bio'       => $request->bio,
+                'emprestimosConcedidos' => $request->emprestimosConcedidos,
+                'emprestimosRequeridos' => $request->emprestimosRequeridos,
+                'nota'      => $request->nota,
                 'fotoPerfil' => $filePath,
                 'admin'     => $request->admin
             ]);
@@ -85,6 +88,9 @@ class UserController extends Controller
             'cidade' => $user->cidade,
             'estado' => $user->estado,
             'bio' => $user->bio,
+            'emprestimosConcedidos' => $user->emprestimosConcedidos,
+            'emprestimosRequeridos' => $user->emprestimosRequeridos,
+            'nota' => $user->nota,
             'fotoPerfil' => $user->fotoPerfil,
         ])->attempt($credentials);
 
@@ -95,6 +101,7 @@ class UserController extends Controller
         return response()->json($response);
     
     }
+
     public function usuarioPorId($id){
         $usuario = User::where('id', $id)->get();
 
@@ -120,5 +127,50 @@ class UserController extends Controller
         } else {
             return response('Imagem não encontrada', 404);
         }
+    }
+
+    public function emprestimosConcedidos($id, Request $request)
+    {
+        $users = User::find($id);
+    
+        if (!$users) {
+            return response()->json(['message' => 'Usuário não encontrado'], 404);
+        }
+    
+        $users->update($request->only("emprestimosConcedidos"));
+    
+        $users->save();
+    
+        return response()->json(['code' => 200, 'status' => 1, 'message' => 'Empréstimo concedido com sucesso', 'data' => $users]);
+    }
+
+    public function emprestimosRequeridos($id, Request $request)
+    {
+        $users = User::find($id);
+    
+        if (!$users) {
+            return response()->json(['message' => 'Usuário não encontrado'], 404);
+        }
+    
+        $users->update($request->only("emprestimosRequeridos"));
+    
+        $users->save();
+    
+        return response()->json(['code' => 200, 'status' => 1, 'message' => 'Empréstimo requerido com sucesso', 'data' => $users]);
+    }
+
+    public function notaUser($id, Request $request)
+    {
+        $users = User::find($id);
+    
+        if (!$users) {
+            return response()->json(['message' => 'Usuário não encontrado'], 404);
+        }
+    
+        $users->update($request->only("nota"));
+    
+        $users->save();
+    
+        return response()->json(['code' => 200, 'status' => 1, 'message' => 'Empréstimo requerido com sucesso', 'data' => $users]);
     }
 }

@@ -42,12 +42,7 @@
                     </div>
                     <div class="row align-items-center" id="avaliacao">
                         <div class="col" id="avaliacao">
-                            <p id="nota">9,0 </p>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-regular fa-star"></i><br>
+                            <p id="nota">Nota: {{ user.nota | number: '1.2-2' }} </p>
                         </div>
                     </div>
                 </div>
@@ -79,7 +74,7 @@
                     </div>
                     <div class="row justify-content-center">
                         <button type="button" id="btn-primary-long" (click)="irParaAvaliarEmprestimo(anuncio.id)"
-                            *ngIf="id === anuncio.idDono && anuncio.ativo === 0 && anuncio.avaliacao != null">Avaliar</button>
+                            *ngIf="id === anuncio.idDono && anuncio.ativo === 0 && anuncio.avaliacao === null">Avaliar</button>
                     </div>
                 </form>
             </div>

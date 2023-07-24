@@ -7,11 +7,11 @@
         <div class="col-md-3" id="infos">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="numbers">10</p>
+                    <p class="numbers">{{this.emprestimosConcedidos}}</p>
                     <p>Empréstimos oferecidos</p>
                 </div>
                 <div class="col-md-6">
-                    <p class="numbers">6</p>
+                    <p class="numbers">{{this.emprestimosRequeridos}}</p>
                     <p>Empréstimos requiridos</p>
                 </div>
             </div>
@@ -35,12 +35,7 @@
             <div class="container text-center">
                 <div class="row align-items-center" id="avaliacao">
                     <div class="col" id="avaliacao">
-                        <p id="nota">9,0</p>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
+                        <p id="nota">Nota: {{ this.nota != null ? (this.nota | number: '1.2-2') : 'Sem avaliações' }} </p>
                     </div>
                 </div>
             </div>
@@ -59,17 +54,6 @@
             </div>
             <div>
 
-            </div>
-        </div>
-
-        <div class="col-md-3" id="actions">
-            <div class="row">
-                <div class="col-md-2">
-                    <i class="fa-solid fa-pencil"></i>
-                </div>
-                <div class="col-md-10">
-                    <p>Editar dados</p>
-                </div>
             </div>
         </div>
     </div>

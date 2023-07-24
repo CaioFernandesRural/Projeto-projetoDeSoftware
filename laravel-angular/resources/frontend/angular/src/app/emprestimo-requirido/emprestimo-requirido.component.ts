@@ -22,6 +22,9 @@ export class EmprestimoRequiridoComponent implements OnInit {
   dataFim: any;
   emprestimoData: any;
   idAnuncio: any;
+  idUserAnunciante: any;
+  idUserRequerente: any;
+  userData: any;
 
   constructor(private formBuilder: FormBuilder, private anuncioService: AnuncioService, private route: ActivatedRoute, private livroService: LivroService, private usuarioService: UsuariosService, private router: Router, private toastr: ToastrService) {
     this.updateForm = this.formBuilder.group({
@@ -42,9 +45,10 @@ export class EmprestimoRequiridoComponent implements OnInit {
       (anuncio: any) => {
         this.anuncio = anuncio[0];
         const idLivroAnuncio = this.anuncio.idLivro;
-        const idUserAnunciante = this.anuncio.idDono;
         const idUserRequerente = this.anuncio.idRequerente;
         this.idAnuncio = this.anuncio.id;
+        this.idUserAnunciante = this.anuncio.idDono;
+        this.idUserRequerente = this.anuncio.idRequerente;
         const tempoEmprestimo= this.anuncio.tempoEmprestimo;
         this.carregarLivroPorId(idLivroAnuncio, tempoEmprestimo);
         this.carregarUsuarioPorId(idUserRequerente);
@@ -113,6 +117,45 @@ export class EmprestimoRequiridoComponent implements OnInit {
         this.submitted = false;
       }
     );
+
+    const idUserAnunciante = this.idUserAnunciante;
+    this.carregarUsuarioPorId(idUserAnunciante);
+
+    const numEmprestimosConcedidos = this.user.emprestimosConcedidos + 1;
+
+    const dadosUserDono = {
+      emprestimosConcedidos: numEmprestimosConcedidos
+    }
+
+    this.usuarioService.emprestimosConcedidos(idUserAnunciante, dadosUserDono).subscribe(
+      (res: any) => {
+        this.userData = res;
+      },
+      (error) => {
+        console.error('Erro na requisição:', error);
+        this.submitted = false;
+      }
+    )
+
+    const idUserRequerente = this.idUserRequerente;
+    this.carregarUsuarioPorId(idUserRequerente);
+
+    const numEmprestimosRequeridos = this.user.emprestimosRequeridos + 1;
+
+    const dadosUserRequerente = {
+      emprestimosRequeridos: numEmprestimosRequeridos
+    }
+
+    this.usuarioService.emprestimosRequeridos(idUserRequerente, dadosUserRequerente).subscribe(
+      (res: any) => {
+        this.userData = res;
+      },
+      (error) => {
+        console.error('Erro na requisição:', error);
+        this.submitted = false;
+      }
+    )
+
   }
 
 }

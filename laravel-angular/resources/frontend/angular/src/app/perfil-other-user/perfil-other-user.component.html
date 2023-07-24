@@ -7,11 +7,11 @@
         <div class="col-md-3" id="infos">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="numbers">10</p>
+                    <p class="numbers">{{user?.emprestimosConcedidos}}</p>
                     <p>Empréstimos oferecidos</p>
                 </div>
                 <div class="col-md-6">
-                    <p class="numbers">6</p>
+                    <p class="numbers">{{user?.emprestimosRequeridos}}</p>
                     <p>Empréstimos requiridos</p>
                 </div>
             </div>
@@ -35,7 +35,7 @@
             <div class="container text-center">
                 <div class="row align-items-center" id="avaliacao">
                     <div class="col" id="avaliacao">
-                        <p id="nota">9,0</p>
+                        <p id="nota">Nota: {{ user?.nota != null ? (user?.nota | number: '1.2-2') : 'Sem avaliações' }}                        </p>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>

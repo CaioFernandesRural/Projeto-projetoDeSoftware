@@ -42,12 +42,12 @@
             <div class="col d-flex align-items-center">
               <h3 id="book-title" class="col mb-0">{{item.livro?.titulo}}</h3>
               <i id="location-logo" class="fa-solid fa-location-dot"></i>
-              <p id="location-text" class="mb-0">{{user?.cidade}}, {{user?.estado}}</p>
+              <p id="location-text" class="mb-0">{{item.userAnuncio?.cidade}}, {{item.userAnuncio?.estado}}</p>
             </div>
           </div>                       
           <p>{{item.livro?.autor}}</p>
-          <p><b>Status:</b> <span *ngIf="item.anuncio.emprestado" style="color: #EE6363;"><b> Emprestado</b></span>
-            <span *ngIf="!item.anuncio.emprestado"> Disponível</span></p>
+          <p><b>Status:</b> <span *ngIf="item.anuncio?.emprestado" style="color: #EE6363;"><b> Emprestado</b></span>
+            <span *ngIf="!item.anuncio?.emprestado"> Disponível</span></p>
           <button id="btn-primary" class="btn btn-primary mx-2 my-2">Aventura</button>
           <button id="btn-primary" class="btn btn-primary mx-2 my-2">Autoajuda</button>
         </div>

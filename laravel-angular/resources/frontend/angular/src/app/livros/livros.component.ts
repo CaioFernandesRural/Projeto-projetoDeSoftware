@@ -34,8 +34,7 @@ export class LivrosComponent implements OnInit {
         for (const anuncio of this.anuncios) {
           const idLivroAnuncio = anuncio.idLivro;
           const idUserAnunciante = anuncio.idDono;
-          this.carregarLivroPorId(idLivroAnuncio, anuncio);
-          this.carregarUsuarioPorId(idUserAnunciante);
+          this.carregarLivroPorId(idLivroAnuncio, anuncio, idUserAnunciante);
         }
       },
       (error) => {
@@ -44,29 +43,32 @@ export class LivrosComponent implements OnInit {
     );
   }
 
-  carregarLivroPorId(idLivro: number, anuncio: any) {
-    this.livroService.livroPorId(idLivro).subscribe(
-      (livro: any) => {
-        this.livros.push({ anuncio, livro });
-      },
-      (error) => {
-        console.error('Erro ao buscar livro:', error);
-      }
-    );
-  }
-
-  carregarUsuarioPorId(idUser: number) {
-    this.usuarioService.usuarioPorId(idUser).subscribe(
-      (user: any) => {
-        for (var i = 0; i < user.length; i++) {
-          this.user = user[i];
+  carregarLivroPorId(idLivro: number, anuncio: any, idUser: number) {
+    this.carregarUsuarioPorId(idUser).then((userAnuncio) => {
+      this.livroService.livroPorId(idLivro).subscribe(
+        (livro: any) => {
+          this.livros.push({ anuncio, livro, userAnuncio });
+        },
+        (error) => {
+          console.error('Erro ao buscar livro:', error);
         }
-      },
-      (error) => {
-        console.error('Erro ao buscar usuário:', error);
-      }
-    );
+      );
+    });
   }
+  
+  carregarUsuarioPorId(idUser: number): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.usuarioService.usuarioPorId(idUser).subscribe(
+        (user: any) => {
+          resolve(user[0]);
+        },
+        (error) => {
+          console.error('Erro ao buscar usuário:', error);
+          reject(error);
+        }
+      );
+    });
+  }  
 
   verAnuncio(idAnuncio: number) {
     this.router.navigate(['/livro-anuncio', idAnuncio]);

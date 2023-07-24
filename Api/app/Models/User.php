@@ -29,6 +29,9 @@ class User extends Authenticatable implements JWTSubject
         'estado',
         'bio',
         'fotoPerfil',
+        'emprestimosConcedidos',
+        'emprestimosRequeridos',
+        'nota',
         'admin'
     ];
 

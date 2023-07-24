@@ -29,6 +29,9 @@ export class CadastroUserComponent implements OnInit {
       cidade: ['', [Validators.required]],
       estado: ['Selecione...', [Validators.required]],
       bio: [''],
+      emprestimosConcedidos: [0],
+      emprestimosRequeridos: [0],
+      nota: [''],
       fotoPerfil: [null],
       admin: [0, [Validators.required]],
       passwordConfirm: ['', [Validators.required]]
@@ -89,6 +92,9 @@ export class CadastroUserComponent implements OnInit {
     formData.append('cidade', this.registerForm.value.cidade);
     formData.append('estado', this.registerForm.value.estado);
     formData.append('bio', this.registerForm.value.bio);
+    formData.append('emprestimosConcedidos', this.registerForm.value.emprestimosConcedidos);
+    formData.append('emprestimosRequeridos', this.registerForm.value.emprestimosRequeridos);
+    formData.append('nota', this.registerForm.value.nota);
     formData.append('admin', this.registerForm.value.admin);
     formData.append('passwordConfirm', this.registerForm.value.passwordConfirm);
 

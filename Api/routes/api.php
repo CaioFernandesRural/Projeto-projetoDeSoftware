@@ -27,6 +27,9 @@ Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 Route::get('/usuarioPorId/{id}', [UserController::class, 'usuarioPorId']);
 Route::get('storage/{filename}', [UserController::class, 'getFotoPerfil'])->name('user.getFotoPerfil');
+Route::put('emprestimosConcedidos/{id}', [UserController::class, 'emprestimosConcedidos']);
+Route::put('emprestimosRequeridos/{id}', [UserController::class, 'emprestimosRequeridos']);
+Route::put('notaUser/{id}', [UserController::class, 'notaUser']);
 
 //Livro
 Route::post('/registerLivro', [LivroController::class, 'register']);

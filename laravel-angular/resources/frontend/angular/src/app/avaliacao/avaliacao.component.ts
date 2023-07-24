@@ -22,6 +22,8 @@ export class AvaliacaoComponent implements OnInit {
   avaliacao: any;
   idAnuncio: any;
   emprestimoData: any;
+  idRequerente: any;
+  userData: any;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private anuncioService: AnuncioService, private route: ActivatedRoute, private livroService: LivroService, private usuarioService: UsuariosService, private toastr: ToastrService) { 
     this.updateForm = this.formBuilder.group({
@@ -42,9 +44,9 @@ export class AvaliacaoComponent implements OnInit {
       (anuncio: any) => {
         this.anuncio = anuncio[0];
         const idLivroAnuncio = this.anuncio.idLivro;
-        const idUserAnunciante = this.anuncio.idDono;
         const idUserRequerente = this.anuncio.idRequerente;
         this.idAnuncio = this.anuncio.id;
+        this.idRequerente = this.anuncio.idRequerente;
         this.carregarLivroPorId(idLivroAnuncio);
         this.carregarUsuarioPorId(idUserRequerente);
       }
@@ -107,6 +109,24 @@ export class AvaliacaoComponent implements OnInit {
         this.submitted = false;
       }
     );
+
+    const idRequerente = this.idRequerente;
+    this.carregarUsuarioPorId(idRequerente);
+
+    const notaDoUsuario = this.user.nota;
+    const emprestimosRequeridos = this.user.emprestimosRequeridos;
+    const newNota = (parseFloat(avaliacaoValue) + (parseFloat(notaDoUsuario) * (parseFloat(emprestimosRequeridos) - 1))) / parseFloat(emprestimosRequeridos);
+
+    const dadosUsuarioRequerente = {
+      nota: newNota
+    }
+
+    this.usuarioService.notaUser(idRequerente, dadosUsuarioRequerente).subscribe(
+      (res: any) => {
+        this.userData = res;
+      }
+    )
+
   }
 
 }

@@ -37,4 +37,17 @@ export class UsuariosService {
       responseType: 'blob',
     });
   }
+
+  emprestimosConcedidos(idUser: any, userData: any) {
+    return this.http.put(`${environment.apiUrl}/api/emprestimosConcedidos/${idUser}`, userData);
+  }
+
+  emprestimosRequeridos(idUser: any, userData: any) {
+    return this.http.put(`${environment.apiUrl}/api/emprestimosRequeridos/${idUser}`, userData);
+  }
+
+  notaUser(idUser: any, userData: any) {
+    return this.http.put(`${environment.apiUrl}/api/notaUser/${idUser}`, userData);
+  }
+
 }

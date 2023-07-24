@@ -24,6 +24,9 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('admin')->default(false);
             $table->string('fotoPerfil', 500)->nullable();
+            $table->integer('emprestimosConcedidos')->nullable();
+            $table->integer('emprestimosRequeridos')->nullable();
+            $table->double('nota')->nullable();
             $table->timestamps();
         });
     }
