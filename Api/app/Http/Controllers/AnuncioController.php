@@ -140,6 +140,21 @@ class AnuncioController extends Controller
     
         return response()->json(['code' => 200, 'status' => 1, 'message' => 'Empréstimo encerrado com sucesso', 'data' => $anuncios]);
     }
+
+    public function avaliarEmprestimo($id, Request $request)
+    {
+        $anuncios = Anuncio::find($id);
+    
+        if (!$anuncios) {
+            return response()->json(['message' => 'Anúncio não encontrado'], 404);
+        }
+    
+        $anuncios->update($request->only("avaliacao", "relato"));
+    
+        $anuncios->save();
+    
+        return response()->json(['code' => 200, 'status' => 1, 'message' => 'Avaliação enviada com sucesso', 'data' => $anuncios]);
+    }
     
     
 }

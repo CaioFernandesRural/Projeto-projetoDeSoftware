@@ -41,6 +41,10 @@ export class AnuncioService {
     return this.http.put(`${environment.apiUrl}/api/encerrarEmprestimo/${idAnuncio}`, emprestimoData);
   }
 
+  avaliarEmprestimo(idAnuncio: any, emprestimoData: any) {
+    return this.http.put(`${environment.apiUrl}/api/avaliarEmprestimo/${idAnuncio}`, emprestimoData);
+  }
+
   listarMeusEmprestimos(id: any) {
     return this.http.get(`${environment.apiUrl}/api/meusEmprestimos/${id}`);
   }

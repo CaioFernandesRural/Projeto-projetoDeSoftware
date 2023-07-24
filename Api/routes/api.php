@@ -44,3 +44,4 @@ Route::get('/meusEmprestimos/{id}', [AnuncioController::class, 'meusEmprestimos'
 Route::put('/solicitarEmprestimo/{id}', [AnuncioController::class, 'solicitarEmprestimo']);
 Route::put('/concederEmprestimo/{id}', [AnuncioController::class, 'concederEmprestimo']);
 Route::put('/encerrarEmprestimo/{id}', [AnuncioController::class, 'encerrarEmprestimo']);
+Route::put('/avaliarEmprestimo/{id}', [AnuncioController::class, 'avaliarEmprestimo']);

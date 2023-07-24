@@ -42,7 +42,7 @@ const routes: Routes = [
   { path: 'solicitar-emprestimo', component: SolicitarEmprestimoComponent },
   { path: 'emprestimo-concedido', component: EmprestimoConcedidoComponent },
   { path: 'emprestimo-requerido', component: EmprestimoRequiridoComponent },
-  { path: 'avaliacao', component: AvaliacaoComponent },
+  { path: 'avaliacao/:idAnuncio', component: AvaliacaoComponent },
   { path: 'livros-user', component: LivrosUserComponent },
   { path: 'emprestimos-user/:idUser', component: EmprestimosUserComponent },
   { path: 'cadastro-anuncio', component: CadastroAnuncioComponent },

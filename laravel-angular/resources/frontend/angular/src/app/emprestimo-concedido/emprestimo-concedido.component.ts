@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnuncioService } from '../services/anuncio.service';
 import { LivroService } from '../services/livro.service';
 import { UsuariosService } from '../services/usuarios.service';
@@ -21,7 +21,7 @@ export class EmprestimoConcedidoComponent implements OnInit {
   id: any;
   emprestimoData: any;
 
-  constructor(private anuncioService: AnuncioService, private route: ActivatedRoute, private livroService: LivroService, private usuarioService: UsuariosService, private toastr: ToastrService) { }
+  constructor(private router: Router, private anuncioService: AnuncioService, private route: ActivatedRoute, private livroService: LivroService, private usuarioService: UsuariosService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.token = localStorage.getItem('token');
@@ -98,6 +98,10 @@ export class EmprestimoConcedidoComponent implements OnInit {
         console.error('Erro na requisição:', error);
       }
     )
+  }
+
+  irParaAvaliarEmprestimo(idAnuncio: number) {
+    this.router.navigate(['/avaliacao', idAnuncio]);
   }
 
 }
