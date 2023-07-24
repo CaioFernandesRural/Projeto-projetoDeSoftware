@@ -24,6 +24,9 @@
           <button id="btn-secundary" class="btn-secundary" [hidden]="!item.isRequerido" (click)="verRequerimento(item.anuncio.id)">Ver requerimento</button>
         </div>
         <div class="col-auto align-self-end" id="col-btn-primary">
+          <button id="btn-secundary" class="btn-secundary" [hidden]="!item.isConcedido" (click)="verEmprestimo(item.anuncio.id)">Ver empréstimo</button>
+        </div>
+        <div class="col-auto align-self-end" id="col-btn-primary">
           <button id="btn-primary" (click)="verAnuncio(item.anuncio.id)">Ver mais</button>
         </div>
       </div>

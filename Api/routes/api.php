@@ -26,6 +26,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 Route::get('/usuarioPorId/{id}', [UserController::class, 'usuarioPorId']);
+Route::get('storage/{filename}', [UserController::class, 'getFotoPerfil'])->name('user.getFotoPerfil');
 
 //Livro
 Route::post('/registerLivro', [LivroController::class, 'register']);
@@ -42,4 +43,4 @@ Route::get('/anuncioPorId/{id}', [AnuncioController::class, 'anunciosPorId']);
 Route::get('/meusEmprestimos/{id}', [AnuncioController::class, 'meusEmprestimos']);
 Route::put('/solicitarEmprestimo/{id}', [AnuncioController::class, 'solicitarEmprestimo']);
 Route::put('/concederEmprestimo/{id}', [AnuncioController::class, 'concederEmprestimo']);
-Route::get('storage/{filename}', [UserController::class, 'getFotoPerfil'])->name('user.getFotoPerfil');
+Route::put('/encerrarEmprestimo/{id}', [AnuncioController::class, 'encerrarEmprestimo']);

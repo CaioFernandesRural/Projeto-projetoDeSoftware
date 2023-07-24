@@ -52,10 +52,12 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="row">
+                        <p><b>Satus:</b> {{ anuncio.ativo === 1 ? 'Ativo' : 'Finalizado' }}</p>
+                    </div>
                     <div class="col">
                         <p><b>Início:</b> {{anuncio?.dataInicioPrazo}}</p>
                         <p><b>Término:</b> {{anuncio?.dataFimPrazo}}</p>
-                        <i class="fa-solid fa-timer fa-lg" style="display: inline;"></i><p>{{anuncio?.tempoEmprestimo}}</p>
                     </div>
                 </div>
                 <div class="row">
@@ -72,7 +74,7 @@
                 </div>
                 <form>
                     <div class="row justify-content-center">
-                        <button type="submit" id="btn-primary-long">Encerrar</button>
+                        <button type="button" id="btn-primary-long" (click)="encerrarEmprestimo(anuncio.id)" *ngIf="id === anuncio.idDono && anuncio.ativo === 1">Encerrar</button>
                     </div>
                 </form>
             </div>

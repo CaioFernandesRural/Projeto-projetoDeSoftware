@@ -119,3 +119,17 @@
     background: #0B9D92;
     border: none;
 }
+
+.fa-red {
+    color: #EE6363;
+}
+
+.fa-green {
+    color: lightgreen;
+}
+
+#bookmark {
+    align-self: center;
+    margin-left: 4px;
+    margin-top: 4px;
+}

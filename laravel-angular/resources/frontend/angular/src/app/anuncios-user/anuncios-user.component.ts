@@ -48,11 +48,13 @@ export class AnunciosUserComponent implements OnInit {
   carregarLivroPorId(idLivro: number, anuncio: any) {
     this.livroService.livroPorId(idLivro).subscribe(
       (livro: any) => {
-        const livroItem = { anuncio, livro, isRequerido: false }; // Initialize isRequerido as false
+        const livroItem = { anuncio, livro, isRequerido: false, isConcedido: false }; // Initialize isRequerido as false
         this.livros.push(livroItem);
   
-        if (anuncio.idRequerente != null) {
-          livroItem.isRequerido = true; // Set isRequerido to true if idRequerente is not null
+        if (anuncio.idRequerente != null && anuncio.emprestado === 0) {
+          livroItem.isRequerido = true; 
+        } else if (anuncio.idRequerente != null && anuncio.emprestado === 1) {
+          livroItem.isConcedido = true;
         }
       },
       (error) => {
@@ -68,5 +70,10 @@ export class AnunciosUserComponent implements OnInit {
   verRequerimento(idAnuncio: number) {
     this.router.navigate(['/emprestimo-requerido', idAnuncio]);
   }
+
+  verEmprestimo(idAnuncio: number) {
+    this.router.navigate(['/emprestimo-concedido', idAnuncio]);
+  }
+
 
 }

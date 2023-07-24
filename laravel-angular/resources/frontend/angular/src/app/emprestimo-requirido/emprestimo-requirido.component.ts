@@ -45,16 +45,18 @@ export class EmprestimoRequiridoComponent implements OnInit {
         const idUserAnunciante = this.anuncio.idDono;
         const idUserRequerente = this.anuncio.idRequerente;
         this.idAnuncio = this.anuncio.id;
-        this.carregarLivroPorId(idLivroAnuncio);
+        const tempoEmprestimo= this.anuncio.tempoEmprestimo;
+        this.carregarLivroPorId(idLivroAnuncio, tempoEmprestimo);
         this.carregarUsuarioPorId(idUserRequerente);
       }
     )
   }
 
-  carregarLivroPorId(idLivro: number) {
+  carregarLivroPorId(idLivro: number, tempoEmprestimo: string) {
     this.livroService.livroPorId(idLivro).subscribe(
       (livro: any) => {
         this.livro = livro;
+        livro.tempoEmprestimo = tempoEmprestimo;
       },
       (error) => {
         console.error('Erro ao buscar livro:', error);

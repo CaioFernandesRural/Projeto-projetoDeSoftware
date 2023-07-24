@@ -28,7 +28,8 @@ export class HomeComponent implements OnInit {
         this.livros = []; // Criar uma matriz para armazenar os livros de cada anúncio
         for (const anuncio of this.anuncios) {
           const idLivroAnuncio = anuncio.idLivro;
-          this.carregarLivroPorId(idLivroAnuncio);
+          const anuncioAtivo = anuncio.ativo;
+          this.carregarLivroPorId(idLivroAnuncio, anuncioAtivo);
         }
       },
       (error) => {
@@ -37,9 +38,10 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  carregarLivroPorId(idLivro: number) {
+  carregarLivroPorId(idLivro: number, anuncioAtivo: boolean) {
     this.livroService.livroPorId(idLivro).subscribe(
       (livro: any) => {
+        livro.status = anuncioAtivo;
         this.livros.push(livro); // Adicionar o livro à matriz de livros
       },
       (error) => {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnuncioService } from '../services/anuncio.service';
 import { LivroService } from '../services/livro.service';
 import jwt_decode from 'jwt-decode';
@@ -17,7 +17,7 @@ export class EmprestimosUserComponent implements OnInit {
   userData: any;
   id: any;
 
-  constructor(private route: ActivatedRoute, private anuncioService: AnuncioService, private livroService: LivroService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private anuncioService: AnuncioService, private livroService: LivroService) { }
 
   ngOnInit(): void {
     this.token = localStorage.getItem('token');
@@ -41,25 +41,32 @@ export class EmprestimosUserComponent implements OnInit {
         const idDonoLivro = livroEmprestado.idDono;
         const idRequerenteLivro = livroEmprestado.idRequerente;
         const statusEmprestimo = livroEmprestado.ativo;
-        await this.carregarLivroPorIdOutraArray(idLivroEmprestado, idDonoLivro, idRequerenteLivro, statusEmprestimo); 
+        const idAnuncioEmprestimo = livroEmprestado.id;
+        console.log(livroEmprestado)
+        await this.carregarLivroPorIdOutraArray(idLivroEmprestado, idDonoLivro, idRequerenteLivro, statusEmprestimo, idAnuncioEmprestimo); 
       }
     } catch (error) {
       console.error('Erro: ', error);
     }
   }  
 
-  carregarLivroPorIdOutraArray(idLivro: number, idDonoLivro: number, idRequerenteLivro: number, statusEmprestimo: boolean) {
+  carregarLivroPorIdOutraArray(idLivro: number, idDonoLivro: number, idRequerenteLivro: number, statusEmprestimo: boolean, idAnuncioEmprestimo: number) {
     this.livroService.livroPorId(idLivro).subscribe(
       (livro: any) => {
         livro.idDono = idDonoLivro;
         livro.idRequerente = idRequerenteLivro;
         livro.status = statusEmprestimo;
+        livro.idAnuncio = idAnuncioEmprestimo;
         this.livrosOutraArray.push(livro); // Adicionar o livro à matriz de livros
       },
       (error) => {
         console.error('Erro ao buscar livro:', error);
       }
     );
+  }
+
+  verEmprestimo(idAnuncio: number) {
+    this.router.navigate(['/emprestimo-concedido', idAnuncio]);
   }
   
 }

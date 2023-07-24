@@ -24,7 +24,7 @@ class AnuncioController extends Controller
         return response()->json($response);
     }
     public function todosAnuncios(){
-        $Anuncios = Anuncio::all();
+        $Anuncios = Anuncio::where('ativo', 1)->get();
 
         if($Anuncios->isEmpty()){
             $response['status'] = 0;
@@ -37,7 +37,9 @@ class AnuncioController extends Controller
     }
 
     public function anunciosPorIdDono($idDono){
-        $anuncios = Anuncio::where('idDono', $idDono)->get();
+        $anuncios = Anuncio::where('idDono', $idDono)
+                                    ->where('ativo', 1)
+                                    ->get();
 
         if($anuncios->isEmpty()){
             $response['status'] = 0;
@@ -48,15 +50,13 @@ class AnuncioController extends Controller
         return response()->json($anuncios);
     }
 
-    public function meusEmprestimos($id){
-        $anuncios = Anuncio::join('users', function($join) {
-            $join->on('users.id', '=', 'anuncios.idDono')
-                 ->orWhere('users.id', '=', 'anuncios.idRequerente');
-        })
-        ->where('emprestado', 1)
-        ->get();
+    public function meusEmprestimos($idUser) {
+        $anuncios = Anuncio::where('idRequerente', $idUser)
+                            ->orWhere('idDono', $idUser)
+                            ->where('emprestado', 1)
+                            ->get();
     
-        if($anuncios->isEmpty()){
+        if ($anuncios->isEmpty()) {
             $response['status'] = 0;
             $response['message'] = 'Anuncio não encontrado';
             $response['code'] = 404;
@@ -65,6 +65,7 @@ class AnuncioController extends Controller
     
         return response()->json($anuncios);
     }
+    
     
 
     public function anunciosPorId($id){
@@ -80,7 +81,10 @@ class AnuncioController extends Controller
     }
 
     public function cincoRecentes(){
-        $anuncios = Anuncio::orderBy('created_at', 'desc')->take(5)->get();
+        $anuncios = Anuncio::orderBy('created_at', 'desc')
+                                            ->take(5)
+                                            ->where('ativo', 1)
+                                            ->get();
 
         if($anuncios->isEmpty()){
             $response['status'] = 0;
@@ -120,6 +124,21 @@ class AnuncioController extends Controller
         $anuncios->save();
     
         return response()->json(['code' => 200, 'status' => 1, 'message' => 'Empréstimo concedido com sucesso', 'data' => $anuncios]);
+    }
+
+    public function encerrarEmprestimo($id, Request $request)
+    {
+        $anuncios = Anuncio::find($id);
+    
+        if (!$anuncios) {
+            return response()->json(['message' => 'Anúncio não encontrado'], 404);
+        }
+    
+        $anuncios->update($request->only("ativo", "dataFim"));
+    
+        $anuncios->save();
+    
+        return response()->json(['code' => 200, 'status' => 1, 'message' => 'Empréstimo encerrado com sucesso', 'data' => $anuncios]);
     }
     
     

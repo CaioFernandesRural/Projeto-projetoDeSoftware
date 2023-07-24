@@ -49,7 +49,9 @@
     text-align: center;
 }
 
-#location-logo, #location-text, #nota {
+#location-logo,
+#location-text,
+#nota {
     display: inline;
 }
 
@@ -61,7 +63,7 @@
     padding: 0;
 }
 
-#infos .numbers{
+#infos .numbers {
     font-size: 30px;
     font-weight: 600;
 }
@@ -77,7 +79,7 @@
 .perfil-dados {
     text-align: center;
 }
-  
+
 #livro img {
     width: 100px;
 }
@@ -107,7 +109,6 @@
 }
 
 #bookmark {
-    color: #EE6363;
     align-self: center;
     margin-left: 4px;
     margin-top: 4px;
@@ -134,7 +135,8 @@
     margin-bottom: 35px
 }
 
-#location-logo, #location-text {
+#location-logo,
+#location-text {
     color: grey;
 }
 
@@ -151,4 +153,12 @@
     height: 40px;
     width: 100%;
     display: inline-block;
+}
+
+.fa-red {
+    color: #EE6363;
+}
+
+.fa-green {
+    color: lightgreen;
 }
