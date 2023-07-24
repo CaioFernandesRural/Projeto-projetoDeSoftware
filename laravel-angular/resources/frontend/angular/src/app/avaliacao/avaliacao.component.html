@@ -19,17 +19,17 @@
                 <label for="inputNote" class="form-label"><b>Nota</b></label>
                 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
                 <div class="estrelas">
-                    <input type="radio" id="cm_star-empty" value="" checked formControlName="avaliacao" [(ngModel)]="avaliacao"/>
+                    <input type="radio" id="cm_star-empty" value="" checked formControlName="avaliacao"/>
                     <label for="cm_star-1"><i class="fa"></i></label>
-                    <input type="radio" id="cm_star-1" value="1" formControlName="avaliacao" [(ngModel)]="avaliacao"/>
+                    <input type="radio" id="cm_star-1" value="1" formControlName="avaliacao"/>
                     <label for="cm_star-2"><i class="fa"></i></label>
-                    <input type="radio" id="cm_star-2" value="2" formControlName="avaliacao" [(ngModel)]="avaliacao"/>
+                    <input type="radio" id="cm_star-2" value="2" formControlName="avaliacao"/>
                     <label for="cm_star-3"><i class="fa"></i></label>
-                    <input type="radio" id="cm_star-3" value="3" formControlName="avaliacao" [(ngModel)]="avaliacao"/>
+                    <input type="radio" id="cm_star-3" value="3" formControlName="avaliacao"/>
                     <label for="cm_star-4"><i class="fa"></i></label>
-                    <input type="radio" id="cm_star-4" value="4" formControlName="avaliacao" [(ngModel)]="avaliacao"/>
+                    <input type="radio" id="cm_star-4" value="4" formControlName="avaliacao"/>
                     <label for="cm_star-5"><i class="fa"></i></label>
-                    <input type="radio" id="cm_star-5" value="5" formControlName="avaliacao" [(ngModel)]="avaliacao"/>
+                    <input type="radio" id="cm_star-5" value="5" formControlName="avaliacao"/>
                 </div><br>
                 <label for="relato" class="form-label"><b>Relato do empréstimo</b></label>
                 <textarea class="form-control" id="relato" rows="4" formControlName="relato" [(ngModel)]="relato"></textarea>
@@ -87,7 +87,7 @@
                     </div>
 
                     <div class="row justify-content-center">
-                        <button type="submit" id="btn-primary-long" *ngIf="anuncio.avaliacao != null">Avaliar</button>
+                        <button type="submit" id="btn-primary-long" *ngIf="anuncio.avaliacao === null">Avaliar</button>
                     </div>
 
                 </div>
@@ -97,32 +97,32 @@
             <div class="col-md-2">
                 <p>Nº de páginas</p>
                 <i class="fa-regular fa-file"></i>
-                <p><b>{{livro.numPag}}</b></p>
+                <p><b>{{livro?.numPag}}</b></p>
             </div>
             <div class="col-md-2">
                 <p>Idioma</p>
                 <i class="fa-solid fa-language"></i>
-                <p><b>{{livro.idioma}}</b></p>
+                <p><b>{{livro?.idioma}}</b></p>
             </div>
             <div class="col-md-2">
                 <p>Editora</p>
                 <i class="fa-regular fa-building"></i>
-                <p><b>{{livro.editora}}</b></p>
+                <p><b>{{livro?.editora}}</b></p>
             </div>
             <div class="col-md-2">
                 <p>Ano de publicação</p>
                 <i class="fa-regular fa-calendar"></i>
-                <p><b>{{livro.ano}}</b></p>
+                <p><b>{{livro?.ano}}</b></p>
             </div>
             <div class="col-md-2">
                 <p>ISBN-10</p>
                 <i class="fa-solid fa-barcode"></i>
-                <p><b>{{livro.sbn10}}</b></p>
+                <p><b>{{livro?.sbn10}}</b></p>
             </div>
             <div class="col-md-2">
                 <p>ISBN-13</p>
                 <i class="fa-solid fa-barcode"></i>
-                <p><b>{{livro.sbn13}}</b></p>
+                <p><b>{{livro?.sbn13}}</b></p>
             </div>
         </div>
     </div>

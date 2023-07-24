@@ -75,13 +75,15 @@ export class AvaliacaoComponent implements OnInit {
 
   submit() {
     this.submitted = true;
+    const avaliacaoValue = this.updateForm.get('avaliacao')?.value;
 
     const dados = {
-      avaliacao: this.avaliacao,
+      avaliacao: avaliacaoValue,
       relato: this.relato
     }
 
     const idAnuncio = this.idAnuncio;
+    console.log(this.avaliacao)
 
     this.anuncioService.avaliarEmprestimo(idAnuncio, dados).subscribe(
       (res: any) => {

@@ -53,7 +53,7 @@
                 </div>
                 <div class="row">
                     <div class="row">
-                        <p><b>Satus:</b> {{ anuncio.ativo === 1 ? 'Ativo' : 'Finalizado' }}</p>
+                        <p><b>Status:</b> {{ anuncio.ativo === 1 ? 'Ativo' : 'Finalizado' }}  | <b>{{anuncio.avaliacao != null ? anuncio.avaliacao + ' estrelas' : 'Á avaliar'}}</b></p>
                     </div>
                     <div class="col">
                         <p><b>Início:</b> {{anuncio?.dataInicioPrazo}}</p>

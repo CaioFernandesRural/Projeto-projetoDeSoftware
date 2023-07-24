@@ -87,6 +87,7 @@ export class EmprestimoConcedidoComponent implements OnInit {
             timeOut: 2000,
             progressBar: true
           });
+          this.irParaAvaliarEmprestimo(idAnuncio);
         } else {
           this.toastr.error(this.emprestimoData.message, this.emprestimoData.code, {
             timeOut: 2000,
@@ -97,11 +98,11 @@ export class EmprestimoConcedidoComponent implements OnInit {
       (error) => {
         console.error('Erro na requisição:', error);
       }
-    )
-  }
-
-  irParaAvaliarEmprestimo(idAnuncio: number) {
-    this.router.navigate(['/avaliacao', idAnuncio]);
-  }
-
+      )
+    }
+    
+    irParaAvaliarEmprestimo(idAnuncio: number) {
+      this.router.navigate(['/avaliacao', idAnuncio]);
+    }
+    
 }

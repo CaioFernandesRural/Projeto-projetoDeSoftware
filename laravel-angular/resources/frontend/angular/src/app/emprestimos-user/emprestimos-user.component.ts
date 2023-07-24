@@ -42,21 +42,23 @@ export class EmprestimosUserComponent implements OnInit {
         const idRequerenteLivro = livroEmprestado.idRequerente;
         const statusEmprestimo = livroEmprestado.ativo;
         const idAnuncioEmprestimo = livroEmprestado.id;
+        const avaliado = livroEmprestado.avaliacao;
         console.log(livroEmprestado)
-        await this.carregarLivroPorIdOutraArray(idLivroEmprestado, idDonoLivro, idRequerenteLivro, statusEmprestimo, idAnuncioEmprestimo); 
+        await this.carregarLivroPorIdOutraArray(idLivroEmprestado, idDonoLivro, idRequerenteLivro, statusEmprestimo, idAnuncioEmprestimo, avaliado); 
       }
     } catch (error) {
       console.error('Erro: ', error);
     }
   }  
 
-  carregarLivroPorIdOutraArray(idLivro: number, idDonoLivro: number, idRequerenteLivro: number, statusEmprestimo: boolean, idAnuncioEmprestimo: number) {
+  carregarLivroPorIdOutraArray(idLivro: number, idDonoLivro: number, idRequerenteLivro: number, statusEmprestimo: boolean, idAnuncioEmprestimo: number, avaliado: any) {
     this.livroService.livroPorId(idLivro).subscribe(
       (livro: any) => {
         livro.idDono = idDonoLivro;
         livro.idRequerente = idRequerenteLivro;
         livro.status = statusEmprestimo;
         livro.idAnuncio = idAnuncioEmprestimo;
+        livro.avaliacao = avaliado;
         this.livrosOutraArray.push(livro); // Adicionar o livro à matriz de livros
       },
       (error) => {
