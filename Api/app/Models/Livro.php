@@ -23,4 +23,8 @@ class Livro extends Model
         'sbn10',
         'sbn13',
     ];
+    public function categorias()
+    {
+        return $this->belongsToMany(Categoria::class, 'categoria_livro', 'livro_id', 'categoria_id');
+    }
 }
