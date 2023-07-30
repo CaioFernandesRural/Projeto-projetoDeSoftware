@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Tymon\JWTAuth\JWTGuard;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Http\Controllers\Controller;
-use Tymon\JWTAuth\Exceptions\JWTException;
-use Tymon\JWTAuth\JWTGuard;
-
 use function PHPUnit\Framework\isEmpty;
+
+use Illuminate\Support\Facades\Storage;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class UserController extends Controller
 {
@@ -172,5 +173,37 @@ class UserController extends Controller
         $users->save();
     
         return response()->json(['code' => 200, 'status' => 1, 'message' => 'Empréstimo requerido com sucesso', 'data' => $users]);
+    }
+
+    public function atualizaUser($id, Request $request){
+        // Encontrar o usuário com o ID fornecido
+        $user = User::find($id);
+
+        // Atualizar os campos apenas se estiverem presentes na requisição
+        $fieldsToUpdate = [
+            'nome', 'email', 'password', 'telefone', 'idade', 'sexo',
+            'cidade', 'estado', 'bio', 'emprestimosConcedidos',
+            'emprestimosRequeridos', 'nota', 'fotoPerfil', 'admin'
+        ];
+
+        foreach ($fieldsToUpdate as $field) {
+            if ($request->has($field)) {
+                // Se o campo é 'password', criptografa a nova senha
+                if ($field === 'password') {
+                    $user->$field = bcrypt($request->input($field));
+                } else {
+                    $user->$field = $request->input($field);
+                }
+            }
+        }
+
+        // Salvar as alterações no banco de dados
+        $user->save();
+
+        return response()->json([
+            'code' => 200, 'status' => 1,
+            'message' => 'Usuario atualizado com sucesso',
+            'data' => $user
+        ]);
     }
 }

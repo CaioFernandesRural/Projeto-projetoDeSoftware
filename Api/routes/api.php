@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\AnuncioController;
-use App\Http\Controllers\LivroController;
+use App\Models\Livro;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Models\Livro;
+use App\Http\Controllers\LivroController;
+use App\Http\Controllers\AnuncioController;
+use App\Http\Controllers\CategoriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,10 @@ Route::get('storage/{filename}', [UserController::class, 'getFotoPerfil'])->name
 Route::put('emprestimosConcedidos/{id}', [UserController::class, 'emprestimosConcedidos']);
 Route::put('emprestimosRequeridos/{id}', [UserController::class, 'emprestimosRequeridos']);
 Route::put('notaUser/{id}', [UserController::class, 'notaUser']);
+Route::put('/atualizaUser/{id}', [UserController::class, 'atualizaUser']);
+
+//Categoria
+Route::post('', [CategoriaController::class, '']);
 
 //Livro
 Route::post('/registerLivro', [LivroController::class, 'register']);

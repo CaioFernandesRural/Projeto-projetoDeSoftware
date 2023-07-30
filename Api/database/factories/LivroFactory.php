@@ -20,7 +20,8 @@ class LivroFactory extends Factory
             'titulo' => $this->faker->sentence(3),
             'autor' => $this->faker->name(),
             'sinopse' => $this->faker->sentence(10),
-            'capa' => $this->faker->filePath(),
+            #'capa' => $this->faker->filePath(),
+            #comentei pq campo não encontrado
             'editora' => 'editora ' . $this->faker->lastName(),
             'edicao' => $this->faker->numberBetween(1, 10),
             'idioma' => $this->faker->languageCode(),

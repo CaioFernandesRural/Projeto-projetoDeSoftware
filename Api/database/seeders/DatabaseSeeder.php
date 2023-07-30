@@ -20,9 +20,11 @@ class DatabaseSeeder extends Seeder
         //cria solto
         Livro::factory(20)->create();
         User::factory(20)->create();
-        Categoria::factory(30)->create([
+        Categoria::factory(30)->create(/*[
             'idLivro' => Livro::factory()->create()->id
-        ]);
+        ]*/);
+
+        #comentei idLivro pq tava dando erro de campo não encontrado
 
         //pra criar anuncio sem requerente
         User::factory(30)->create()->each(function($usuario){
