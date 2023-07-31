@@ -1,1 +1,59 @@
-<p>editar-user works!</p>
+<div class="container">
+    <div class="centralizar">
+        <img src="./assets/imagens/logo-short.png" alt="sharedLib icon" class="sharedLibIcon">
+        <h1>Crie uma conta</h1>
+    </div>
+
+    <form class="row g-3" (ngSubmit)="submit()" [formGroup]="updateForm" enctype="multipart/form-data">
+        <div class="col-md-6">
+            <label for="inputName" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="inputName" formControlName="nome" [(ngModel)]="nome">
+        </div>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">Cidade</label>
+            <input type="text" class="form-control" id="inputCity" formControlName="cidade" [(ngModel)]="cidade">
+        </div>
+        <div class="col-md-6">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail" formControlName="email" [(ngModel)]="email">
+            <div *ngIf="submitted && f['email'].errors && (f['email'].dirty || f['email'].touched)"
+                class="invalid-feedback">
+                <div *ngIf="f['email'].errors['email']">Email inválido</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="inputState" class="form-label">Estado</label>
+            <select id="inputState" class="form-select" formControlName="estado" [(ngModel)]="estado">
+                <option selected>Selecione...</option>
+                <option [value]="'RJ'">Rio de Janeiro (RJ)</option>
+                <option [value]="'SP'">São Paulo (SP)</option>
+                <option [value]="'MG'">Minas Gerais (MG)</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="inputAge" class="form-label">Idade</label>
+            <input class="form-control" id="inputAge" formControlName="idade" [(ngModel)]="idade">
+        </div>
+        <div class="col-md-3">
+            <label for="inputGender" class="form-label">Sexo</label>
+            <select id="inputGender" class="form-select" formControlName="sexo" [(ngModel)]="sexo">
+                <option selected>Selecione...</option>
+                <option [value]="'f'">Feminino</option>
+                <option [value]="'m'">Masculino</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="inputTel" class="form-label">Telefone</label>
+            <input type="tel" class="form-control" id="inputTel" formControlName="telefone" [(ngModel)]="telefone">
+        </div>
+        <div class="col-md-6" style="margin-bottom: 20px;">
+            <label for="inputBio" class="form-label">Biografia</label>
+            <textarea class="form-control" id="inputBio" rows="4" formControlName="bio" [(ngModel)]="bio"></textarea>
+        </div>
+        <div class="col-12">
+            <div class="centralizar">
+                <button type="submit" class="btn-primary-long" style="width: 400px;">Editar</button>
+            </div>
+        </div>
+    </form>
+</div>

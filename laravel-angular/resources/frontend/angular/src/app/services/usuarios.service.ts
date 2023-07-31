@@ -50,4 +50,7 @@ export class UsuariosService {
     return this.http.put(`${environment.apiUrl}/api/notaUser/${idUser}`, userData);
   }
 
+  updateUser(idUser: any, userData: any) {
+    return this.http.put(`${environment.apiUrl}/api/atualizaUser/${idUser}`, userData);
+  }
 }

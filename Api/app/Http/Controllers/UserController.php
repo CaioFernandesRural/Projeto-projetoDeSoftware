@@ -176,28 +176,17 @@ class UserController extends Controller
     }
 
     public function atualizaUser($id, Request $request){
-        // Encontrar o usuário com o ID fornecido
         $user = User::find($id);
 
-        // Atualizar os campos apenas se estiverem presentes na requisição
         $fieldsToUpdate = [
-            'nome', 'email', 'password', 'telefone', 'idade', 'sexo',
-            'cidade', 'estado', 'bio', 'emprestimosConcedidos',
-            'emprestimosRequeridos', 'nota', 'fotoPerfil', 'admin'
+            'nome', 'email', 'telefone', 'idade', 'sexo',
+            'cidade', 'estado', 'bio'
         ];
 
         foreach ($fieldsToUpdate as $field) {
-            if ($request->has($field)) {
-                // Se o campo é 'password', criptografa a nova senha
-                if ($field === 'password') {
-                    $user->$field = bcrypt($request->input($field));
-                } else {
-                    $user->$field = $request->input($field);
-                }
-            }
+            $user->update($request->only($field));
         }
 
-        // Salvar as alterações no banco de dados
         $user->save();
 
         return response()->json([

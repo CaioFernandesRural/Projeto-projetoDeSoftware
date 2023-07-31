@@ -56,6 +56,7 @@ const routes: Routes = [
   { path: 'livro/:idLivro/:idUser', component: LivroComponent }, 
   { path: 'anuncios-user', component: AnunciosUserComponent }, 
   { path: 'anuncios-other-user/:idUser', component: AnunciosOtherUserComponent }, 
+  { path: 'editar-user/:idUser', component: EditarUserComponent }, 
 ];
 
 @NgModule({
