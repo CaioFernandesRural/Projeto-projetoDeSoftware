@@ -34,13 +34,14 @@ Route::put('notaUser/{id}', [UserController::class, 'notaUser']);
 Route::put('/atualizaUser/{id}', [UserController::class, 'atualizaUser']);
 
 //Categoria
-Route::post('', [CategoriaController::class, '']);
+Route::get('/todasCategorias', [CategoriaController::class, 'todasCategorias']);
 
 //Livro
 Route::post('/registerLivro', [LivroController::class, 'register']);
 Route::get('/todosLivros', [LivroController::class, 'todosLivros']);
 Route::get('/livroPorId/{id}', [LivroController::class, 'livroPorId']);
 Route::get('/livroPorIdDono/{idDono}', [LivroController::class, 'livroPorIdDono']);
+Route::get('/livrosCategoria/{id}', [LivroController::class, 'livrosCategoria']);
 
 //Anuncio
 Route::post('/registerAnuncio', [AnuncioController::class, 'register']);
