@@ -28,7 +28,9 @@ export class CadastroLivroComponent implements OnInit {
       edicao: [''],
       ano: ['', Validators.minLength(0)],
       numPag: [null, [Validators.required, Validators.min(1)]],
-      categoria: ['Selecione...', Validators.required],
+      categoria1: ['Selecione...', Validators.required],
+      categoria2: ['Selecione...'],
+      categoria3: ['Selecione...'],
       sbn10: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       sbn13: ['', [Validators.required, Validators.minLength(13), Validators.maxLength(13)]]
     });
@@ -70,7 +72,9 @@ export class CadastroLivroComponent implements OnInit {
       this.registerForm.get('edicao')?.reset();
       this.registerForm.get('ano')?.reset();
       this.registerForm.get('numPag')?.reset();
-      this.registerForm.get('categoria')?.setValue('Selecione...');
+      this.registerForm.get('categoria1')?.setValue('Selecione...');
+      this.registerForm.get('categoria2')?.setValue('Selecione...');
+      this.registerForm.get('categoria3')?.setValue('Selecione...');
       this.registerForm.get('sbn10')?.reset();
       this.registerForm.get('sbn13')?.reset();
     })

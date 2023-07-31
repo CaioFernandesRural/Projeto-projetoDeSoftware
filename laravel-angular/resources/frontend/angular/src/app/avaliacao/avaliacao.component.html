@@ -52,20 +52,10 @@
                                 <p id="location-text"> {{user?.cidade}}, {{user?.estado}} </p>
                             </div>
                         </div>
-                        <div class="row align-items-center" id="avaliacao">
-                            <div class="col" id="avaliacao">
-                                <p id="nota">9,0 </p>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i><br>
-                            </div>
-                        </div>
                     </div>
                     <div class="row">
                         <div class="row">
-                            <p><b>Satus:</b> {{ anuncio.ativo === 1 ? 'Ativo' : 'Finalizado' }}</p>
+                            <p><b>Status:</b> {{ anuncio.ativo === 1 ? 'Ativo' : 'Finalizado' }}</p>
                         </div>
                         <div class="col">
                             <p><b>Início:</b> {{anuncio?.dataInicioPrazo}}</p>

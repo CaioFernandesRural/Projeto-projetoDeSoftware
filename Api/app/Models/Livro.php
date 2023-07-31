@@ -20,6 +20,9 @@ class Livro extends Model
         'idioma',
         'ano',
         'numPag',
+        'categoria1',
+        'categoria2',
+        'categoria3',
         'sbn10',
         'sbn13',
     ];

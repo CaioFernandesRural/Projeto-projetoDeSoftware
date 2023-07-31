@@ -85,7 +85,6 @@ export class AvaliacaoComponent implements OnInit {
     }
 
     const idAnuncio = this.idAnuncio;
-    console.log(this.avaliacao)
 
     this.anuncioService.avaliarEmprestimo(idAnuncio, dados).subscribe(
       (res: any) => {
@@ -124,6 +123,9 @@ export class AvaliacaoComponent implements OnInit {
     this.usuarioService.notaUser(idRequerente, dadosUsuarioRequerente).subscribe(
       (res: any) => {
         this.userData = res;
+        console.log(notaDoUsuario)
+        console.log(avaliacaoValue)
+        console.log(idRequerente)
       }
     )
 

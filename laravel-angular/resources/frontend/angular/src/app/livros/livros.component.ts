@@ -16,6 +16,7 @@ export class LivrosComponent implements OnInit {
   livro: any;
   user: any;
   filtroTitulo: string = '';
+  categoriaSelecionada: string = '';
 
   constructor(private route: ActivatedRoute, private anuncioService: AnuncioService, private livroService: LivroService, private router: Router, private usuarioService: UsuariosService) { }
 
@@ -86,5 +87,18 @@ export class LivrosComponent implements OnInit {
     const tituloLivro = livro.livro?.titulo.toLowerCase();
     return tituloLivro.includes(this.filtroTitulo);
   }
+
+  filtrarLivrosPorCategoria(categoriaSelecionada: string) {
+    this.categoriaSelecionada = categoriaSelecionada;
+  }
+
+  atendeCriteriosCategoriaFiltro(livro: any): boolean {
+    if(!this.categoriaSelecionada) {
+      return true
+    }
+    const categoria = livro.livro?.categoria1;
+    return categoria === this.categoriaSelecionada;
+  }
+  
 
 }

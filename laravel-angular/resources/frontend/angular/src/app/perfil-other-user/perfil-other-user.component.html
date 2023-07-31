@@ -35,12 +35,7 @@
             <div class="container text-center">
                 <div class="row align-items-center" id="avaliacao">
                     <div class="col" id="avaliacao">
-                        <p id="nota">Nota: {{ user?.nota != null ? (user?.nota | number: '1.2-2') : 'Sem avaliações' }}                        </p>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
+                        <p id="nota">Nota: {{ user?.nota != 0 ? (user?.nota | number: '1.2-2') : 'Sem avaliações' }}</p>
                     </div>
                 </div>
             </div>
@@ -77,7 +72,7 @@
 
     <div class="container text-center" id="historico-de-emprestimos">
         <div class="row" id="row-livros">
-            <div class="col" *ngFor="let livroDono of livrosDono">
+            <div class="col" *ngFor="let livroDono of livrosDono.slice(0, 5)">
                 <div class="livro-item">
                     <img src="./assets/imagens/capa-livro.png" alt="capa-livro" width="120px">
                     <div class="d-flex justify-content-center">
@@ -101,7 +96,7 @@
 
     <div class="container text-center" id="historico-de-emprestimos">
         <div class="row" id="row-livros">
-            <div class="col" *ngFor="let livro of livros">
+            <div class="col" *ngFor="let livro of livros.slice(0, 5)">
                 <div class="livro-item">
                     <img src="./assets/imagens/capa-livro.png" alt="capa-livro" width="120px">
                     <div class="d-flex justify-content-center">

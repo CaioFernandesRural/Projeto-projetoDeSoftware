@@ -32,7 +32,7 @@ export class CadastroUserComponent implements OnInit {
       bio: [''],
       emprestimosConcedidos: [0],
       emprestimosRequeridos: [0],
-      nota: [''],
+      nota: [0],
       fotoPerfil: [null],
       admin: [0, [Validators.required]],
       passwordConfirm: ['', [Validators.required]]

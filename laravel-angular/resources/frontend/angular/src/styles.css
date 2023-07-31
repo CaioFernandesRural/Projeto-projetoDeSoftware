@@ -94,7 +94,7 @@
 
 #row-title {
     background-color: #042932;
-    width: 800px;
+    width: 1000px;
     height: 80px;
     color: white;
     margin-bottom: 40px;
@@ -102,7 +102,7 @@
 
 #row-title h1 {
     margin-left: 160px;
-    width: 500px;
+    width: 800px;
 }
 
 #col-title-cut {

@@ -24,6 +24,9 @@ class LivroController extends Controller
             'idioma' => $request->idioma,
             'ano' => $request->ano,
             'numPag' => $request->numPag,
+            'categoria1' => $request->categoria1,
+            'categoria2' => $request->categoria2,
+            'categoria3' => $request->categoria3,
             'sbn10' => $request->sbn10,
             'sbn13' => $request->sbn13,
         ]);

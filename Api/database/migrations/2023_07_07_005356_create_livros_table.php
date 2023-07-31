@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('idioma');
             $table->string('ano');
             $table->integer('numPag');
+            $table->string('categoria1');
+            $table->string('categoria2')->nullable();
+            $table->string('categoria3')->nullable();
             $table->unsignedBigInteger('sbn10');
             $table->unsignedBigInteger('sbn13');
             $table->timestamps();

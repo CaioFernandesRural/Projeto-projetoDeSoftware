@@ -13,7 +13,7 @@
             </div>
             <div class="row align-items-center" id="avaliacao">
                 <div class="col" id="avaliacao">
-                    <p id="nota">Nota: {{ user?.nota != null ? (user?.nota | number: '1.2-2') : 'Sem avaliações' }}</p>
+                    <p id="nota">Nota: {{ user?.nota != 0 ? (user?.nota | number: '1.2-2') : 'Sem avaliações' }}</p>
                 </div>
             </div>
         </div>
@@ -27,6 +27,11 @@
             <h3>{{livro?.autor}}</h3>
             <h4>Sinopse:</h4>
             <p>{{livro?.sinopse}}</p>
+            <div id="search-categories" class="row height d-flex justify-content-start align-items-center">
+                <button id="btn-primary" class="btn btn-primary mx-2 my-2">{{livro.categoria1}}</button>
+                <button id="btn-primary" class="btn btn-primary mx-2 my-2" *ngIf="livro.categoria2 != 'Selecione...'">{{livro.categoria2}}</button>
+                <button id="btn-primary" class="btn btn-primary mx-2 my-2" *ngIf="livro.categoria3 != 'Selecione...'">{{livro.categoria3}}</button>
+            </div> 
         </div>
     </div>
     <div id="book-data" class="row text-center">
