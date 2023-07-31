@@ -26,7 +26,7 @@ export class CadastroLivroComponent implements OnInit {
       sinopse: [''],
       editora: [''],
       edicao: [''],
-      ano: ['', Validators.minLength(4)],
+      ano: ['', Validators.minLength(0)],
       numPag: [null, [Validators.required, Validators.min(1)]],
       categoria: ['Selecione...', Validators.required],
       sbn10: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],

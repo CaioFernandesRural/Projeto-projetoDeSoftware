@@ -13,7 +13,7 @@
         <li>|</li>
         <li><a routerLink="/cadastro-user">Cadastre-se</a></li>
     </div>
-    <div class="dropdown" *ngIf="isAuthenticated">
+    <div class="dropdown" *ngIf="isAuthenticated" style="position: relative; z-index: 999;">
         <i class="fa-regular fa-user"></i>
         <button class="dropbtn">{{ nome }}</button>
         <div class="dropdown-content">

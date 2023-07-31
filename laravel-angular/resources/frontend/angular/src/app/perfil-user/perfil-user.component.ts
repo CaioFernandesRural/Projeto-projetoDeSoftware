@@ -139,8 +139,5 @@ export class PerfilUserComponent implements OnInit {
     this.router.navigate(['/emprestimos-user', idUser]);
   }
 
-  updateUser(idUser: number) {
-    this.router.navigate(['/editar-user', idUser]);
-  }
 
 }

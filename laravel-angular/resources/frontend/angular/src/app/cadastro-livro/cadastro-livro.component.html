@@ -50,7 +50,7 @@
                         'is-valid': f['ano'].valid && (f['ano'].dirty || f['ano'].touched)}">
                     <div *ngIf="submitted && f['ano'].errors && (f['ano'].dirty || f['ano'].touched)"
                         class="invalid-feedback">
-                        <div *ngIf="f['ano'].errors['minlength']">A senha deve ter pelo menos 6 caracteres</div>
+                        <div *ngIf="f['ano'].errors['minlength']"></div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -69,7 +69,7 @@
                 'is-valid': f['sbn10'].valid && (f['sbn10'].dirty || f['sbn10'].touched)}">
             <div *ngIf="submitted && f['sbn10'].errors && (f['sbn10'].dirty || f['sbn10'].touched)"
                 class="invalid-feedback">
-                <div *ngIf="f['sbn10'].errors['minlength']">A senha deve ter pelo menos 6 caracteres</div>
+                <div *ngIf="f['sbn10'].errors['minlength']">Deve possuir ao menos 10 caracteres</div>
             </div>
 
             <label for="input-isbn-13" class="form-label">ISBN-13</label>
@@ -78,7 +78,7 @@
                 'is-valid': f['sbn13'].valid && (f['sbn13'].dirty || f['sbn13'].touched)}">
             <div *ngIf="submitted && f['sbn13'].errors && (f['sbn13'].dirty || f['sbn13'].touched)"
                 class="invalid-feedback">
-                <div *ngIf="f['sbn13'].errors['minlength']">A senha deve ter pelo menos 6 caracteres</div>
+                <div *ngIf="f['sbn13'].errors['minlength']">Deve possuir ao menos 13 caracteres</div>
             </div>
         </div>
         <div class="row justify-content-center">

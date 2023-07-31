@@ -101,6 +101,7 @@ export class SolicitarEmprestimoComponent implements OnInit {
             timeOut: 2000,
             progressBar: true
           });
+          this.router.navigate(['/']);
         } else {
           this.toastr.error(this.emprestimoData.message, this.emprestimoData.code, {
             timeOut: 2000,
