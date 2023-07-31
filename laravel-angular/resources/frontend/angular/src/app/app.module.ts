@@ -29,6 +29,7 @@ import { FormsModule } from '@angular/forms';
 import { LivroComponent } from './livro/livro.component';
 import { AnunciosUserComponent } from './anuncios-user/anuncios-user.component';
 import { AnunciosOtherUserComponent } from './anuncios-other-user/anuncios-other-user.component';
+import { EditarUserComponent } from './editar-user/editar-user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redireciona a rota inicial para '/home'
@@ -79,6 +80,7 @@ const routes: Routes = [
     LivroComponent,
     AnunciosUserComponent,
     AnunciosOtherUserComponent,
+    EditarUserComponent,
   ],
   imports: [
     BrowserModule,
