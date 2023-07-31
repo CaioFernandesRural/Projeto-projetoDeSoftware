@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Livro;
 use App\Models\Anuncio;
-use Illuminate\Http\Request;
+use App\Models\Categoria;
 
+use Illuminate\Http\Request;
 use function PHPUnit\Framework\isEmpty;
 
 class LivroController extends Controller
@@ -90,5 +91,8 @@ class LivroController extends Controller
 
         return response()->json($livros);
     }
-    
+    public function livrosCategoria($id){
+        $livros = Categoria::where('id', $id)->firstOrFail()->livros;
+        return response()->json($livros);
+    }
 }
