@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { UsuariosService } from '../services/usuarios.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { CategoriaService } from '../services/categoria.service';
 
 @Component({
   selector: 'app-cadastro-user',

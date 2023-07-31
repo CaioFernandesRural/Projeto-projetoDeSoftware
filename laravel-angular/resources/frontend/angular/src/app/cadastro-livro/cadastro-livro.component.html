@@ -63,15 +63,6 @@
                 </div>
             </div>
 
-            <label for="input-category" class="form-label">Categoria</label>
-            <select id="input-category" class="form-select" formControlName="categoria">
-                <option value="Selecione..." selected>Selecione...</option>
-                <option value="Ficção Científica">Ficção Científica</option>
-                <option value="Religião">Religião</option>
-                <option value="Romance">Romance</option>
-                <option value="Investigação">Investigação</option>
-            </select>
-
             <label for="input-isbn-10" class="form-label">ISBN-10</label>
             <input id="input-isbn-10" type="text" class="form-control" formControlName="sbn10" [ngClass]="{
                 'is-invalid': submitted && f['sbn10'].errors && (f['sbn10'].dirty || f['sbn10'].touched),
